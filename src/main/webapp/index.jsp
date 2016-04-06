@@ -253,23 +253,23 @@
 				<div class="col-md-4 col-sm-6 text-center">
 					<div class="bbs">
 						<div class="text-elli">
-							<img src="http://static.inven.co.kr/image/common/fonticon/mark_new2.gif"><img src="http://static.inven.co.kr/image/common/fonticon/mark_hot1.gif">
+							<img src="img/bbs/mark_new2.gif"><img src="img/bbs/mark_hot1.gif">
 							하나님(신)이 자동차라면<span style="color:blue">[43]</span>
 						</div>
 						<div class="text-elli">
-							<img src="http://static.inven.co.kr/image/common/fonticon/mark_new2.gif"><img src="http://static.inven.co.kr/image/common/fonticon/mark_hot1.gif">
+							<img src="img/bbs/mark_new2.gif"><img src="img/bbs/mark_hot1.gif">
 							하나님(신)이 자동차라면 하나님(신)이 자동차라면  하나님(신)이 자동차라면 하나님(신)이 자동차라면 <span style="color:blue">[43]</span>
 						</div>
 						<div class="text-elli">
-							<img src="http://static.inven.co.kr/image/common/fonticon/mark_new2.gif"><img src="http://static.inven.co.kr/image/common/fonticon/mark_hot1.gif">
+							<img src="img/bbs/mark_new2.gif"><img src="img/bbs/mark_hot1.gif">
 							하나님(신)이 자동차라면 하나님(신)이 자동차라면  하나님(신)이 자동차라면 하나님(신)이 자동차라면 <span style="color:blue">[43]</span>
 						</div>
 						<div class="text-elli">
-							<img src="http://static.inven.co.kr/image/common/fonticon/mark_new2.gif"><img src="http://static.inven.co.kr/image/common/fonticon/mark_hot1.gif">
+							<img src="img/bbs/mark_new2.gif"><img src="img/bbs/mark_hot1.gif">
 							하나님(신)이 자동차라면 하나님(신)이 자동차라면  하나님(신)이 자동차라면 하나님(신)이 자동차라면 <span style="color:blue">[43]</span>
 						</div>
 						<div class="text-elli">
-							<img src="http://static.inven.co.kr/image/common/fonticon/mark_new2.gif"><img src="http://static.inven.co.kr/image/common/fonticon/mark_hot1.gif">
+							<img src="img/bbs/mark_new2.gif"><img src="img/bbs/mark_hot1.gif">
 							하나님(신)이 자동차라면 하나님(신)이 자동차라면  하나님(신)이 자동차라면 하나님(신)이 자동차라면 <span style="color:blue">[43]</span>
 						</div>
 					</div>
