@@ -158,7 +158,7 @@
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<img src="http://static.inven.co.kr/column/2016/04/04/news/i12784338895.jpg">
+						<img src="img/news/i12784338895.jpg">
 					</div>
 					<h4 class="service-heading kr text-elli">[뉴스] 20번째 캐릭터의 정체는? 테일즈런너, 신규 캐릭터 공개 이벤트 실시</h4>
 					<div class="box box--responsive kr">
