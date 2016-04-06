@@ -113,7 +113,7 @@
 			<div class="row text-center">
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<img src="http://static.inven.co.kr/column/2016/04/04/news/i13656815628.jpg">
+						<img src="img/news/i13656815628.jpg">
 					</div>
 					<h4 class="service-heading kr text-elli">[뉴스] '앵그리버드 더 무비', 더빙에 방송인 신동엽 참여…5월 19일 개봉 예정</h4>
 					<div class="box box--responsive">
@@ -124,7 +124,7 @@
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<img src="http://static.inven.co.kr/column/2016/04/04/news/i12861502093.jpg">
+						<img src="img/news/i12861502093.jpg">
 					</div>
 					<h4 class="service-heading kr text-elli">[뉴스] 금빛 개틀링으로 땅땅땅빵! ‘백발백중’, 전설 총기 업데이트 실시</h4>
 					<div class="box box--responsive kr">
@@ -143,7 +143,7 @@
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<img src="http://static.inven.co.kr/column/2016/04/04/news/i12784338895.jpg">
+						<img src="img/news/i12784338895.jpg">
 					</div>
 					<h4 class="service-heading kr text-elli">[뉴스] 20번째 캐릭터의 정체는? 테일즈런너, 신규 캐릭터 공개 이벤트 실시</h4>
 					<div class="box box--responsive kr">
