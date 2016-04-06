@@ -91,7 +91,7 @@
 				<div class="intro-lead-in">
 					Team Project
 					<br />
-					Game Cummunity
+					Game Community
 				</div>
 				<div class="intro-heading">
 					neXVen
