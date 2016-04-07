@@ -61,7 +61,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand page-scroll" href="#page-top">neXVen<!--<div id="three-container" style="position:absolute; top:0px; left:-10px;"></div>--></a>
+				<a class="navbar-brand page-scroll" href="#page-top">NEXVEN<!--<div id="three-container" style="position:absolute; top:0px; left:-10px;"></div>--></a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,6 +75,11 @@
 					<li><a class="page-scroll kr" href="#zone">게이머존</a></li>
 					<li><a class="page-scroll kr" href="#market">중고장터</a></li>
 					<li><a class="page-scroll kr">커뮤니티</a></li>
+					<!-- 로그인 후 아이디 -->
+					<!-- <li><a class="btn btn-primary" href="#portfolioModal1" data-toggle="modal">LOGIN</a></li> -->
+					<li><a class="page-scroll kr" href="#myModal"
+						data-toggle="modal">admin 님</a></li>
+
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -90,7 +95,11 @@
 					Team Project <br /> Game Community
 				</div>
 				<div class="intro-heading">neXVen</div>
-				<a href="#portfolioModal1" class="page-scroll btn btn-xl" data-toggle="modal">LOGIN</a>
+
+				<!-- 로그인 후에 버튼 숨김 -->
+				<a href="#portfolioModal1" class="page-scroll btn btn-xl"
+					data-toggle="modal">LOGIN</a>
+
 			</div>
 		</div>
 	</header>
@@ -747,59 +756,183 @@
 			</div>
 		</div>
 	</footer>
+
+	<!-- login Modal 1 로그인 화면-->
+	<div class="portfolio-modal modal fade" id="portfolioModal1"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<!-- Project Details Go Here -->
+							<h2>LOGIN</h2>
+							<p>
+								<label style="display: inline-block; width: 35px;">ID</label><input
+									type="text" style="width: 180px;" />
+							</p>
+							<p>
+								<label style="display: inline-block; width: 35px;">PW</label><input
+									type="password" style="width: 180px;" />
+							</p>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">LOGIN</button>
+							<button type="button" class="btn btn-primary"
+								data-target="#portfolioModal2" data-toggle="modal">SIGN
+								IN</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- login Modal 2 회원 가입 -->
+	<div class="portfolio-modal modal fade" id="portfolioModal2"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<!-- Project Details Go Here -->
+							<h2 class="kr">회원 가입</h2>
+							<p>
+								<label class="signin_label">ID</label><input type="text"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">PW</label><input type="password"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">PW 확인</label><input type="password"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">이름</label><input type="text"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">닉네임</label><input type="text"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">생년월일</label><input type="date"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">우편 번호</label><input type="text"
+									class="signin_post" readonly />
+								<button class="signin_post btn btn-primary">확인</button>
+							</p>
+							<p>
+								<label class="signin_label">주소</label><input type="text"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">상세 주소</label><input type="text"
+									class="signin_input" />
+							</p>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">가입</button>
+							<button type="button" class="btn btn-primary">취소</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	
-	<!-- login Modal 1 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <!-- Project Details Go Here -->
-                            <h2>LOGIN</h2>
-                            <p><label style="display:inline-block; width:35px;">ID</label><input type="text" style="width:180px;" /></p>
-                            <p><label style="display:inline-block; width:35px;">PW</label><input type="password" style="width:180px;" /></p>
-                            <button type="button" class="btn btn-primary">LOGIN</button>
-                            <a href="#portfolioModal2" data-toggle="modal" data-dismiss="modal"><button type="button" class="btn btn-primary">SIGN IN</button></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- login Modal 2 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <!-- Project Details Go Here -->
-                            <h2 class="kr">회원 가입</h2>
-                            <p><label style="display:inline-block; width:65px;">ID</label><input type="text" style="width:150px;" /></p>
-                            <p><label style="display:inline-block; width:65px;">PW</label><input type="password" style="width:150px;" /></p>
-                            <p><label style="display:inline-block; width:65px;">PW 확인</label><input type="password" style="width:150px;" /></p>
-                            <button type="button" class="btn btn-primary">가입</button>
-                            <button type="button" class="btn btn-primary">취소</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- login Modal 3 회원 수정 -->
+	<div class="portfolio-modal modal fade" id="portfolioModal3"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2 class="kr">회원 정보 수정</h2>
+							<p>
+								<label class="signin_label">ID</label><input type="text"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">PW</label><input type="password"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">PW 확인</label><input type="password"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">이름</label><input type="text"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">닉네임</label><input type="text"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">생년월일</label><input type="date"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">우편 번호</label><input type="text"
+									class="signin_post" readonly />
+								<button class="signin_post btn btn-primary">확인</button>
+							</p>
+							<p>
+								<label class="signin_label">주소</label><input type="text"
+									class="signin_input" />
+							</p>
+							<p>
+								<label class="signin_label">상세 주소</label><input type="text"
+									class="signin_input" />
+							</p>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">수정</button>
+							<button type="button" class="btn btn-primary">취소</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Modal -->
+	<div class="modal2 fade" id="myModal" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+
+				<div class="modal-body">
+					<h2>회원 정보</h2>
+					<p>admin 님</p>
+					<p>최종 로그인 시간 :</p>
+					<button type="button" class="btn btn-primary kr" data-target="#portfolioModal3" data-toggle="modal">정보 수정</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">LOGOUT</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
 
 	<!-- jQuery -->
 	<script src="js/jquery.js"></script>
