@@ -33,6 +33,17 @@ body {
 	overflow:hidden;
 	text-overflow:ellipsis;
 }
+.signin_label {
+	display:inline-block;
+	width:65px;
+	text-align:left;
+}
+.signin_input {
+	width:150px;
+}
+.signin_post {
+	width:75px;
+}
 .text-muted {
 	color: #777
 }
