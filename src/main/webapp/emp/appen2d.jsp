@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html data-ng-app="Employee">
+<html data-ng-app="nexven">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
@@ -11,13 +11,13 @@
 <meta charset="UTF-8">
 <title>append.jsp</title>
 <script type="text/javascript">
-	var app = angular.module("Employee",[]);
+	var app = angular.module("nexven",[]);
 	app.controller("appendController", function($scope, $http) {
 		//alert("ListController...");
 	    console.log("appendController");
 	    
 	    $scope.submit = function() {
-			var ajax = $http.post("/Employee/emp", $scope.emp);
+			var ajax = $http.post("/nexven/emp", $scope.emp);
 			ajax.then(function(value) {
 				console.dir(value);
 				if(value.data.success){
@@ -33,7 +33,7 @@
 		};
 		
 		//mgr
-	    var json = $http.get("/Employee/emp/mgrs");
+	    var json = $http.get("/nexven/emp/mgrs");
 	    json.then(function(value) {
 	    	console.dir(value);
 	    	$scope.mgrs = value.data;
@@ -42,7 +42,7 @@
 	    });
 		
 		//deptno
-	    var ajax = $http.get("/Employee/dept/list");
+	    var ajax = $http.get("/nexven/dept/list");
 	    ajax.then(function(value) {
 	    	console.dir(value);
 	    	$scope.depts = value.data;

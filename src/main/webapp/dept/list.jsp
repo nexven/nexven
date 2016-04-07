@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html data-ng-app="Employee">
+<html data-ng-app="nexven">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script
@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <title>list.jsp</title>
 <script type="text/javascript">
-	var app = angular.module("Employee", []);
+	var app = angular.module("nexven", []);
 	app.controller("ListController", function($scope, $http) {
 		//alert("ListController...");
 		console.log("ListController");
@@ -47,7 +47,7 @@
 			}
 		};
 
-		$http.get("/Employee/dept/list").then(function(response) {
+		$http.get("/nexven/dept/list").then(function(response) {
 			console.dir(response);
 			console.dir(response.data);
 			$scope.depts = response.data;

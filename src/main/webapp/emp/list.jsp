@@ -24,13 +24,13 @@ var app = angular.module("employee", ['ui.bootstrap']);
 
 app.controller("listController", function($scope, $http) {
 	
-	var ajax = $http.get("/Employee/emp/list");
+	var ajax = $http.get("/nexven/emp/list");
 	ajax.then(function(res) {
 		console.dir(res);
 		$scope.emps = res.data;
 	});
 	
-	$scope.paging = $http.get("/Employee/emp/page?pageNo=1");
+	$scope.paging = $http.get("/nexven/emp/page?pageNo=1");
 	
 	$scope.pageChange = function() {
 		alert("pageNo" + $scope.paging.pageNo);

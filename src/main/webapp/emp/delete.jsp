@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html data-ng-app="Employee">
+<html data-ng-app="nexven">
 <head>
 <meta charset="UTF-8">
 <title>delete.jsp</title>
@@ -11,12 +11,12 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script type="text/javascript">
-	var app = angular.module("Employee",[]);
+	var app = angular.module("nexven",[]);
 	app.controller("DeleteController", function($scope, $http) {
 	
 		$scope.empno=${param.empno}; // 바인딩 모델 생성
 		
-		var ajax = $http.get("/Employee/emp?empno="+$scope.empno);
+		var ajax = $http.get("/nexven/emp?empno="+$scope.empno);
 		
 		ajax.then(function(value) {
 			$scope.emp = value.data;
@@ -25,7 +25,7 @@
 		});
 		
 		$scope.delpass = function(){
-			var ajax = $http['delete']("/Employee/emp?empno="+$scope.empno);			
+			var ajax = $http['delete']("/nexven/emp?empno="+$scope.empno);			
 			ajax.then(function(value) {
 				console.dir(value);
 				if(value.data.success){

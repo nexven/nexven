@@ -31,6 +31,14 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+	
+	<logger name="org.springframework.jdbc.datasource">
+		<level value="debug" />
+	</logger>
+	
+	<logger name="com.unknown.mapper">
+		<level value="debug" />
+	</logger>
 
 	<!-- Root Logger -->
 	<root>

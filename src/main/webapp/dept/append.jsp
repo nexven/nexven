@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html data-ng-app="Employee">
+<html data-ng-app="nexven">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
@@ -11,13 +11,13 @@
 <meta charset="UTF-8">
 <title>append.jsp</title>
 <script type="text/javascript">
-	var app = angular.module("Employee",[]);
+	var app = angular.module("nexven",[]);
 	app.controller("appendController", function($scope, $http) {
 		//alert("ListController...");
 	    console.log("appendController");
 	    
 	    $scope.submit = function() {
-			var ajax = $http.post("/Employee/dept", $scope.dept);
+			var ajax = $http.post("/nexven/dept", $scope.dept);
 			ajax.then(function(value) {
 				console.dir(value);
 				if(value.data.success){

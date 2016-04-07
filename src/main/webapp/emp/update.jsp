@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html data-ng-app="Employee">
+<html data-ng-app="nexven">
 <head>
 <meta charset="UTF-8">
 <title>update.jsp</title>
@@ -14,13 +14,13 @@
 <script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap-tpls.min.js"></script>
 
 <script type="text/javascript">
-	var app = angular.module("Employee",['ui.bootstrap']);
+	var app = angular.module("nexven",['ui.bootstrap']);
 	app.controller("UpdateController", function($scope, $http) {
 		
 		$scope.empno=${param.empno}; // 직원번호 바인딩 모델 생성
 		
 		// mgrs 불러오기
-		var json = $http.get("/Employee/emp/mgrs");
+		var json = $http.get("/nexven/emp/mgrs");
 	    json.then(function(value) {
 	    	console.dir(value);
 	    	$scope.mgrs = value.data;
@@ -33,7 +33,7 @@
 	    };
 	    
 	    // dept_list 불러오기
-		var json2 = $http.get("/Employee/dept/list");
+		var json2 = $http.get("/nexven/dept/list");
 	    json2.then(function(value) {
 	    	console.dir(value);
 	    	$scope.depts = value.data;
@@ -46,14 +46,14 @@
 	    };
 		
 	    // 직원정보 불러오기
-		var ajax=$http.get("/Employee/emp?empno="+$scope.empno);
+		var ajax=$http.get("/nexven/emp?empno="+$scope.empno);
 		ajax.then(function(value) {
 			$scope.emp=value.data;
 		});
 		
 		// 직원수정 전송
 		$scope.submit=function(){
-			var ajax = $http.put("/Employee/emp", $scope.emp);
+			var ajax = $http.put("/nexven/emp", $scope.emp);
 			
 			ajax.then(function(value) {
 				console.dir(value);

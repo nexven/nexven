@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html data-ng-app="Employee">
+<html data-ng-app="nexven">
 <head>
 <meta charset="UTF-8">
 <title>append.jsp</title>
@@ -14,11 +14,11 @@
 <script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap-tpls.min.js"></script>
 
 <script type="text/javascript">
-	var app = angular.module("Employee",['ui.bootstrap']);
+	var app = angular.module("nexven",['ui.bootstrap']);
 	app.controller("AppendController", function($scope, $http) {
 		
 		// mgrs 불러오기
-		var json = $http.get("/Employee/emp/mgrs");
+		var json = $http.get("/nexven/emp/mgrs");
 	    json.then(function(value) {
 	    	console.dir(value);
 	    	$scope.mgrs = value.data;
@@ -27,7 +27,7 @@
 	    });
 	    
 	    // dept_list 불러오기
-		var json2 = $http.get("/Employee/dept/list");
+		var json2 = $http.get("/nexven/dept/list");
 	    json2.then(function(value) {
 	    	console.dir(value);
 	    	$scope.deptnos = value.data;
@@ -37,7 +37,7 @@
 		
 		// 전송
 		$scope.submit=function(){
-			var ajax = $http.post("/Employee/emp", $scope.emp);
+			var ajax = $http.post("/nexven/emp", $scope.emp);
 			
 			ajax.then(function(value) {
 				console.dir(value);

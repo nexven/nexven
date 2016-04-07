@@ -20,7 +20,7 @@ app.controller('appendController', function($scope, $http) {
 	console.log("appendController...");
 	
 	$scope.submit = function() {
-		var ajax = $http.post("/Employee/dept", $scope.dept);
+		var ajax = $http.post("/nexven/dept", $scope.dept);
 		ajax.then(function(value) {
 			console.dir(value);
 			if (value.data.success) {

@@ -17,7 +17,7 @@ var app = angular.module("employee", []);
 
 app.controller("listController", function($scope, $http) {
 	
-	var ajax = $http.get("/Employee/emp/list");
+	var ajax = $http.get("/nexven/emp/list");
 	ajax.then(function(res) {
 		console.dir(res);
 		$scope.emps = res.data;
