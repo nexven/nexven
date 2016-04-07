@@ -15,9 +15,9 @@
 <title>list.jsp</title>
 <script type="text/javascript">
 	var app = angular.module("nexven", []);
-	app.controller("ListController", function($scope, $http) {
-		//alert("ListController...");
-		console.log("ListController");
+	app.controller("listController", function($scope, $http) {
+		//alert("listController...");
+		console.log("listController");
 		$scope.left = "왼쪽";
 		$scope.right = "오른쪽";
 		// MODEL => VIEW로 바인딩
@@ -55,7 +55,7 @@
 	});
 </script>
 </head>
-<body data-ng-controller="ListController">
+<body data-ng-controller="listController">
 	<!-- class="container-fluid" // width 전체 -->
 	<div class="row">
 		<div class="col-md-4">

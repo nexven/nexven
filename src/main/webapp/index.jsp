@@ -8,6 +8,8 @@
 <!-- angluar -->
 <script
 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap-tpls.min.js"></script>
 <head>
 
 <meta charset="utf-8">
@@ -50,116 +52,63 @@
 	<![endif]-->
 	
 <script type="text/javascript">
-	var app = angular.module("nexven", []);
-	app.controller("ListController", function($scope, $http) {
-		//alert("ListController...");
-		console.log("ListController");
-		$scope.left = "왼쪽";
-		$scope.right = "오른쪽";
-		// MODEL => VIEW로 바인딩
 
-		$scope.change = function(btnEvent) {
-			// Click 이벤트로 인한 VIEW => MODEL로 바인딩
-			//alert("Change Click..."+btnEvent)
-			switch (btnEvent) {
-			case "Left":
-				$scope.left += "#LeftClick";
-				break;
-			case "Clear":
-				$scope.left = "";
-				$scope.right = "";
-				$scope.depts = [ {
-					deptno : 10,
-					dname : '총무부',
-					loc : '서울'
-				} ];
-				break;
-			case "Right":
-				$scope.right += "@RightClick";
-				break;
 
-			default:
-				break;
-			}
-		};
+var app = angular.module("nexven", ['ui.bootstrap']);
 
-		$http.get("/nexven/dept/list").then(function(response) {
-			console.dir(response);
-			console.dir(response.data);
-			$scope.depts = response.data;
-		});
+app.controller("listController", function($scope, $http) {
+	
+	var ajax = $http.get("/nexven/emp/list");
+	ajax.then(function(res) {
+		console.dir(res);
+		$scope.emps = res.data;
 	});
+	
+	$scope.paging = $http.get("/nexven/emp/page?pageNo=1");
+	
+	$scope.pageChange = function() {
+		alert("pageNo" + $scope.paging.pageNo);
+	}
+	
+});
+
 </script>
 
 </head>
 
-<body id="page-top" class="index" data-ng-controller="ListController">
-	<!-- class="container-fluid" // width 전체 -->
-	<div class="row">
-		<div class="col-md-4">
-			<Button class="btn btn-primary" data-ng-click="change('Left')">Change</Button>
-		</div>
-		<div class="col-md-4">
-			<Button class="btn btn-success" data-ng-click="change('Clear')">Change</Button>
-		</div>
-		<div class="col-md-4">
-			<Button class="btn btn-info" data-ng-click="change('Right')">Change</Button>
-		</div>
-	</div>
+<body id="page-top" class="index" data-ng-controller="listController">
 
-	<div class="row">
-		<div class="col-sm-4" style="background-color: red; color: lightblue">{{left}}</div>
-		<div class="col-sm-4"
-			style="background-color: green; color: lightblue">
-			<pre>{{depts}}</pre>
-		</div>
-		<div class="col-sm-4" style="background-color: blue; color: lightblue">{{right}}</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-4" style="background-color: red; color: lightblue">
-			<input data-ng-model="left">
-		</div>
-		<div class="col-sm-4"
-			style="background-color: green; color: lightblue">
-			<pre>
-				<textarea rows="10" data-ng-model="depts"></textarea> </pre>
-		</div>
-		<div class="col-sm-4" style="background-color: blue; color: lightblue">
-			<input data-ng-model="right">
-		</div>
-	</div>
-	<hr>
-
-
-	<ul data-ng-repeat="dept in depts">
-		<li><a href="detail.jsp?deptno={{dept.deptno}}">{{dept.deptno}}</a>
-			/ {{dept.dname}} / {{dept.loc}}</li>
-	</ul>
-	<hr>
-	<a href="append.jsp" class="btn btn-success">부서추가</a>
-	<table class="table table-bordered table-hover">
-		<thead>
-			<tr>
-				<th>Deptno</th>
-				<th>Dname</th>
-				<th>Loc</th>
-				<th>수정</th>
-				<th>삭제</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr data-ng-repeat="d in depts">
-				<td class="active"><a href="detail.jsp?deptno={{d.deptno}}">{{d.deptno}}</a></td>
-				<td class="active">{{d.dname}}</td>
-				<td class="active">{{d.loc}}</td>
-				<td class="active"><a href="update.jsp?deptno={{d.deptno}}"
-					class="btn btn-info">수정</a></td>
-				<td class="active"><a href="delete.jsp?deptno={{d.deptno}}"
-					class="btn btn-success">삭제</a></td>
-			</tr>
-		</tbody>
-	</table>
-
+<h1>직원 리스트</h1>
+<table class="table table-striped">
+<a href="append.jsp" class="btn btn-success">부서추가</a>
+	<thead>
+	<tr>
+		<th colspan="7">
+			<div data-uib-pagination 
+			data-total-items="paging.totalCount" 
+			data-ng-model="paging.pageNo"
+			data-ng-items-per-page="5"
+			data-ng-max-size="5"
+			data-ng-change="pageChanged()"></div>
+		</th>
+	</tr>
+		<tr><th>empno</th><th>ename</th><th>job</th><th>mgr</th><th>hiredate</th><th>sal</th><th>comm</th><th>deptno</th></tr>
+	</thead>
+	<tbody>	
+		<tr data-ng-repeat="emp in emps.data">
+			<td>{{emp.empno}}</td>
+			<td>{{emp.ename}}</td>
+			<td>{{emp.job}}</td>
+			<td>{{emp.mgr}}</td>
+			<td>{{emp.hiredate | date : 'yyyy-mm-dd'}}</td>
+			<td>{{emp.sal}}</td>
+			<td>{{emp.comm}}</td>
+			<td>{{emp.deptno}}</td>
+			<td><a href="./update.jsp?empno={{emp.empno}}" class="btn btn-success">부서 수정</a></td>
+			<td><a href="./delete.jsp?empno={{emp.empno}}" class="btn btn-success">부서 삭제</a></td>
+		</tr>
+	</tbody>
+</table>
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
