@@ -4,7 +4,10 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-
+<html data-ng-app="nexven">
+<!-- angluar -->
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 <head>
 
 <meta charset="utf-8">
@@ -45,10 +48,117 @@
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	
+<script type="text/javascript">
+	var app = angular.module("nexven", []);
+	app.controller("ListController", function($scope, $http) {
+		//alert("ListController...");
+		console.log("ListController");
+		$scope.left = "왼쪽";
+		$scope.right = "오른쪽";
+		// MODEL => VIEW로 바인딩
+
+		$scope.change = function(btnEvent) {
+			// Click 이벤트로 인한 VIEW => MODEL로 바인딩
+			//alert("Change Click..."+btnEvent)
+			switch (btnEvent) {
+			case "Left":
+				$scope.left += "#LeftClick";
+				break;
+			case "Clear":
+				$scope.left = "";
+				$scope.right = "";
+				$scope.depts = [ {
+					deptno : 10,
+					dname : '총무부',
+					loc : '서울'
+				} ];
+				break;
+			case "Right":
+				$scope.right += "@RightClick";
+				break;
+
+			default:
+				break;
+			}
+		};
+
+		$http.get("/nexven/dept/list").then(function(response) {
+			console.dir(response);
+			console.dir(response.data);
+			$scope.depts = response.data;
+		});
+	});
+</script>
 
 </head>
 
-<body id="page-top" class="index">
+<body id="page-top" class="index" data-ng-controller="ListController">
+	<!-- class="container-fluid" // width 전체 -->
+	<div class="row">
+		<div class="col-md-4">
+			<Button class="btn btn-primary" data-ng-click="change('Left')">Change</Button>
+		</div>
+		<div class="col-md-4">
+			<Button class="btn btn-success" data-ng-click="change('Clear')">Change</Button>
+		</div>
+		<div class="col-md-4">
+			<Button class="btn btn-info" data-ng-click="change('Right')">Change</Button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-4" style="background-color: red; color: lightblue">{{left}}</div>
+		<div class="col-sm-4"
+			style="background-color: green; color: lightblue">
+			<pre>{{depts}}</pre>
+		</div>
+		<div class="col-sm-4" style="background-color: blue; color: lightblue">{{right}}</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4" style="background-color: red; color: lightblue">
+			<input data-ng-model="left">
+		</div>
+		<div class="col-sm-4"
+			style="background-color: green; color: lightblue">
+			<pre>
+				<textarea rows="10" data-ng-model="depts"></textarea> </pre>
+		</div>
+		<div class="col-sm-4" style="background-color: blue; color: lightblue">
+			<input data-ng-model="right">
+		</div>
+	</div>
+	<hr>
+
+
+	<ul data-ng-repeat="dept in depts">
+		<li><a href="detail.jsp?deptno={{dept.deptno}}">{{dept.deptno}}</a>
+			/ {{dept.dname}} / {{dept.loc}}</li>
+	</ul>
+	<hr>
+	<a href="append.jsp" class="btn btn-success">부서추가</a>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Deptno</th>
+				<th>Dname</th>
+				<th>Loc</th>
+				<th>수정</th>
+				<th>삭제</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="d in depts">
+				<td class="active"><a href="detail.jsp?deptno={{d.deptno}}">{{d.deptno}}</a></td>
+				<td class="active">{{d.dname}}</td>
+				<td class="active">{{d.loc}}</td>
+				<td class="active"><a href="update.jsp?deptno={{d.deptno}}"
+					class="btn btn-info">수정</a></td>
+				<td class="active"><a href="delete.jsp?deptno={{d.deptno}}"
+					class="btn btn-success">삭제</a></td>
+			</tr>
+		</tbody>
+	</table>
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -90,8 +200,7 @@
 					Team Project <br /> Game Community
 				</div>
 				<div class="intro-heading">neXVen</div>
-				<a href="#portfolioModal1" class="page-scroll btn btn-xl"
-					data-toggle="modal">LOGIN</a>
+				<a href="#portfolioModal1" class="page-scroll btn btn-xl" data-toggle="modal">LOGIN</a>
 			</div>
 		</div>
 	</header>
@@ -748,80 +857,64 @@
 			</div>
 		</div>
 	</footer>
-
+	
 	<!-- login Modal 1 -->
-	<div class="portfolio-modal modal fade" id="portfolioModal1"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 col-lg-offset-2">
-						<div class="modal-body">
-							<!-- Project Details Go Here -->
-							<h2>LOGIN</h2>
-							<p>
-								<label style="display: inline-block; width: 35px;">ID</label><input
-									type="text" style="width: 180px;" />
-							</p>
-							<p>
-								<label style="display: inline-block; width: 35px;">PW</label><input
-									type="password" style="width: 180px;" />
-							</p>
-							<button type="button" class="btn btn-primary">LOGIN</button>
-							<a href="#portfolioModal2" data-toggle="modal"
-								data-dismiss="modal"><button type="button"
-									class="btn btn-primary">SIGN IN</button></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- login Modal 2 -->
-	<div class="portfolio-modal modal fade" id="portfolioModal2"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 col-lg-offset-2">
-						<div class="modal-body">
-							<!-- Project Details Go Here -->
-							<h2 class="kr">회원 가입</h2>
-							<p>
-								<label style="display: inline-block; width: 65px;">ID</label><input
-									type="text" style="width: 150px;" />
-							</p>
-							<p>
-								<label style="display: inline-block; width: 65px;">PW</label><input
-									type="password" style="width: 150px;" />
-							</p>
-							<p>
-								<label style="display: inline-block; width: 65px;">PW 확인</label><input
-									type="password" style="width: 150px;" />
-							</p>
-							<button type="button" class="btn btn-primary">가입</button>
-							<button type="button" class="btn btn-primary">취소</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2>LOGIN</h2>
+                            <p><label style="display:inline-block; width:35px;">ID</label><input type="text" style="width:180px;" /></p>
+                            <p><label style="display:inline-block; width:35px;">PW</label><input type="password" style="width:180px;" /></p>
+                            <button type="button" class="btn btn-primary">LOGIN</button>
+                            <a href="#portfolioModal2" data-toggle="modal" data-dismiss="modal"><button type="button" class="btn btn-primary">SIGN IN</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- login Modal 2 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="kr">회원 가입</h2>
+                            <p><label style="display:inline-block; width:65px;">ID</label><input type="text" style="width:150px;" /></p>
+                            <p><label style="display:inline-block; width:65px;">PW</label><input type="password" style="width:150px;" /></p>
+                            <p><label style="display:inline-block; width:65px;">PW 확인</label><input type="password" style="width:150px;" /></p>
+                            <button type="button" class="btn btn-primary">가입</button>
+                            <button type="button" class="btn btn-primary">취소</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<!-- jQuery -->
 	<script src="js/jquery.js"></script>
-
+	
+	
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
 

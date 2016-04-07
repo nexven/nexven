@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html data-ng-app="Employee">
+<html data-ng-app="nexven">
 <head>
 <meta charset="UTF-8">
 <title>select.jsp</title>
@@ -11,10 +11,10 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script type="text/javascript">
-	var app = angular.module("Employee",[]);
+	var app = angular.module("nexven",[]);
 	app.controller("ListController", function($scope, $http) {
 
-		var json = $http.get("/Employee/emp/mgrs");
+		var json = $http.get("/nexven/emp/mgrs");
 	    json.then(function(value) {
 	    	console.dir(value);
 	    	$scope.mgrs = value.data;
@@ -25,7 +25,7 @@
 	   
 	    
 	    $scope.submit = function() {
-			var ajax = $http.post("/Employee/emp", $scope.emp);
+			var ajax = $http.post("/nexven/emp", $scope.emp);
 			ajax.then(function(value) {
 				console.dir(value);
 			});

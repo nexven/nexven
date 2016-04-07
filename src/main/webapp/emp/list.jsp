@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html data-ng-app="employee">
+<html data-ng-app="nexven">
 
 <head>
 <meta charset="UTF-8">
@@ -20,7 +20,7 @@
 <script type="text/javascript">
 
 
-var app = angular.module("employee", ['ui.bootstrap']);
+var app = angular.module("nexven", ['ui.bootstrap']);
 
 app.controller("listController", function($scope, $http) {
 	

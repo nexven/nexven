@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html data-ng-app="employee">
+<html data-ng-app="nexven">
 
 <head>
 <meta charset="UTF-8">
@@ -13,7 +13,7 @@
 <!-- AngularJS -->
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script type="text/javascript">
-var app = angular.module("employee", []);
+var app = angular.module("nexven", []);
 
 app.controller("listController", function($scope, $http) {
 	

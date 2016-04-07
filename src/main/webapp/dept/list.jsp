@@ -55,7 +55,7 @@
 	});
 </script>
 </head>
-<body data-ng-controller="ListController" class="container">
+<body data-ng-controller="ListController">
 	<!-- class="container-fluid" // width 전체 -->
 	<div class="row">
 		<div class="col-md-4">
