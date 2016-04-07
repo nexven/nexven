@@ -83,57 +83,43 @@ var app = angular.module("nexven", ['ui.bootstrap']);
 
 app.controller("listController", function($scope, $http) {
 	
-	var ajax = $http.get("/nexven/emp/list");
-	ajax.then(function(res) {
-		console.dir(res);
-		$scope.emps = res.data;
+	
+	$('#test2').on('click', function() {
+	 	var ajax = $http.get("/nexven/list.jsp");
+	 	ajax.then(function(res2) {
+	 		console.dir(res2);
+	 		$('.testc2').html(res2.data);
+	 		
+	 	});
 	});
 	
-	$scope.paging = $http.get("/nexven/emp/page?pageNo=1");
 	
-	$scope.pageChange = function() {
-		alert("pageNo" + $scope.paging.pageNo);
-	}
+
 	
 });
+
+app.controller("loginController", function($scope, $http) {
+	
+	
+	$('#test').on('click', function() {
+		 	var ajax = $http.get("/nexven/login.jsp");
+		 	ajax.then(function(res) {
+		 		console.dir(res);
+		 		$('.testc').html(res.data);
+		 	});
+		});
+	
+});
+
+
 
 </script>
 
 </head>
 
-<body id="page-top" class="index" data-ng-controller="listController">
+<body id="page-top" class="index">
 
-<h1>직원 리스트</h1>
-<table class="table table-striped">
-<a href="append.jsp" class="btn btn-success">부서추가</a>
-	<thead>
-	<tr>
-		<th colspan="7">
-			<div data-uib-pagination 
-			data-total-items="paging.totalCount" 
-			data-ng-model="paging.pageNo"
-			data-ng-items-per-page="5"
-			data-ng-max-size="5"
-			data-ng-change="pageChanged()"></div>
-		</th>
-	</tr>
-		<tr><th>empno</th><th>ename</th><th>job</th><th>mgr</th><th>hiredate</th><th>sal</th><th>comm</th><th>deptno</th></tr>
-	</thead>
-	<tbody>	
-		<tr data-ng-repeat="emp in emps.data">
-			<td>{{emp.empno}}</td>
-			<td>{{emp.ename}}</td>
-			<td>{{emp.job}}</td>
-			<td>{{emp.mgr}}</td>
-			<td>{{emp.hiredate | date : 'yyyy-mm-dd'}}</td>
-			<td>{{emp.sal}}</td>
-			<td>{{emp.comm}}</td>
-			<td>{{emp.deptno}}</td>
-			<td><a href="./update.jsp?empno={{emp.empno}}" class="btn btn-success">부서 수정</a></td>
-			<td><a href="./delete.jsp?empno={{emp.empno}}" class="btn btn-success">부서 삭제</a></td>
-		</tr>
-	</tbody>
-</table>
+
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
@@ -841,6 +827,7 @@ app.controller("listController", function($scope, $http) {
 		</div>
 	</footer>
 
+
 	<!-- login Modal 1 로그인 화면-->
 	<div class="portfolio-modal modal fade" id="portfolioModal1"
 		tabindex="-1" role="dialog" aria-hidden="true">
@@ -850,26 +837,15 @@ app.controller("listController", function($scope, $http) {
 					<div class="rl"></div>
 				</div>
 			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 col-lg-offset-2">
-						<div class="modal-body">
-							<!-- Project Details Go Here -->
-							<h2>LOGIN</h2>
-							<p>
-								<label style="display: inline-block; width: 35px;">ID</label><input
-									type="text" style="width: 180px;" />
-							</p>
-							<p>
-								<label style="display: inline-block; width: 35px;">PW</label><input
-									type="password" style="width: 180px;" />
-							</p>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">LOGIN</button>
-							<button type="button" class="btn btn-primary"
-								data-target="#portfolioModal2" data-toggle="modal">SIGN
-								IN</button>
-						</div>
-					</div>
+			<div class="container" data-ng-controller="loginController">
+				<button id="test">로그인 비동기</button>				
+				<div class="testc">				 
+				</div>
+
+			</div>
+			<div data-ng-controller="listController">
+			<button id="test2">Emp리스트 비동기</button>
+				<div class="testc2">
 				</div>
 			</div>
 		</div>
