@@ -90,7 +90,7 @@ app.controller("listController", function($scope, $http) {
 	 		console.dir(res2);
 	 		$('.testc').html("");
 	 		$('.testc2').html(res2.data);
-	 		
+
 	 	});
 	});
 	
