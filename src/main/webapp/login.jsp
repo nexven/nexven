@@ -6,6 +6,31 @@
 <meta charset="UTF-8">
 <script type="text/javascript">
 	alert("비동기 로그인 자바스크립트 테스트");
+	
+	$(document).ready(function(){
+
+		$.ajax({
+		    type: "get",
+		    url: "dept/list",
+		    contentType: "application/json",
+			success: function(result) {
+				var abc="";
+				$(result).each(function(i,val){
+				    $.each(val,function(k,v){
+				        if(i>0){  
+				    		abc+=k+" : "+ v+"<br/>";
+				        }
+					});
+				});
+				$(".testc2").html(abc);
+		    },
+		    error: function(){
+		        alert('ajax 불러오기 실패');
+		    }
+		});	        
+	        
+	});
+	
 </script>
 </head>
 <body>
