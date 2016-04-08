@@ -33,9 +33,6 @@ public class EmpController {
 	public Map<String, Object> getList() {
 		Map<String, Object> result = new HashMap<>();
 		
-		result.put("success", true);
-		result.put("message", "조회성공");
-		
 		result.put("data", empService.getList());
 		
 		return result;		
