@@ -4,6 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript">
+	alert("비동기 로그인 자바스크립트 테스트");
+</script>
 </head>
 <body>
 				<div class="row">

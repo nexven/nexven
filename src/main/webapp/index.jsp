@@ -88,6 +88,7 @@ app.controller("listController", function($scope, $http) {
 	 	var ajax = $http.get("/nexven/list.jsp");
 	 	ajax.then(function(res2) {
 	 		console.dir(res2);
+	 		$('.testc').html("");
 	 		$('.testc2').html(res2.data);
 	 		
 	 	});
@@ -105,6 +106,7 @@ app.controller("loginController", function($scope, $http) {
 		 	var ajax = $http.get("/nexven/login.jsp");
 		 	ajax.then(function(res) {
 		 		console.dir(res);
+		 		$('.testc2').html("");
 		 		$('.testc').html(res.data);
 		 	});
 		});
