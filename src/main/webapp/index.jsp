@@ -316,7 +316,7 @@ app.controller("loginController", function($scope, $http) {
 					<h2 class="section-heading text-title kr">게이머존</h2>
 				</div>
 			</div>
-			<div class="row" class="width80">
+			<div class="row width80">
 				<h3 class="section-subheading text-title kr"><span class="square"></span> 자유 게시판</h3>
 
 				<div class="col-md-6">
