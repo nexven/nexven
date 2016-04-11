@@ -33,6 +33,16 @@ body {
 	overflow:hidden;
 	text-overflow:ellipsis;
 }
+.square {
+	display:inline-block;
+	background:#fed136;
+	width:0.7em;
+	height:0.7em;
+}
+.width80 {
+	width: 80%;
+	margin: auto;
+}
 .signin_label {
 	display:inline-block;
 	width:65px;
@@ -46,6 +56,12 @@ body {
 }
 .text-muted {
 	color: #777
+}
+.text-bbs {
+	color: #333
+}
+.text-title {
+	color: #fed136
 }
 .text-primary {
 	color: #fed136
@@ -64,8 +80,10 @@ a {
 	color: #fed136
 }
 a:hover, a:focus, a:active, a.active {
-	color: #fec503
+	color: #fec503;
+	text-decoration: none;
 }
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
@@ -75,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0 auto
 }
 .bg-light-gray {
-	background-color: #f7f7f7
+	background-color: #f1f1f1
 }
 .bg-darkest-gray {
 	background-color: #222
