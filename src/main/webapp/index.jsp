@@ -262,6 +262,7 @@ app.controller("loginController", function($scope, $http) {
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-title">Game DB</h2>
+					<h3 class="section-subheading text-title kr"><a href="">DB 검색</a></h3>
 				</div>
 			</div>
 			<div class="row">
@@ -273,17 +274,17 @@ app.controller("loginController", function($scope, $http) {
 					</div>
 					<div class="col-md-3 col-sm-3">
 						<div class="thumbnail">
-							<img src="img/icon/game_l_73737.png">
+							<a href=""><img src="img/icon/game_l_73737.png"></a>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-3">
 						<div class="thumbnail">
-							<img src="img/icon/game_l_73739.png">
+							<a href=""><img src="img/icon/game_l_73739.png"></a>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-3">
 						<div class="thumbnail">
-							<img src="img/icon/game_l_73985.png">
+							<a href=""><img src="img/icon/game_l_73985.png"></a>
 						</div>
 					</div>
 				</div>
