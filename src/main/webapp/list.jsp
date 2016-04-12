@@ -6,17 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>list.jsp</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<!-- AngularJS -->
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
+
+
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+<!-- jQuery library -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
+<!-- AngularJS -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
+<!-- 
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap-tpls.min.js"></script>
+
+ -->
+
 <script type="text/javascript">
 $(document).ready(function() {
 	alert("as");
@@ -47,7 +53,7 @@ $(document).ready(function() {
     });	
 	
 });
-
+/* 
 var app = angular.module("nexven", ['ui.bootstrap']);
 
 app.controller("listController", function($scope, $http) {
@@ -68,7 +74,7 @@ app.controller("listController", function($scope, $http) {
 	
 });
 
-
+ */
 </script>
 </head>
 <body data-ng-controller="listController" class="container">
@@ -90,16 +96,16 @@ app.controller("listController", function($scope, $http) {
 		</thead>
 		<tbody class="ab">	
 			<tr data-ng-repeat="emp in emps.data">
-				<td>{{emp.empno}}</td>
-				<td>{{emp.ename}}</td>
-				<td>{{emp.job}}</td>
-				<td>{{emp.mgr}}</td>
-				<td>{{emp.hiredate | date : 'yyyy-mm-dd'}}</td>
-				<td>{{emp.sal}}</td>
-				<td>{{emp.comm}}</td>
-				<td>{{emp.deptno}}</td>
-				<td><a href="./update.jsp?empno={{emp.empno}}" class="btn btn-success">부서 수정</a></td>
-				<td><a href="./delete.jsp?empno={{emp.empno}}" class="btn btn-success">부서 삭제</a></td>
+<!-- 				<td>{{emp.empno}}</td> -->
+<!-- 				<td>{{emp.ename}}</td> -->
+<!-- 				<td>{{emp.job}}</td> -->
+<!-- 				<td>{{emp.mgr}}</td> -->
+<!-- 				<td>{{emp.hiredate | date : 'yyyy-mm-dd'}}</td> -->
+<!-- 				<td>{{emp.sal}}</td> -->
+<!-- 				<td>{{emp.comm}}</td> -->
+<!-- 				<td>{{emp.deptno}}</td> -->
+<!-- 				<td><a href="./update.jsp?empno={{emp.empno}}" class="btn btn-success">부서 수정</a></td> -->
+<!-- 				<td><a href="./delete.jsp?empno={{emp.empno}}" class="btn btn-success">부서 삭제</a></td> -->
 			</tr>
 		</tbody>
 	</table>

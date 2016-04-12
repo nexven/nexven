@@ -105,7 +105,22 @@ app.controller("loginController", function($scope, $http) {
 	
 });
 
-
+app.controller("newsController", function($scope, $http) {	
+	$('#nexven_news').on('click', function() {
+	 	var ajax = $http.get("/nexven/news");
+	 	ajax.then(function(res) {
+	 		console.dir(res);
+	 		$('#nexven_news_content').html(res.data);
+	 	});
+	});	
+	//$(function(){
+	 	var ajax2 = $http.get("/nexven/news_main");
+	 	ajax2.then(function(res2) {
+	 		$scope.news_main = res2.data;
+	 		//alert($scope.news_main);
+	 	});
+	//});	
+});
 
 </script>
 
@@ -170,87 +185,78 @@ app.controller("loginController", function($scope, $http) {
 	</header>
 
 	<!-- news Section -->
-	<section id="news">
+	<section id="news" data-ng-controller="newsController">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">NEWS</h2>
+					<h2 class="section-heading">
+					<a id="nexven_news" data-toggle="modal" href="#nexven_news1">NEWS</a></h2>
+					
+						<!-- nexven news 넥벤 뉴스 -->
+						<div class="portfolio-modal modal fade" id="nexven_news1"
+							tabindex="-1" role="dialog" aria-hidden="true">
+							<div class="modal-content">
+								<div class="close-modal" data-dismiss="modal">
+									<div class="lr">
+										<div class="rl"></div>
+									</div>
+								</div>
+								<div id="nexven_news_content">
+									
+								</div>
+					
+							</div>
+						</div>
+					
+					
 					<h3 class="section-subheading text-muted kr">게임 업계 뉴스</h3>
 				</div>
 			</div>
 			<div class="row text-center">
-				<div class="col-md-3 col-sm-6">
+				<div class="col-md-3 col-sm-6">						
+					
 					<div class="news">
-						<img src="img/news/i13656815628.jpg">
+						<img data-ng-src="./news_img?src={{news_main[0].news_content_pic}}" />						
 					</div>
-					<h4 class="service-heading kr text-elli">[뉴스] '앵그리버드 더 무비',
-						더빙에 방송인 신동엽 참여…5월 19일 개봉 예정</h4>
-					<div class="box box--responsive">This is a responsive box
-						that will update it's ellipsis when the screen resizes. The quick
-						brown fox jumped over the lazy dogs. The quick brown fox jumped
-						over the lazy dogs. This is a responsive box that will update it's
-						ellipsis when the screen resizes. The quick brown fox jumped over
-						the lazy dogs. The quick brown fox jumped over the lazy dogs. This
-						is a responsive box that will update it's ellipsis when the screen
-						resizes. The quick brown fox jumped over the lazy dogs. The quick
-						brown fox jumped over the lazy dogs. This is a responsive box that
-						will update it's ellipsis when the screen resizes. The quick brown
-						fox jumped over the lazy dogs. The quick brown fox jumped over the
-						lazy dogs.</div>
+					<h4 class="service-heading kr text-elli">
+						{{news_main[0].title}}
+					</h4>
+					<div class="box box--responsive">
+						{{news_main[0].description}}
+					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<img src="img/news/i12861502093.jpg">
+						<img data-ng-src="./news_img?src={{news_main[1].news_content_pic}}" />
 					</div>
-					<h4 class="service-heading kr text-elli">[뉴스] 금빛 개틀링으로 땅땅땅빵!
-						‘백발백중’, 전설 총기 업데이트 실시</h4>
-					<div class="box box--responsive kr">넷마블게임즈(이하 넷마블, 대표 권영식)는
-						모바일 슈팅게임 '백발백중 for Kakao(이하 백발백중)'에서 전설 총기를 최초로 추가하고, 걸그룹 러블리즈 멤버
-						'유지애' 캐릭터를 출시한다고 4일 밝혔다. 현재 '백발백중' 총기 등급은 '일반', '고급', '희귀' 순으로 이번
-						업데이트를 통해 가장 높은 등급 '전설'이 추가된다. 최초로 선보이는 전설 총기는 '개틀링-이글'과 'M4A1-울프'로
-						강한 공격력과 함께 일정 확률로 피해량이 증가하는 스킬을 보유하고 있어, 전투에서 효과적으로 사용할 수 있다. 또,
-						‘백발백중’은 걸그룹 러블리즈에서 비주얼을 담당하고 있는 유지애의 캐릭터를 출시했다. 이는 서지수, 케이 이후 세
-						번째로 추가하는 캐릭터로, 멤버의 얼굴을 높은 완성도로 구현한 것은 물론, 유지애가 직접 녹음한 음성을 지원한다.
-
-						넷마블은 이번 업데이트와 함께 오는 5일까지 15레벨 달성한 이용자에게 러블리즈 서지수 캐릭터를 증정한다. 별도로
-						카카오 프로모션에 참여하는 모든 이용자에게 300개의 다이아를 증정하며 휴면 이용자가 게임을 시작하면, 6만원 상당의
-						아이템을 제공한다. 이외에도 4월 한 달 동안 대전모드, 무한모드를 즐기면 추가 보상을 주는 핫타임 이벤트가 진행된다.
-
-						넷마블게임즈 이정호 본부장은 “이번 업데이트는 ‘백발백중’ 총기의 기준을 상향하는 것으로, 총기 성장에 또 다른 재미를
-						선사하길 기대한다”며 “기존 이용자뿐만 아니라, 신규, 휴면 이용자에게 풍성한 혜택을 제공하는 이벤트를 진행하니 많은
-						참여를 부탁한다”고 말했다. 모바일 슈팅게임 ‘백발백중’은 PC온라인 FPS 게임 수준의 타격감과 박진감을 높은
-						완성도로 구현했으며, 쉬운 조작 시스템으로 남녀노소가 부담 없이 슈팅게임을 즐길 수 있다. 게임에 대한 자세한 정보는
-						공식카페 및 공식 페이스북에서 확인할 수 있다.</div>
+					<h4 class="service-heading kr text-elli">
+						{{news_main[1].title}}
+					</h4>
+					<div class="box box--responsive kr">
+						{{news_main[1].description}}
+					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<img src="img/news/i12784338895.jpg">
+						<img data-ng-src="./news_img?src={{news_main[2].news_content_pic}}" />
 					</div>
-					<h4 class="service-heading kr text-elli">[뉴스] 20번째 캐릭터의 정체는?
-						테일즈런너, 신규 캐릭터 공개 이벤트 실시</h4>
+					<h4 class="service-heading kr text-elli">
+						{{news_main[2].title}}
+					</h4>
+					<div class="box box--responsive kr">
+						{{news_main[2].description}}
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="news">
+						<img data-ng-src="./news_img?src={{news_main[3].news_content_pic}}" />
+					</div>
+					<h4 class="service-heading kr text-elli">
+						{{news_main[3].title}}
+					</h4>
 					<div class="box box--responsive kr">스마일게이트 메가포트(대표 이동훈)의 인기
-						온라인 액션 레이싱 게임 '테일즈런너'(개발사 라온엔터테인먼트)가 ‘신규 캐릭터 공개’ 이벤트를 시작했다. 이번
-						이벤트는 이용자들이 힘을 모아 올 여름 업데이트될 20번째 캐릭터에 대한 정보를 알아낼 수 있는 색다른 즐길 거리로,
-						이달 20일(수)까지 진행된다. 이벤트에 참여하고 싶은 이용자들은 '테일즈런너' 플레이 후 공식 홈페이지 내 이벤트
-						페이지에서 ‘응원하기’를 클릭하면 된다. ‘응원하기’는 이용자 당 하루에 한 번씩만 참여할 수 있다. 스마일게이트
-						메가포트는 이용자들의 ‘응원하기’ 누적 횟수가 10만, 20만, 50만 등 목표치에 도달할 때 마다, 신규 캐릭터의
-						이름, 출신, 특징 등의 정보를 순차적으로 공개한다. 특히, 100만 회를 달성할 경우, 캐릭터의 원화도 제공할
-						예정이다. ‘신규 캐릭터 공개’ 이벤트 및 게임 정보에 대한 세부 내용은 공식 홈페이지에서 확인할 수 있다.</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="news">
-						<img src="img/news/i12784338895.jpg">
+						{{news_main[3].description}}
 					</div>
-					<h4 class="service-heading kr text-elli">[뉴스] 20번째 캐릭터의 정체는?
-						테일즈런너, 신규 캐릭터 공개 이벤트 실시</h4>
-					<div class="box box--responsive kr">스마일게이트 메가포트(대표 이동훈)의 인기
-						온라인 액션 레이싱 게임 '테일즈런너'(개발사 라온엔터테인먼트)가 ‘신규 캐릭터 공개’ 이벤트를 시작했다. 이번
-						이벤트는 이용자들이 힘을 모아 올 여름 업데이트될 20번째 캐릭터에 대한 정보를 알아낼 수 있는 색다른 즐길 거리로,
-						이달 20일(수)까지 진행된다. 이벤트에 참여하고 싶은 이용자들은 '테일즈런너' 플레이 후 공식 홈페이지 내 이벤트
-						페이지에서 ‘응원하기’를 클릭하면 된다. ‘응원하기’는 이용자 당 하루에 한 번씩만 참여할 수 있다. 스마일게이트
-						메가포트는 이용자들의 ‘응원하기’ 누적 횟수가 10만, 20만, 50만 등 목표치에 도달할 때 마다, 신규 캐릭터의
-						이름, 출신, 특징 등의 정보를 순차적으로 공개한다. 특히, 100만 회를 달성할 경우, 캐릭터의 원화도 제공할
-						예정이다. ‘신규 캐릭터 공개’ 이벤트 및 게임 정보에 대한 세부 내용은 공식 홈페이지에서 확인할 수 있다.</div>
 				</div>
 			</div>
 		</div>

@@ -48,8 +48,9 @@
 									type="password" style="width: 180px;" />
 							</p>
 							<button type="button" class="btn btn-primary" data-dismiss="modal">LOGIN</button>
-							<button type="button" class="btn btn-primary kr"
-								data-target="#portfolioModal2" data-toggle="modal">회원가입</button>
+							<button type="button" class="btn btn-primary"
+								data-target="#portfolioModal2" data-toggle="modal">SIGN
+								IN</button>
 						</div>
 					</div>
 				</div>
