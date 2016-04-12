@@ -43,6 +43,13 @@ body {
 	width: 80%;
 	margin: auto;
 }
+.titlelink a {
+	color: #333333;
+}
+a:hover, a:focus, a:active, a.active {
+	color: #fec503;
+	text-decoration: none;
+}
 .signin_label {
 	display:inline-block;
 	width:65px;

@@ -174,7 +174,7 @@ app.controller("newsController", function($scope, $http) {
 				<div class="intro-lead-in">
 					Team Project <br /> Game Community
 				</div>
-				<div class="intro-heading">neXVen</div>
+				<div class="intro-heading">NEXVEN</div>
 
 				<!-- 로그인 후에 버튼 숨김 -->
 				<a href="#portfolioModal1" class="page-scroll btn btn-xl"
@@ -189,7 +189,7 @@ app.controller("newsController", function($scope, $http) {
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">
+					<h2 class="section-heading titlelink">
 					<a id="nexven_news" data-toggle="modal" href="#nexven_news1">NEWS</a></h2>
 					
 						<!-- nexven news 넥벤 뉴스 -->
@@ -254,7 +254,7 @@ app.controller("newsController", function($scope, $http) {
 					<h4 class="service-heading kr text-elli">
 						{{news_main[3].title}}
 					</h4>
-					<div class="box box--responsive kr">스마일게이트 메가포트(대표 이동훈)의 인기
+					<div class="box box--responsive kr">
 						{{news_main[3].description}}
 					</div>
 				</div>
@@ -267,7 +267,7 @@ app.controller("newsController", function($scope, $http) {
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-title">Game DB</h2>
+					<h2 class="section-heading text-title"><a href="">Game DB</a></h2>
 					<h3 class="section-subheading text-title kr"><a href="">DB 검색</a></h3>
 				</div>
 			</div>
