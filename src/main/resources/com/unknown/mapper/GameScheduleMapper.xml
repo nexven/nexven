@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unknown.mapper.GameScheduleMapper">
+    <sql id="FromGameSchedule">
+        select sNum, 
+	    	   sName,
+	    	   sStart,
+	    	   sEnd,
+	    	   sType,
+	    	   gNum
+	   	  from GameSchedule
+    </sql>
+    
+	<select id="selectAll" resultType="com.unknown.model.GameSchedule">
+		<include refid="FromGameSchedule"/>
+	</select>
+	
+	<select id="selectBysNum" resultType="com.unknown.model.GameSchedule"
+	    parameterType="int">
+	    <include refid="FromGameSchedule"/>
+	   	 where sNum = #{sNum} 
+	</select>
+	
+	<insert id="insert" parameterType="com.unknown.model.GameSchedule">
+	    insert into GameSchedule
+	    (
+	    	   sNum, 
+	    	   sName,
+	    	   sStart,
+	    	   sEnd,
+	    	   sType,
+	    	   gNum
+	    )
+	    values
+	    (
+	    	   #{sNum}, 
+	    	   #{sName},
+	    	   #{sStart},
+	    	   #{sEnd},
+	    	   #{sType},
+	    	   #{gNum}
+	    )
+	</insert>
+	
+	<update id="updateBysNum" parameterType="com.unknown.model.GameSchedule">
+	    update GameSchedule
+	       set sName = #{sName},
+	    	   sStart = #{sStart},
+	    	   sEnd = #{sEnd},
+	    	   sType = #{sType},
+	    	   gNum = #{gNum}
+	     where sNum = #{sNum}
+	</update>
+	
+	<delete id="deleteBysNum" parameterType="int">
+	    delete from GameSchedule
+	     where sNum = #{sNum}
+	</delete>
+</mapper>

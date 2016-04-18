@@ -3,7 +3,6 @@ package com.unknown.mapper;
 
 import java.util.List;
 
-import com.unknown.model.Dept;
 import com.unknown.model.GameDb;
 
 public interface GameDbMapper {
