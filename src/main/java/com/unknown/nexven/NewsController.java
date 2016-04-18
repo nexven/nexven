@@ -55,15 +55,19 @@ public class NewsController {
 	        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 	        Document xml = null;
-	        if(keyword.equals("")&&page.equals("")){
-	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr");
-	        }else if(page.equals("")){
-	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr+"+keyword);	        	
-	        }else if(keyword.equals("")){
-	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr"+"&field="+page);
-	        }else{
-	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr+"+keyword+"&field="+page);
-	        }
+	        
+        	xml = documentBuilder.parse("http://feeds.feedburner.com/inven");
+	        
+//	        if(keyword.equals("")&&page.equals("")){
+//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr");
+//	        }else if(page.equals("")){
+//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr+"+keyword);	        	
+//	        }else if(keyword.equals("")){
+//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr"+"&field="+page);
+//	        }else{
+//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr+"+keyword+"&field="+page);
+//	        }
+	        
 	        Element element = xml.getDocumentElement();
 	        Node channelNode = element.getElementsByTagName("channel").item(0);
 	        NodeList list = channelNode.getChildNodes();
@@ -75,13 +79,25 @@ public class NewsController {
 	                    mtitle = list2.item(j).getNodeName();
 	                 	mcontent = list2.item(j).getTextContent();	                 	
 	                    if(mtitle.equals("link")){
-	                    	mcontent = mcontent.replace("http://www.inven.co.kr/webzine/news/?news=", "");
+	                    	mcontent = mcontent.replace("http://www.inven.co.kr/webzine/news/?news=", "news_content?link=");
 	                    }	                 	
-	                    if(mtitle.equals("media:thumbnail")){
-	                    	mcontent = list2.item(j).getAttributes().getNamedItem("url").getTextContent();
+	                    if(mtitle.equals("enclosure")){
+	                    	mcontent = list2.item(j).getAttributes().getNamedItem("url").getTextContent().replaceAll("http://static.inven.co.kr","news_img?src=http://static.inven.co.kr");
 	                    }	                    
+		                if(mtitle.equals("description")){
+	                    	mcontent = list2.item(j).getTextContent().replaceAll("<img [^<>]*>","");
+		                }
+	                    
 	                 	mlist.put(mtitle, mcontent);
 
+	                 	
+	                 	/* 네이버
+							if(mtitle.equals("media:thumbnail")){
+	                    		mcontent = list2.item(j).getAttributes().getNamedItem("url").getTextContent();
+	                    	}                    
+	                 			mlist.put(mtitle, mcontent);
+	                 	*/
+	                 	
 	                    /* inven 
 	                    if(htitle.equals("enclosure")){
 	                    	hcontent = list2.item(j).getAttributes().getNamedItem("url").getTextContent();
@@ -158,7 +174,8 @@ public class NewsController {
 	        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 	        Document xml = null;
-        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr");
+	        xml = documentBuilder.parse("http://feeds.feedburner.com/inven");
+	        //xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr");
 	        Element element = xml.getDocumentElement();
 	        Node channelNode = element.getElementsByTagName("channel").item(0);
 	        NodeList list = channelNode.getChildNodes();
@@ -169,15 +186,27 @@ public class NewsController {
 	             for(int j=0;j<list2.getLength();j++) {
 	                    mtitle = list2.item(j).getNodeName();
 	                 	mcontent = list2.item(j).getTextContent();              	
-	                    if(mtitle.equals("title")){
+	                    if(mtitle.equals("link")){
+	                    	mlist.put(mtitle, mcontent.replace("http://www.inven.co.kr/webzine/news/?news=", "news_content?link="));
+	                    }
+	                    if(mtitle.equals("enclosure")){
+	                    	mcontent = list2.item(j).getAttributes().getNamedItem("url").getTextContent().replaceAll("http://static.inven.co.kr","news_img?src=http://static.inven.co.kr");
+	                    	mlist.put(mtitle, mcontent);
+	                    	System.out.println(mcontent);
+	                    }
+	                 	if(mtitle.equals("title")){
 	                    	mlist.put(mtitle, mcontent);
 	                    }
 	                    if(mtitle.equals("description")){
+	                    	mcontent = list2.item(j).getTextContent().replaceAll("<img [^<>]*>","");
 	                    	mlist.put(mtitle, mcontent);
 	                    }
 	                    if(mtitle.equals("image")){
 	                    	mlist.put(mtitle, mcontent);
-	                    }		                 
+	                    	System.out.println(mcontent+"테스트");
+	                    }
+	                    
+	                    /* 큰 이미지                   
 	                 	if(mtitle.equals("link")){	                	 
 		                	 Response response= Jsoup.connect(list2.item(j).getTextContent())
 		                			   .referrer("http://static.inven.co.kr") 
@@ -188,10 +217,9 @@ public class NewsController {
 		                	 org.jsoup.nodes.Document doc = response.parse();
 		                	 Elements news_content_pic = doc.select("#webzineNewsView > .newsPart > .Content > .contentBody > figure > img"); 	 
 		                	 mlist.put("news_content_pic",news_content_pic.attr("src"));
-		                }	                 	
-	                    if(mtitle.equals("link")){
-	                    	mlist.put(mtitle, mcontent.replace("http://www.inven.co.kr/webzine/news/?news=", ""));
-	                    }
+		                }
+	                    */
+
 	             }
 	             nlist.add(mlist);
 	         }
