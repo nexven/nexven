@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unknown.mapper.GameDbMapper">
+    <sql id="FromGameDb">
+        select gNum, 
+	    	   gName,
+	    	   gStartDate,
+	    	   gMaker,
+	    	   gPublisher,
+	    	   gServiceType,
+	    	   gPlatform,
+	    	   gGenre,
+	    	   gHomepage,
+	    	   gRating,
+	    	   gIntroduce
+	   	  from gamedb
+    </sql>
+    
+	<select id="selectAll" resultType="com.unknown.model.GameDb">
+		<include refid="FromGameDb"/>
+	</select>
+	<select id="selectBygNum" resultType="com.unknown.model.GameDb"
+	    parameterType="int">
+	    <include refid="FromGameDb"/>
+	   	 where deptno = #{gNum} 
+	</select>
+	
+	<insert id="insert" parameterType="com.unknown.model.GameDb">
+	    insert into gamedb
+	    (
+	    	   gNum, 
+	    	   gName,
+	    	   gStartDate,
+	    	   gMaker,
+	    	   gPublisher,
+	    	   gServiceType,
+	    	   gPlatform,
+	    	   gGenre,
+	    	   gHomepage,
+	    	   gRating,
+	    	   gIntroduce
+	    )
+	    values
+	    (
+	    	   #{gNum},
+	    	   #{gName},
+	    	   #{gStartDate},
+	    	   #{gMaker},
+	    	   #{gPublisher},
+	    	   #{gServiceType},
+	    	   #{gPlatform},
+	    	   #{gGenre},
+	    	   #{gHomepage},
+	    	   #{gRating},
+	    	   #{gIntroduce}
+	    ) 
+	</insert>
+	
+	<update id="updateBygNum" parameterType="com.unknown.model.GameDb">
+	    update gamedb
+	       set gName = #{gName},
+	           gStartDate = #{gStartDate},
+	    	   gMaker = #{gMaker},
+	    	   gPublisher = #{gPublisher},
+	    	   gServiceType = #{gServiceType},
+	    	   gPlatform = #{gPlatform},
+	    	   gGenre = #{gGenre},
+	    	   gHomepage = #{gHomepage},
+	    	   gRating = #{gRating},
+	    	   gIntroduce = #{gIntroduce}
+	     where gNum = #{gNum}
+	</update>
+	
+	<delete id="deleteBygNum" parameterType="int">
+	    delete from gamedb
+	     where gNum = #{gNum}
+	</delete>
+</mapper>
