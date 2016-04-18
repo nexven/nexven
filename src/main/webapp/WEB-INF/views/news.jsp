@@ -40,12 +40,11 @@
 	<h2 class="section-heading">NEWS</h2>
 
 	<div class="width80">
-		<div class="row hiddentitle">
+		<div class="row">
 			<div class="col-md-2">Thumbnail</div>
-			<div class="col-md-7">Title</div>
+			<div class="col-md-8">Title</div>
 			<div class="col-md-1">Category</div>
 			<div class="col-md-1">pubDate</div>
-			<div class="col-md-1">Author</div>
 		</div>
 		<div class="row bg-darkest-gray"
 			style="height: 2px; margin: 5px 0px 5px 0px;"></div>
@@ -53,17 +52,19 @@
 		<c:forEach var="v" items="${nexven_news}">
 			<div class="row">
 				<div class="col-md-2">
-					<c:if test="${!empty v['media:thumbnail']}">
-						<img src="${v['media:thumbnail']}" width="100%" height="100%" style="max-width:200px;" />
+					<c:if test="${!empty v['enclosure']}">
+						<img src="${v['enclosure']}" width="100%" height="100%" style="max-width:200px;" />
+					</c:if>
+					<c:if test="${empty v['enclosure']}">
+					<img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20Image&w=150&h=90"/>
 					</c:if>
 
 				</div>
-				<div class="col-md-7 titlelink" style="text-align:left !important;">
-					<a href="news_content?link=${v['link']}">${v['title']}</a>
+				<div class="col-md-8 titlelink" style="text-align:left !important;">
+					<a href="${v['link']}">${v['title']}</a>
 				</div>
 				<div class="col-md-1">${v['category']}</div>
 				<div class="col-md-1">${v['pubDate']}</div>
-				<div class="col-md-1">${v['author']}</div>
 			</div>
 			<div class="row bg-darkest-gray"
 				style="height: 1px; margin: 5px 0px 5px 0px;"></div>

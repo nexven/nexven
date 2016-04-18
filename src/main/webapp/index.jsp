@@ -113,13 +113,24 @@ app.controller("newsController", function($scope, $http) {
 	 		$('#nexven_news_content').html(res.data);
 	 	});
 	});	
-	//$(function(){
-	 	var ajax2 = $http.get("/nexven/news_main");
-	 	ajax2.then(function(res2) {
-	 		$scope.news_main = res2.data;
-	 		//alert($scope.news_main);
-	 	});
-	//});	
+	
+ 	var ajax2 = $http.get("/nexven/news_main");
+ 	ajax2.then(function(res2) {
+ 		$scope.news_main = res2.data;
+ 		//alert($scope.news_main);
+ 	});
+
+	
+	$(function(){
+		$scope.news_main_img = function(cimage) {
+				//alert(cimage);
+			if(cimage){
+				return cimage;
+			}else{
+				return "https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20Image&w=200&h=100";
+			}
+		};
+	});
 });
 
 </script>
@@ -216,10 +227,12 @@ app.controller("newsController", function($scope, $http) {
 				<div class="col-md-3 col-sm-6">						
 					
 					<div class="news">
-						<a href="news_content?link={{news_main[0].link}}"><img data-ng-src="./news_img?src={{news_main[0].news_content_pic}}" /></a>						
+						<a href="{{news_main[0].link}}">
+							<img data-ng-src="{{news_main_img(news_main[0].enclosure)}}" />
+						</a>						
 					</div>
 					<h4 class="service-heading kr text-elli titlelink">
-						<a href="news_content?link={{news_main[0].link}}">{{news_main[0].title}}</a>
+						<a href="{{news_main[0].link}}">{{news_main[0].title}}</a>
 					</h4>
 					<div class="box box--responsive">
 						{{news_main[0].description}}
@@ -227,10 +240,10 @@ app.controller("newsController", function($scope, $http) {
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<a href="news_content?link={{news_main[1].link}}"><img data-ng-src="./news_img?src={{news_main[1].news_content_pic}}" /></a>
+						<a href="{{news_main[1].link}}"><img data-ng-src="{{news_main_img(news_main[1].enclosure)}}" /></a>
 					</div>
 					<h4 class="service-heading kr text-elli titlelink">
-						<a href="news_content?link={{news_main[1].link}}">{{news_main[1].title}}</a>
+						<a href="{{news_main[1].link}}">{{news_main[1].title}}</a>
 					</h4>
 					<div class="box box--responsive kr">
 						{{news_main[1].description}}
@@ -238,10 +251,10 @@ app.controller("newsController", function($scope, $http) {
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<a href="news_content?link={{news_main[2].link}}"><img data-ng-src="./news_img?src={{news_main[2].news_content_pic}}" /></a>
+						<a href="{{news_main[2].link}}"><img data-ng-src="{{news_main_img(news_main[2].enclosure)}}" /></a>
 					</div>
 					<h4 class="service-heading kr text-elli titlelink">
-						<a href="news_content?link={{news_main[2].link}}">{{news_main[2].title}}</a>
+						<a href="{{news_main[2].link}}">{{news_main[2].title}}</a>
 					</h4>
 					<div class="box box--responsive kr">
 						{{news_main[2].description}}
@@ -249,10 +262,10 @@ app.controller("newsController", function($scope, $http) {
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<a href="news_content?link={{news_main[3].link}}"><img data-ng-src="./news_img?src={{news_main[3].news_content_pic}}" /></a>
+						<a href="{{news_main[3].link}}"><img data-ng-src="{{news_main_img(news_main[3].enclosure)}}" /></a>
 					</div>
 					<h4 class="service-heading kr text-elli titlelink">
-						<a href="news_content?link={{news_main[3].link}}">{{news_main[3].title}}</a>
+						<a href="{{news_main[3].link}}">{{news_main[3].title}}</a>
 					</h4>
 					<div class="box box--responsive kr">
 						{{news_main[3].description}}
