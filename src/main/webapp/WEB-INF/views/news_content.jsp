@@ -51,7 +51,7 @@
 
 	<div class="width80">
 		<div class="row">
-			${nexven_news_content['news_title']}
+			<h3>${nexven_news_content['news_title']}</h3>
 		</div>
 		<div class="row titlelink">
 			${nexven_news_content['news_content']}
