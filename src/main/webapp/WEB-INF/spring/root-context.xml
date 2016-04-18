@@ -29,6 +29,7 @@
 			<value>classpath:com/unknown/mapper/DeptMapper.xml</value>		
 			<value>classpath:com/unknown/mapper/EmpMapper.xml</value>
 			<value>classpath:com/unknown/mapper/GameDbMapper.xml</value>
+			<value>classpath:com/unknown/mapper/DbReplyMapper.xml</value>
 		</list>
 	</property>
 </bean>

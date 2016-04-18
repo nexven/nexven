@@ -17,12 +17,15 @@ public class GameDbService {
 	GameDbMapper gameDbMapper;
 	
 	@Transactional
-	public List<GameDb> getlist(){
+	public List<GameDb> getList(){
 		
 		List<GameDb> games = gameDbMapper.selectAll();
 		
 		return games;
 	}
+	
+	
+	
 	@Transactional
 	public GameDb getGameDb(Integer gNum){
 		return gameDbMapper.selectBygNum(gNum);

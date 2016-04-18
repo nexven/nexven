@@ -29,8 +29,9 @@ public class GameDbController {
 	@RequestMapping(value="/nexven/gamedb/list")
 	@ResponseBody
 	public List<GameDb> getList() {
-		return gameDbService.getlist();
+		return gameDbService.getList();
 	}
+	
 	@RequestMapping(value="/nexven/gamedb", method=RequestMethod.GET)
 	@ResponseBody
 	public GameDb getGameDb(Integer gNum){
@@ -107,7 +108,7 @@ public class GameDbController {
 		Map<String, Object> response = new HashMap<>();
 		
 		response.put("success", true);
-		response.put("message", "부서가 삭제되었습니다.");
+		response.put("message", "게임이 삭제되었습니다.");
 		
 		try{
 			gameDbService.delete(gNum);
