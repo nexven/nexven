@@ -41,7 +41,7 @@
 
 	<div class="width80">
 		<div class="row">
-			<div class="col-md-2">Thumbnail</div>
+			<div class="col-md-2">Image</div>
 			<div class="col-md-8">Title</div>
 			<div class="col-md-1">Category</div>
 			<div class="col-md-1">pubDate</div>
