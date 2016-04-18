@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -86,8 +88,17 @@ public class NewsController {
 	                    }	                    
 		                if(mtitle.equals("description")){
 	                    	mcontent = list2.item(j).getTextContent().replaceAll("<img [^<>]*>","");
-		                }
-	                    
+		                }		                
+		                if(mtitle.equals("pubDate")){
+	                    	mcontent = list2.item(j).getTextContent();
+	                    	//SimpleDateFormat sf = new SimpleDateFormat("YYYY-MM-dd a HH:mm:ss");
+	                    	SimpleDateFormat sf = new SimpleDateFormat("YY/MM/dd");
+	                    	@SuppressWarnings("deprecation")
+							Date wDate = new Date(mcontent);
+	                    	Long wdate = wDate.getTime();
+	                    	//System.out.println(sf.format(wdate));
+	                    	mcontent=sf.format(wdate);
+		                }	                    
 	                 	mlist.put(mtitle, mcontent);
 
 	                 	
@@ -192,7 +203,6 @@ public class NewsController {
 	                    if(mtitle.equals("enclosure")){
 	                    	mcontent = list2.item(j).getAttributes().getNamedItem("url").getTextContent().replaceAll("http://static.inven.co.kr","news_img?src=http://static.inven.co.kr");
 	                    	mlist.put(mtitle, mcontent);
-	                    	System.out.println(mcontent);
 	                    }
 	                 	if(mtitle.equals("title")){
 	                    	mlist.put(mtitle, mcontent);
