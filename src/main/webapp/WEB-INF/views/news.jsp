@@ -3,9 +3,11 @@
 <%@page import="java.io.InputStream"%>
 <%@page import="java.net.URL"%>
 <%@page import="java.net.URLConnection"%>
-<%@page import="org.springframework.web.servlet.mvc.condition.HeadersRequestCondition"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page
+	import="org.springframework.web.servlet.mvc.condition.HeadersRequestCondition"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
 
@@ -16,10 +18,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8"/>
-	<title>news.jsp</title>
-	
-	<!-- <style type="text/css">
+<meta charset="UTF-8" />
+<title>news.jsp</title>
+
+<!-- <style type="text/css">
 		h1{text-align:center}
 		th{text-align:center}
 		#start{margin:0 auto;border: 1px solid #222;width:970px}
@@ -28,50 +30,53 @@
 		a:VISITED {color:black;text-decoration:none}
 		a:HOVER {color:blue;text-decoration:none}
 	</style> -->
-	<!-- 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+<!-- 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 </head>
 <body>
 
-<!-- <h1>
+	<!-- <h1>
 	네이버(인벤) RSS파서 내용
 </h1> -->
-<h2 class="section-heading">
-	NEWS
-</h2>
+	<h2 class="section-heading">NEWS</h2>
 
-	<table class="table table-bordered table-hover width80">
-		<thead>
-			<tr>
-				<th>Thumbnail</th>
-				<th>Title</th>
-				<th>Category</th>
-				<th>pubDate</th>
-				<th>Author</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="v" items="${nexven_news}">
-			<tr>
-				<td class="active">
+	<div class="width80">
+		<div class="row">
+			<div class="col-md-2">Thumbnail</div>
+			<div class="col-md-7">Title</div>
+			<div class="col-md-1">Category</div>
+			<div class="col-md-1">pubDate</div>
+			<div class="col-md-1">Author</div>
+		</div>
+		<div class="row bg-darkest-gray"
+			style="height: 2px; margin: 5px 0px 5px 0px;"></div>
+
+		<c:forEach var="v" items="${nexven_news}">
+			<div class="row">
+				<div class="col-md-2">
 					<c:if test="${!empty v['media:thumbnail']}">
-						<img src="${v['media:thumbnail']}" width="100" height="100"/>
+						<img src="${v['media:thumbnail']}" width="100%" height="100%" style="max-width:200px;" />
 					</c:if>
-					
-				</td>
-				<td class="active titlelink"><a href="news_content?link=${v['link']}">${v['title']}</a></td>
-				<td class="active">${v['category']}	</td>
-				<td class="active">${v['pubDate']}</td>
-				<td class="active">${v['author']}</td>
-			</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+
+				</div>
+				<div class="col-md-7 titlelink" style="text-align:left !important;">
+					<a href="news_content?link=${v['link']}">${v['title']}</a>
+				</div>
+				<div class="col-md-1">${v['category']}</div>
+				<div class="col-md-1">${v['pubDate']}</div>
+				<div class="col-md-1">${v['author']}</div>
+			</div>
+			<div class="row bg-darkest-gray"
+				style="height: 1px; margin: 5px 0px 5px 0px;"></div>
+		</c:forEach>
+
+
+	</div>
 
 
 
 
 
-<%-- 
+	<%-- 
 <P>
 <c:forEach var="v" items="${nexven_news}">
 
@@ -102,18 +107,18 @@
 	</div>
 
  --%>
-<%-- 	<c:if test="${!empty v['news_content_pic']}">	 --%>
-<!-- 		<div style="border:1px solid #5599dd"> -->
-<%-- 			사진=${v['news_content_pic']}<br/>		 --%>
-<%-- 			<img src="news_img?src=${v['news_content_pic']}" /> --%>
-<!-- 		</div> -->
-<%-- 	</c:if> --%>
-	
-<!-- 	<div> -->
-<%-- 		RSS_Thumbnail = ${v['media:thumbnail']}<br/> --%>
-<%-- 		<img src="${v['media:thumbnail']}"/> --%>
-<!-- 	</div> -->
-<%-- 
+	<%-- 	<c:if test="${!empty v['news_content_pic']}">	 --%>
+	<!-- 		<div style="border:1px solid #5599dd"> -->
+	<%-- 			사진=${v['news_content_pic']}<br/>		 --%>
+	<%-- 			<img src="news_img?src=${v['news_content_pic']}" /> --%>
+	<!-- 		</div> -->
+	<%-- 	</c:if> --%>
+
+	<!-- 	<div> -->
+	<%-- 		RSS_Thumbnail = ${v['media:thumbnail']}<br/> --%>
+	<%-- 		<img src="${v['media:thumbnail']}"/> --%>
+	<!-- 	</div> -->
+	<%-- 
 </div>
 	<br/><br/><br/>
 	

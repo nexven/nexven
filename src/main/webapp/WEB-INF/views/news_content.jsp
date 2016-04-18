@@ -41,25 +41,21 @@
 	네이버(인벤) HTML파서 내용
 </h1> -->
 	<div class="portfolio-modal">
-			<div class="close-modal" onclick="history.back();">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
+		<div class="close-modal" onclick="history.back();">
+			<div class="lr">
+				<div class="rl"></div>
 			</div>
+		</div>
 	</div>
 
-	<table class="table table-bordered table-hover width80">
-		<thead>
-			<tr>
-				<th>${nexven_news_content['news_title']}</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>${nexven_news_content['news_content']}</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="width80">
+		<div class="row">
+			${nexven_news_content['news_title']}
+		</div>
+		<div class="row titlelink">
+			${nexven_news_content['news_content']}
+		</div>
+	</div>
 
 
 

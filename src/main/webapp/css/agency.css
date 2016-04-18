@@ -14,7 +14,7 @@ body {
 .news > img {
 	margin-right: auto;
 	margin-left: auto;
-	max-height: 200px;
+	max-height: 100px;
 }
 .iblock {
 	display:inline-block;
