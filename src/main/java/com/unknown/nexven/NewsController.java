@@ -131,13 +131,13 @@ public class NewsController {
        	           .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")	                	             
        	           .followRedirects(true)
        	           .execute();
-       	 org.jsoup.nodes.Document doc = response.parse();       	 
+       	 org.jsoup.nodes.Document doc = response.parse();
        	 Elements news_title = doc.select("#webzineNewsView > .newsPart > .title > h1");
        	 Elements news_content = doc.select("#webzineNewsView > .newsPart > .Content > .contentBody");
        	 Elements news_content_pic = doc.select("#webzineNewsView > .newsPart > .Content > .contentBody > figure > img");
        	 //String all_content = doc.html();
        	 //System.out.println("제목 : "+news_title.text()+"\n내용 : "+news_content.text()+"\n이미지 : "+news_content_pic.attr("src"));     	 
-       	 clist.put("news_title", news_title);
+       	 clist.put("news_title", news_title.text());
        	 // <img /> 제거 정규식 "<img [^<>]*>"
        	 // <img /> 모든 속성 <img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>
        	 clist.put("news_content", news_content.html().replaceAll("http://static.inven.co.kr","news_img?src=http://static.inven.co.kr"));
