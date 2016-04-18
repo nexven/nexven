@@ -216,10 +216,10 @@ app.controller("newsController", function($scope, $http) {
 				<div class="col-md-3 col-sm-6">						
 					
 					<div class="news">
-						<img data-ng-src="./news_img?src={{news_main[0].news_content_pic}}" />						
+						<a href="news_content?link={{news_main[0].link}}"><img data-ng-src="./news_img?src={{news_main[0].news_content_pic}}" /></a>						
 					</div>
-					<h4 class="service-heading kr text-elli">
-						{{news_main[0].title}}
+					<h4 class="service-heading kr text-elli titlelink">
+						<a href="news_content?link={{news_main[0].link}}">{{news_main[0].title}}</a>
 					</h4>
 					<div class="box box--responsive">
 						{{news_main[0].description}}
@@ -227,10 +227,10 @@ app.controller("newsController", function($scope, $http) {
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<img data-ng-src="./news_img?src={{news_main[1].news_content_pic}}" />
+						<a href="news_content?link={{news_main[1].link}}"><img data-ng-src="./news_img?src={{news_main[1].news_content_pic}}" /></a>
 					</div>
-					<h4 class="service-heading kr text-elli">
-						{{news_main[1].title}}
+					<h4 class="service-heading kr text-elli titlelink">
+						<a href="news_content?link={{news_main[1].link}}">{{news_main[1].title}}</a>
 					</h4>
 					<div class="box box--responsive kr">
 						{{news_main[1].description}}
@@ -238,10 +238,10 @@ app.controller("newsController", function($scope, $http) {
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<img data-ng-src="./news_img?src={{news_main[2].news_content_pic}}" />
+						<a href="news_content?link={{news_main[2].link}}"><img data-ng-src="./news_img?src={{news_main[2].news_content_pic}}" /></a>
 					</div>
-					<h4 class="service-heading kr text-elli">
-						{{news_main[2].title}}
+					<h4 class="service-heading kr text-elli titlelink">
+						<a href="news_content?link={{news_main[2].link}}">{{news_main[2].title}}</a>
 					</h4>
 					<div class="box box--responsive kr">
 						{{news_main[2].description}}
@@ -249,10 +249,10 @@ app.controller("newsController", function($scope, $http) {
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="news">
-						<img data-ng-src="./news_img?src={{news_main[3].news_content_pic}}" />
+						<a href="news_content?link={{news_main[3].link}}"><img data-ng-src="./news_img?src={{news_main[3].news_content_pic}}" /></a>
 					</div>
-					<h4 class="service-heading kr text-elli">
-						{{news_main[3].title}}
+					<h4 class="service-heading kr text-elli titlelink">
+						<a href="news_content?link={{news_main[3].link}}">{{news_main[3].title}}</a>
 					</h4>
 					<div class="box box--responsive kr">
 						{{news_main[3].description}}

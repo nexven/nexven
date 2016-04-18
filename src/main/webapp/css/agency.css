@@ -11,7 +11,7 @@ body {
 	overflow: hidden;
 	height: 50%;
 }
-.news > img {
+.news > a > img {
 	margin-right: auto;
 	margin-left: auto;
 	max-height: 100px;
