@@ -13,7 +13,7 @@
 	    	   gHomepage,
 	    	   gRating,
 	    	   gIntroduce
-	   	  from gamedb
+	   	  from GameDb
     </sql>
     
 	<select id="selectAll" resultType="com.unknown.model.GameDb">
@@ -22,11 +22,11 @@
 	<select id="selectBygNum" resultType="com.unknown.model.GameDb"
 	    parameterType="int">
 	    <include refid="FromGameDb"/>
-	   	 where deptno = #{gNum} 
+	   	 where gNum = #{gNum} 
 	</select>
 	
 	<insert id="insert" parameterType="com.unknown.model.GameDb">
-	    insert into gamedb
+	    insert into GameDb
 	    (
 	    	   gNum, 
 	    	   gName,
@@ -57,7 +57,7 @@
 	</insert>
 	
 	<update id="updateBygNum" parameterType="com.unknown.model.GameDb">
-	    update gamedb
+	    update GameDb
 	       set gName = #{gName},
 	           gStartDate = #{gStartDate},
 	    	   gMaker = #{gMaker},
@@ -72,7 +72,7 @@
 	</update>
 	
 	<delete id="deleteBygNum" parameterType="int">
-	    delete from gamedb
+	    delete from GameDb
 	     where gNum = #{gNum}
 	</delete>
 </mapper>
