@@ -57,6 +57,12 @@
 		<property name="mapperInterface" value="com.unknown.mapper.GameDbMapper"></property>
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
 	</bean>
+	
+	<!-- DbReplyMapper -->
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.unknown.mapper.DbReplyMapper"></property>
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+	</bean>
 
 </beans>
 
