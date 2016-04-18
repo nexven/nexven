@@ -324,7 +324,7 @@ app.controller("newsController", function($scope, $http) {
 				</div>
 			</div>
 			<div class="row width80">
-				<h3 class="section-subheading text-title kr"><span class="square"></span> 자유 게시판</h3>
+				<h3 class="section-bbs text-title kr"><span class="square"></span> 자유 게시판</h3>
 
 				<div class="col-md-6">
 					<div class="col-md-6" style="text-align: center;">
@@ -421,7 +421,7 @@ app.controller("newsController", function($scope, $http) {
 					</ul>
 				</div>
 				
-				<h3 class="section-subheading text-title kr"><span class="square"></span> 유머</h3>
+				<h3 class="section-bbs text-title kr"><span class="square"></span> 유머</h3>
 
 				<div class="col-md-6">
 					<div class="col-md-6" style="text-align: center;">
@@ -517,7 +517,7 @@ app.controller("newsController", function($scope, $http) {
 							alt="HOT" /></li>
 					</ul>
 				</div>
-				<h3 class="section-subheading text-title kr"><span class="square"></span> TV/연예</h3>
+				<h3 class="section-bbs text-title kr"><span class="square"></span> TV/연예</h3>
 
 				<div class="col-md-6">
 					<div class="col-md-6" style="text-align: center;">
@@ -613,7 +613,7 @@ app.controller("newsController", function($scope, $http) {
 							alt="HOT" /></li>
 					</ul>
 				</div>
-				<h3 class="section-subheading text-title kr"><span class="square"></span> 스포츠</h3>
+				<h3 class="section-bbs text-title kr"><span class="square"></span> 스포츠</h3>
 
 				<div class="col-md-6">
 					<div class="col-md-6" style="text-align: center;">
@@ -710,7 +710,7 @@ app.controller("newsController", function($scope, $http) {
 					</ul>
 				</div>
 				
-				<h3 class="section-subheading text-title kr"><span class="square"></span> 동영상</h3>
+				<h3 class="section-bbs text-title kr"><span class="square"></span> 동영상</h3>
 
 				<div class="col-md-6">
 					<div class="col-md-6" style="text-align: center;">

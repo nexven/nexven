@@ -3,9 +3,11 @@
 <%@page import="java.io.InputStream"%>
 <%@page import="java.net.URL"%>
 <%@page import="java.net.URLConnection"%>
-<%@page import="org.springframework.web.servlet.mvc.condition.HeadersRequestCondition"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page
+	import="org.springframework.web.servlet.mvc.condition.HeadersRequestCondition"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
 
@@ -16,10 +18,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8"/>
-	<title>news_content.jsp</title>	
-	
-	<style type="text/css">
+<meta charset="UTF-8" />
+<title>news_content.jsp</title>
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/agency.css" rel="stylesheet">
+<!-- <style type="text/css">
 		h1{text-align:center}
 		th{text-align:center}
 		#start{margin:0 auto;border: 1px solid #222;width:970px}
@@ -28,16 +33,22 @@
 		a:VISITED {color:black;text-decoration:none}
 		a:HOVER {color:blue;text-decoration:none}
 	</style>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 </head>
 <body>
 
-<h1>
+	<!-- <h1>
 	네이버(인벤) HTML파서 내용
-</h1>
+</h1> -->
+	<div class="portfolio-modal">
+			<div class="close-modal" onclick="history.back();">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+	</div>
 
-
-	<table class="table table-bordered table-hover">
+	<table class="table table-bordered table-hover width80">
 		<thead>
 			<tr>
 				<th>${nexven_news_content['news_title']}</th>
@@ -45,16 +56,14 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>
-					${nexven_news_content['news_content']}					
-				</td>
+				<td>${nexven_news_content['news_content']}</td>
 			</tr>
 		</tbody>
 	</table>
 
 
 
-<%--
+	<%--
 <P>
 
 <div id="start">

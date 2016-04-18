@@ -19,7 +19,7 @@
 	<meta charset="UTF-8"/>
 	<title>news.jsp</title>
 	
-	<style type="text/css">
+	<!-- <style type="text/css">
 		h1{text-align:center}
 		th{text-align:center}
 		#start{margin:0 auto;border: 1px solid #222;width:970px}
@@ -27,16 +27,19 @@
 		a:LINK {color:black;text-decoration:none}
 		a:VISITED {color:black;text-decoration:none}
 		a:HOVER {color:blue;text-decoration:none}
-	</style>
+	</style> -->
 	<!-- 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 </head>
 <body>
 
-<h1>
+<!-- <h1>
 	네이버(인벤) RSS파서 내용
-</h1>
+</h1> -->
+<h2 class="section-heading">
+	NEWS
+</h2>
 
-	<table class="table table-bordered table-hover">
+	<table class="table table-bordered table-hover width80">
 		<thead>
 			<tr>
 				<th>Thumbnail</th>
@@ -55,7 +58,7 @@
 					</c:if>
 					
 				</td>
-				<td class="active"><a href="news_content?link=${v['link']}">${v['title']}</a></td>
+				<td class="active titlelink"><a href="news_content?link=${v['link']}">${v['title']}</a></td>
 				<td class="active">${v['category']}	</td>
 				<td class="active">${v['pubDate']}</td>
 				<td class="active">${v['author']}</td>
