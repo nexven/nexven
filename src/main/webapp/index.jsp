@@ -880,7 +880,7 @@ app.controller("newsController", function($scope, $http) {
 				</div>
 				<div class="col-md-3">
 					<ul class="list-inline">
-						<li><a href="#">공지사항</a></li>
+						<li><a href="#notice" data-toggle="modal">공지사항</a></li>
 						<li><a href="mailto:name@email.com">관리자 문의</a></li>
 
 					</ul>
@@ -1161,6 +1161,22 @@ app.controller("newsController", function($scope, $http) {
 			</div>
 			<div class="container">
 				롤게
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- notice modal -->
+	<div class="portfolio-modal modal fade" id="notice"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				공지게시판
 
 			</div>
 		</div>
