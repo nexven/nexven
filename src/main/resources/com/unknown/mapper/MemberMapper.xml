@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unknown.mapper.MemberMapper">
+
+	<select id="idcheck" resultType="Integer"
+	    parameterType="string">
+	    select * from member
+	   	 where M_ID = #{memid} 
+	</select>
+	
+	<select id="nickcheck" resultType="Integer"
+	    parameterType="string">
+	    select * from member
+	   	 where M_NICK = #{memnick} 
+	</select>
+	
+	<select id="selectBymid" resultType="com.unknown.model.Member"
+	    parameterType="string">
+	    select * from member where M_ID = #{mId} 
+	</select>
+	<select id="selectBymid2" resultType="Map"
+	    parameterType="string">
+	    select * from member where M_ID = #{mId} 
+	</select>
+    
+    <insert id="insert" parameterType="com.unknown.model.Member">
+        insert into Member
+	    (
+	    	M_NUM,
+			M_ID,
+			M_PASS,
+			M_NAME,
+			M_NICK,
+			M_EMAIL,
+			M_AUTH_LEVEL,
+			M_GENDER,
+			M_BIRTH,
+			M_TEL,
+			M_ZIPCODE,
+			M_ADDR1,
+			M_ADDR2,
+			M_LEVEL,
+			M_EXP,
+			M_RECENT_LOGIN_DATE,
+			M_IP,
+			M_OUT,
+			M_IS_OUT,
+			M_JOIN_DATE
+	    )
+	    values
+	    (
+	    	mem_seq.nextval,
+			#{mId},
+			#{mPass},
+			#{mName},
+			#{mNick},
+			#{mEmail},
+			#{mAuthLevel, jdbcType=NUMERIC},
+			#{mGender},
+			#{mBirth, jdbcType=TIMESTAMP},
+			#{mTel},
+			#{mZipcode},
+			#{mAddr1},
+			#{mAddr2},
+			#{mLevel, jdbcType=NUMERIC},
+			#{mExp, jdbcType=NUMERIC},
+			#{mRecentLoginDate, jdbcType=TIMESTAMP},
+			#{mIp},
+			#{mOut, jdbcType=TIMESTAMP},
+			#{mIsOut, jdbcType=NUMERIC},
+			#{mJoinDate, jdbcType=TIMESTAMP}
+
+	    ) 
+    </insert>
+    
+    
+
+</mapper>

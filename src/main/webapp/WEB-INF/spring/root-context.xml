@@ -32,6 +32,7 @@
 			<value>classpath:com/unknown/mapper/DbReplyMapper.xml</value>
 			<value>classpath:com/unknown/mapper/GameScheduleMapper.xml</value>
 			<value>classpath:com/unknown/mapper/BoardMapper.xml</value>
+			<value>classpath:com/unknown/mapper/MemberMapper.xml</value>
 		</list>
 	</property>
 </bean>
@@ -75,6 +76,12 @@
 	<!-- BoardMapper -->
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.unknown.mapper.BoardMapper"></property>
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
+	</bean>
+	
+	<!-- MemberMapper -->
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.unknown.mapper.MemberMapper"></property>
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"></property>
 	</bean>
 
