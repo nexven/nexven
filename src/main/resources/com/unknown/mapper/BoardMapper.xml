@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unknown.mapper.BoardMapper">
+    <sql id="FromBoard">
+        select bNum, 
+	    	   bName,
+	    	   bTitle,
+	    	   bCategory,
+	    	   mId,
+	    	   bDate,
+	    	   bHit,
+	    	   bGood,
+	    	   bContent,
+	    	   bFile,
+	    	   bState,
+	    	   mIp,
+	    	   mTel,
+	    	   bPrice
+	   	  from Board
+    </sql>
+    
+	<select id="selectAll" resultType="com.unknown.model.Board">
+		<include refid="FromBoard"/>
+	</select>
+	
+	<select id="selectBybNum" resultType="com.unknown.model.Board"
+	    parameterType="int">
+	    <include refid="FromBoard"/>
+	   	 where bNum = #{bNum} 
+	</select>
+	
+	<insert id="insert" parameterType="com.unknown.model.Board">
+	    insert into Board
+	    (
+	    	   bNum, 
+	    	   bName,
+	    	   bTitle,
+	    	   bCategory,
+	    	   mId,
+	    	   bDate,
+	    	   bHit,
+	    	   bGood,
+	    	   bContent,
+	    	   bFile,
+	    	   bState,
+	    	   mIp,
+	    	   mTel,
+	    	   bPrice
+	    )
+	    values
+	    (
+	    	   #{bNum}, 
+	    	   #{bName},
+	    	   #{bTitle},
+	    	   #{bCategory},
+	    	   #{mId},
+	    	   #{bDate},
+	    	   #{bHit},
+	    	   #{bGood},
+	    	   #{bContent},
+	    	   #{bFile},
+	    	   #{bState},
+	    	   #{mIp},
+	    	   #{mTel},
+	    	   #{bPrice}
+	    )
+	</insert>
+	
+	<update id="updateBybNum" parameterType="com.unknown.model.Board">
+	    update Board
+	       set bName = #{bName},
+	    	   bTitle = #{bTitle},
+	    	   bCategory = #{bCategory},
+	    	   mId = #{mId},
+	    	   bDate = #{bDate},
+	    	   bHit = #{bHit},
+	    	   bGood = #{bGood},
+	    	   bContent = #{bContent},
+	    	   bFile = #{bFile},
+	    	   bState = #{bState},
+	    	   mIp = #{mIp},
+	    	   mTel = #{mTel},
+	    	   bPrice = #{bPrice}
+	     where bNum = #{bNum}
+	</update>
+	
+	<delete id="deleteBybNum" parameterType="int">
+	    delete from Board
+	     where bNum = #{bNum}
+	</delete>
+</mapper>
