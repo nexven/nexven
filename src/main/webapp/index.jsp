@@ -234,7 +234,7 @@ app.controller("newsController", function($scope, $http) {
 					<h4 class="service-heading kr text-elli titlelink">
 						<a href="{{news_main[0].link}}">{{news_main[0].title}}</a>
 					</h4>
-					<div class="box box--responsive">
+					<div class="box box--responsive kr">
 						{{news_main[0].description}}
 					</div>
 				</div>
