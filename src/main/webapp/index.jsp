@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html data-ng-app="nexven">
+<html>
 
 <head>
 
@@ -116,6 +116,10 @@
 		        var news_main_json = JSON.parse(JSON.stringify(news_main));
 		        $.each(news_main_json, function(i) {
 		        	//alert(news_main_json[i].title);
+
+					if(news_main_json[i].enclosure==null||news_main_json[i].enclosure==""){					
+						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20Image&w=200&h=100";
+					}		        	
 		        	$("#news_main"+i+"_img").html("<a href='javascript:nload(\""+news_main_json[i].link+"\");'>"+"<img src='"+news_main_json[i].enclosure+"' /></a>");
 		        	$("#news_main"+i+"_title").html("<a href='javascript:nload(\""+news_main_json[i].link+"\");'>"+news_main_json[i].title+"</a>");
 		        	$("#news_main"+i+"_desc").html(news_main_json[i].description);
@@ -124,64 +128,10 @@
 				//$("#news_main0_img").html(result2);
 		    },
 		    error: function(){
-		        alert('뉴스 불러오기 실패');
+		        alert('메인뉴스 불러오기 실패');
 		    }
 		});
 	});
-
-
-// 	var ajax2 = $http.get("/nexven/news_main");
-//  	ajax2.then(function(res2) {
-//  		$scope.news_main = res2.data;
-//  		//alert($scope.news_main);
-//  	});
-
-	
-// 	$(function(){
-// 		$scope.news_main_img = function(cimage) {
-// 				//alert(cimage);
-// 			if(cimage){
-// 				return cimage;
-// 			}else{
-// 				return "https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20Image&w=200&h=100";
-// 			}
-// 		};
-// 	});
-
-
-// var app = angular.module("nexven", ['ui.bootstrap']);
-
-// app.controller("listController", function($scope, $http) {
-	
-	
-// 	$('#test2').on('click', function() {
-// 	 	var ajax = $http.get("/nexven/list.jsp");
-// 	 	ajax.then(function(res2) {
-// 	 		console.dir(res2);
-// 	 		$('.testc').html("");
-// 	 		$('.testc2').html(res2.data);
-
-// 	 	});
-// 	});
-	
-	
-
-	
-// });
-
-// app.controller("loginController", function($scope, $http) {
-	
-	
-// 	$('#test').on('click', function() {
-// 		 	var ajax = $http.get("/nexven/login.jsp");
-// 		 	ajax.then(function(res) {
-// 		 		console.dir(res);
-// 		 		$('.testc2').html("");
-// 		 		$('.testc').html(res.data);
-// 		 	});
-// 		});
-	
-// });
 
 
 </script>
