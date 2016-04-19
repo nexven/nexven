@@ -1,6 +1,6 @@
 package com.unknown.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 //글
 public class Board {
@@ -12,16 +12,16 @@ private Integer bNum;
 private String bName;
 
 //  제목
-private String pTitle;
+private String bTitle;
 
 //  카테고리
-private String pCategory;
+private String bCategory;
 
 //  아이디
 private String mId;
 
 //  작성시간
-private Timestamp bDate;
+private Date bDate;
 
 //  조회수
 private Integer bHit;
@@ -63,20 +63,20 @@ public void setBName(String bName) {
     this.bName = bName;
 }
 
-public String getPTitle() {
-    return pTitle;
+public String getBTitle() {
+    return bTitle;
 }
 
-public void setPTitle(String pTitle) {
-    this.pTitle = pTitle;
+public void setBTitle(String bTitle) {
+    this.bTitle = bTitle;
 }
 
-public String getPCategory() {
-    return pCategory;
+public String getBCategory() {
+    return bCategory;
 }
 
-public void setPCategory(String pCategory) {
-    this.pCategory = pCategory;
+public void setBCategory(String bCategory) {
+    this.bCategory = bCategory;
 }
 
 public String getMId() {
@@ -87,11 +87,11 @@ public void setMId(String mId) {
     this.mId = mId;
 }
 
-public Timestamp getBDate() {
+public Date getBDate() {
     return bDate;
 }
 
-public void setBDate(Timestamp bDate) {
+public void setBDate(Date bDate) {
     this.bDate = bDate;
 }
 
@@ -164,8 +164,8 @@ public void CopyData(Board param)
 {
     this.bNum = param.getBNum();
     this.bName = param.getBName();
-    this.pTitle = param.getPTitle();
-    this.pCategory = param.getPCategory();
+    this.bTitle = param.getBTitle();
+    this.bCategory = param.getBCategory();
     this.mId = param.getMId();
     this.bDate = param.getBDate();
     this.bHit = param.getBHit();

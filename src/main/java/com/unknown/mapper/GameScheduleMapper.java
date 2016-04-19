@@ -10,5 +10,5 @@ public interface GameScheduleMapper {
 	GameSchedule selectBysNum(int sNum);
 	int insert(GameSchedule gameSchedule);
 	int updateBysNum(GameSchedule gameSchedule);
-	int deleteBysNum(int dbReplyNum);
+	int deleteBysNum(int sNum);
 }

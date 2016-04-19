@@ -1,12 +1,11 @@
-
 /* 글 */
 CREATE TABLE board (
 	b_num NUMBER NOT NULL, /* 글번호 */
 	b_name VARCHAR2(20), /* 게시판이름 */
-	p_title VARCHAR2(200), /* 제목 */
-	p_category VARCHAR2(50), /* 카테고리 */
+	b_title VARCHAR2(200), /* 제목 */
+	b_category VARCHAR2(50), /* 카테고리 */
 	m_id VARCHAR2(20), /* 아이디 */
-	b_date TIMESTAMP, /* 작성시간 */
+	b_date DATE, /* 작성시간 */
 	b_hit NUMBER, /* 조회수 */
 	b_good NUMBER, /* 추천 */
 	b_content VARCHAR2(2000 char), /* 내용 */
@@ -14,7 +13,8 @@ CREATE TABLE board (
 	b_state VARCHAR2(20), /* 거래상태 */
 	m_ip VARCHAR2(20), /* 아이피 */
 	m_tel VARCHAR2(50), /* 연락처 */
-	b_price NUMBER /* 물품금액 */
+	b_price NUMBER, /* 물품금액 */
+	b_num2 NUMBER /* 글번호2 */
 )
 	STORAGE (
 		BUFFER_POOL DEFAULT
@@ -31,7 +31,11 @@ ALTER TABLE board
 		CONSTRAINT PK_board
 		PRIMARY KEY (
 			b_num
-		);
+		)
+		NOT DEFERRABLE
+		INITIALLY IMMEDIATE
+		ENABLE
+		VALIDATE;
 
 COMMENT ON TABLE board IS '글';
 
@@ -39,9 +43,9 @@ COMMENT ON COLUMN board.b_num IS '글번호';
 
 COMMENT ON COLUMN board.b_name IS '게시판이름';
 
-COMMENT ON COLUMN board.p_title IS '제목';
+COMMENT ON COLUMN board.b_title IS '제목';
 
-COMMENT ON COLUMN board.p_category IS '카테고리';
+COMMENT ON COLUMN board.b_category IS '카테고리';
 
 COMMENT ON COLUMN board.m_id IS '아이디';
 
@@ -62,6 +66,8 @@ COMMENT ON COLUMN board.m_ip IS '아이피';
 COMMENT ON COLUMN board.m_tel IS '연락처';
 
 COMMENT ON COLUMN board.b_price IS '물품금액';
+
+COMMENT ON COLUMN board.b_num2 IS '글번호2';
 
 /* 게시판설정 */
 CREATE TABLE board_manager (
@@ -102,7 +108,11 @@ ALTER TABLE board_manager
 		CONSTRAINT PK_board_manager
 		PRIMARY KEY (
 			b_name
-		);
+		)
+		NOT DEFERRABLE
+		INITIALLY IMMEDIATE
+		ENABLE
+		VALIDATE;
 
 COMMENT ON TABLE board_manager IS '게시판설정';
 
@@ -165,9 +175,9 @@ CREATE TABLE member (
 	m_addr2 VARCHAR2(50), /* 나머지주소 */
 	m_level NUMBER, /* 회원레벨 */
 	m_exp NUMBER, /* 회원EXP */
-	m_recent_login_date TIMESTAMP, /* 최종접속시간 */
+	m_recent_login_date DATE, /* 최종접속시간 */
 	m_ip VARCHAR2(20), /* 아이피 */
-	m_out TIMESTAMP, /* 탈퇴일시 */
+	m_out DATE, /* 탈퇴일시 */
 	m_is_out NUMBER(3), /* 탈퇴여부 */
 	m_join_date DATE /* 회원가입일 */
 )
@@ -186,7 +196,11 @@ ALTER TABLE member
 		CONSTRAINT PK_member
 		PRIMARY KEY (
 			m_id
-		);
+		)
+		NOT DEFERRABLE
+		INITIALLY IMMEDIATE
+		ENABLE
+		VALIDATE;
 
 COMMENT ON TABLE member IS '회원';
 
@@ -259,7 +273,11 @@ ALTER TABLE game_db
 		CONSTRAINT PK_game_db
 		PRIMARY KEY (
 			g_num
-		);
+		)
+		NOT DEFERRABLE
+		INITIALLY IMMEDIATE
+		ENABLE
+		VALIDATE;
 
 COMMENT ON TABLE game_db IS '게임DB';
 
@@ -309,7 +327,11 @@ ALTER TABLE reply
 		CONSTRAINT PK_reply
 		PRIMARY KEY (
 			r_num
-		);
+		)
+		NOT DEFERRABLE
+		INITIALLY IMMEDIATE
+		ENABLE
+		VALIDATE;
 
 COMMENT ON TABLE reply IS '덧글';
 
@@ -350,7 +372,11 @@ ALTER TABLE db_reply
 		CONSTRAINT PK_db_reply
 		PRIMARY KEY (
 			db_reply_num
-		);
+		)
+		NOT DEFERRABLE
+		INITIALLY IMMEDIATE
+		ENABLE
+		VALIDATE;
 
 COMMENT ON TABLE db_reply IS '게임DB덧글';
 
@@ -392,7 +418,11 @@ ALTER TABLE game_schedule
 		CONSTRAINT PK_game_schedule
 		PRIMARY KEY (
 			s_num
-		);
+		)
+		NOT DEFERRABLE
+		INITIALLY IMMEDIATE
+		ENABLE
+		VALIDATE;
 
 COMMENT ON TABLE game_schedule IS '게임일정게시판';
 
