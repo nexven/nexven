@@ -17,81 +17,86 @@
 			</div>
 		</div>
 	</header>
+	
 
+	<!-- Modal -->
+	  <div class="modal fade" id="nexven_view" role="dialog">
+	    <div class="modal-dialog modal-lg">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title" style="text-align:center">Nexven View</h4>
+	        </div>
+	        <div id="nexven_view_content" class="modal-body">
+	          <p>	</p>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+	
+	
+	
 	<!-- news Section -->
-	<section id="news" data-ng-controller="newsController">
+	<section id="news">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading titlelink">
-					<a id="nexven_news" data-toggle="modal" href="#nexven_news1">NEWS</a></h2>
-					
-						<!-- nexven news 넥벤 뉴스 -->
-						<div class="portfolio-modal modal fade" id="nexven_news1"
-							tabindex="-1" role="dialog" aria-hidden="true">
-							<div class="modal-content">
-								<div class="close-modal" data-dismiss="modal">
-									<div class="lr">
-										<div class="rl"></div>
-									</div>
-								</div>
-								<div id="nexven_news_content">
-									
-								</div>
-					
-							</div>
-						</div>
-					
-					
+					<a id="nexven_news" data-toggle="modal" href="javascript:nload('news');">NEWS</a></h2>
+				
 					<h3 class="section-subheading text-muted kr">게임 업계 뉴스</h3>
 				</div>
 			</div>
 			<div class="row text-center">
 				<div class="col-md-3 col-sm-6">						
 					
-					<div class="news">
-						<a href="{{news_main[0].link}}">
-							<img data-ng-src="{{news_main_img(news_main[0].enclosure)}}" />
-						</a>						
+					<div id="news_main0_img" class="news">
+						&nbsp;				
 					</div>
-					<h4 class="service-heading kr text-elli titlelink">
-						<a href="{{news_main[0].link}}">{{news_main[0].title}}</a>
+					<h4 id="news_main0_title" class="service-heading kr text-elli titlelink">
+						&nbsp;
 					</h4>
-					<div class="box box--responsive">
-						{{news_main[0].description}}
+					<div id="news_main0_desc" class="box box--responsive">
+						&nbsp;
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<div class="news">
-						<a href="{{news_main[1].link}}"><img data-ng-src="{{news_main_img(news_main[1].enclosure)}}" /></a>
+					<div id="news_main1_img" class="news">
+						&nbsp;
 					</div>
-					<h4 class="service-heading kr text-elli titlelink">
-						<a href="{{news_main[1].link}}">{{news_main[1].title}}</a>
+					<h4 id="news_main1_title" class="service-heading kr text-elli titlelink">
+						&nbsp;
 					</h4>
-					<div class="box box--responsive kr">
-						{{news_main[1].description}}
+					<div id="news_main1_desc" class="box box--responsive kr">
+						&nbsp;
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<div class="news">
-						<a href="{{news_main[2].link}}"><img data-ng-src="{{news_main_img(news_main[2].enclosure)}}" /></a>
+					<div id="news_main2_img" class="news">
+						&nbsp;
 					</div>
-					<h4 class="service-heading kr text-elli titlelink">
-						<a href="{{news_main[2].link}}">{{news_main[2].title}}</a>
+					<h4 id="news_main2_title" class="service-heading kr text-elli titlelink">
+						&nbsp;
 					</h4>
-					<div class="box box--responsive kr">
-						{{news_main[2].description}}
+					<div id="news_main2_desc" class="box box--responsive kr">
+						&nbsp;
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<div class="news">
-						<a href="{{news_main[3].link}}"><img data-ng-src="{{news_main_img(news_main[3].enclosure)}}" /></a>
+					<div id="news_main3_img" class="news">
+						&nbsp;
 					</div>
-					<h4 class="service-heading kr text-elli titlelink">
-						<a href="{{news_main[3].link}}">{{news_main[3].title}}</a>
+					<h4 id="news_main3_title" class="service-heading kr text-elli titlelink">
+						&nbsp;
 					</h4>
-					<div class="box box--responsive kr">
-						{{news_main[3].description}}
+					<div id="news_main3_desc" class="box box--responsive kr">
+						&nbsp;
 					</div>
 				</div>
 			</div>

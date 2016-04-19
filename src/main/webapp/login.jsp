@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript">
-	alert("비동기 로그인 자바스크립트 테스트");
+	//alert("비동기 로그인 자바스크립트 테스트");
 	
 	$(document).ready(function(){
 
