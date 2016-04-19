@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html data-ng-app="nexven">
+<html>
 
 <head>
 
@@ -63,82 +63,82 @@
 <script src="js/index.js"></script>
 
 <!-- angluar -->
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-<script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap-tpls.min.js"></script>
+<!-- <script -->
+<!-- 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap-tpls.min.js"></script> -->
 
 <script type="text/javascript">
-
-
-var app = angular.module("nexven", ['ui.bootstrap']);
-
-app.controller("listController", function($scope, $http) {
-	
-	
-	$('#test2').on('click', function() {
-	 	var ajax = $http.get("/nexven/list.jsp");
-	 	ajax.then(function(res2) {
-	 		console.dir(res2);
-	 		$('.testc').html("");
-	 		$('.testc2').html(res2.data);
-
-	 	});
+<%
+	String tab = request.getParameter("tab");
+	if(tab != null){
+%>
+	$.ajax({
+	    type: "get",
+	    url: "<%=tab%>",
+	    contentType: "application/html",
+		success: function(result) {
+			$("#nexven_view_content").html(result);
+			$('#nexven_view').modal('show');
+	    },
+	    error: function(){
+	        alert('Nexven View 불러오기 실패 (index)');
+	    }
 	});
-	
-	
+<%
+	}
+%>
 
-	
-});
 
-app.controller("loginController", function($scope, $http) {
-	
-	
-	$('#test').on('click', function() {
-		 	var ajax = $http.get("/nexven/login.jsp");
-		 	ajax.then(function(res) {
-		 		console.dir(res);
-		 		$('.testc2').html("");
-		 		$('.testc').html(res.data);
-		 	});
+
+	function nload(src){
+		$.ajax({
+		    type: "get",
+		    url: src,
+		    contentType: "application/html",
+			success: function(result) {
+				$("#nexven_view_content").html(result);
+				$('#nexven_view').modal('show');
+		    },
+		    error: function(){
+		        alert('Nexven View 불러오기 실패');
+		    }
 		});
+	}
 	
-});
+	$(function(){	
+		
+		$.ajax({
+		    type: "get",
+		    url: "/nexven/news_main",
+		    contentType: "application/json",
+			success: function(news_main) {
+		        var news_main_json = JSON.parse(JSON.stringify(news_main));
+		        $.each(news_main_json, function(i) {
+		        	//alert(news_main_json[i].title);
 
-app.controller("newsController", function($scope, $http) {	
-	$('#nexven_news').on('click', function() {
-	 	var ajax = $http.get("/nexven/news");
-	 	ajax.then(function(res) {
-	 		console.dir(res);
-	 		$('#nexven_news_content').html(res.data);
-	 	});
-	});	
-	
- 	var ajax2 = $http.get("/nexven/news_main");
- 	ajax2.then(function(res2) {
- 		$scope.news_main = res2.data;
- 		//alert($scope.news_main);
- 	});
-
-	
-	$(function(){
-		$scope.news_main_img = function(cimage) {
-				//alert(cimage);
-			if(cimage){
-				return cimage;
-			}else{
-				return "https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20Image&w=200&h=100";
-			}
-		};
+					if(news_main_json[i].enclosure==null||news_main_json[i].enclosure==""){					
+						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20Image&w=200&h=100";
+					}		        	
+		        	$("#news_main"+i+"_img").html("<a href='javascript:nload(\""+news_main_json[i].link+"\");'>"+"<img src='"+news_main_json[i].enclosure+"' /></a>");
+		        	$("#news_main"+i+"_title").html("<a href='javascript:nload(\""+news_main_json[i].link+"\");'>"+news_main_json[i].title+"</a>");
+		        	$("#news_main"+i+"_desc").html(news_main_json[i].description);
+		        });		        
+				
+				//$("#news_main0_img").html(result2);
+		    },
+		    error: function(){
+		        alert('메인뉴스 불러오기 실패');
+		    }
+		});
 	});
-});
+
 
 </script>
 
 </head>
 
 <body id="page-top" class="index">
-
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -177,7 +177,7 @@ app.controller("newsController", function($scope, $http) {
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-
+	
 	<!-- Header -->
 	<header>
 		<div class="container">
@@ -188,87 +188,92 @@ app.controller("newsController", function($scope, $http) {
 				<div class="intro-heading">NEXVEN</div>
 
 				<!-- 로그인 후에 버튼 숨김 -->
-				<a href="#portfolioModal1" class="page-scroll btn btn-xl"
+				<a href="javascript:nload('login.jsp');" class="page-scroll btn btn-xl"
 					data-toggle="modal">LOGIN</a>
 
 			</div>
 		</div>
 	</header>
+	
 
+	<!-- Modal -->
+	  <div class="modal fade" id="nexven_view" role="dialog">
+	    <div class="modal-dialog modal-lg">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title" style="text-align:center">Nexven View</h4>
+	        </div>
+	        <div id="nexven_view_content" class="modal-body">
+	          <p>	</p>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+	
+	
+	
 	<!-- news Section -->
-	<section id="news" data-ng-controller="newsController">
+	<section id="news">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading titlelink">
-					<a id="nexven_news" data-toggle="modal" href="#nexven_news1">NEWS</a></h2>
-					
-						<!-- nexven news 넥벤 뉴스 -->
-						<div class="portfolio-modal modal fade" id="nexven_news1"
-							tabindex="-1" role="dialog" aria-hidden="true">
-							<div class="modal-content">
-								<div class="close-modal" data-dismiss="modal">
-									<div class="lr">
-										<div class="rl"></div>
-									</div>
-								</div>
-								<div id="nexven_news_content">
-									
-								</div>
-					
-							</div>
-						</div>
-					
-					
+					<a id="nexven_news" data-toggle="modal" href="javascript:nload('news');">NEWS</a></h2>
+				
 					<h3 class="section-subheading text-muted kr">게임 업계 뉴스</h3>
 				</div>
 			</div>
 			<div class="row text-center">
 				<div class="col-md-3 col-sm-6">						
 					
-					<div class="news">
-						<a href="{{news_main[0].link}}">
-							<img data-ng-src="{{news_main_img(news_main[0].enclosure)}}" />
-						</a>						
+					<div id="news_main0_img" class="news">
+						&nbsp;				
 					</div>
-					<h4 class="service-heading kr text-elli titlelink">
-						<a href="{{news_main[0].link}}">{{news_main[0].title}}</a>
+					<h4 id="news_main0_title" class="service-heading kr text-elli titlelink">
+						&nbsp;
 					</h4>
-					<div class="box box--responsive kr">
-						{{news_main[0].description}}
+					<div id="news_main0_desc" class="box box--responsive">
+						&nbsp;
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<div class="news">
-						<a href="{{news_main[1].link}}"><img data-ng-src="{{news_main_img(news_main[1].enclosure)}}" /></a>
+					<div id="news_main1_img" class="news">
+						&nbsp;
 					</div>
-					<h4 class="service-heading kr text-elli titlelink">
-						<a href="{{news_main[1].link}}">{{news_main[1].title}}</a>
+					<h4 id="news_main1_title" class="service-heading kr text-elli titlelink">
+						&nbsp;
 					</h4>
-					<div class="box box--responsive kr">
-						{{news_main[1].description}}
+					<div id="news_main1_desc" class="box box--responsive kr">
+						&nbsp;
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<div class="news">
-						<a href="{{news_main[2].link}}"><img data-ng-src="{{news_main_img(news_main[2].enclosure)}}" /></a>
+					<div id="news_main2_img" class="news">
+						&nbsp;
 					</div>
-					<h4 class="service-heading kr text-elli titlelink">
-						<a href="{{news_main[2].link}}">{{news_main[2].title}}</a>
+					<h4 id="news_main2_title" class="service-heading kr text-elli titlelink">
+						&nbsp;
 					</h4>
-					<div class="box box--responsive kr">
-						{{news_main[2].description}}
+					<div id="news_main2_desc" class="box box--responsive kr">
+						&nbsp;
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
-					<div class="news">
-						<a href="{{news_main[3].link}}"><img data-ng-src="{{news_main_img(news_main[3].enclosure)}}" /></a>
+					<div id="news_main3_img" class="news">
+						&nbsp;
 					</div>
-					<h4 class="service-heading kr text-elli titlelink">
-						<a href="{{news_main[3].link}}">{{news_main[3].title}}</a>
+					<h4 id="news_main3_title" class="service-heading kr text-elli titlelink">
+						&nbsp;
 					</h4>
-					<div class="box box--responsive kr">
-						{{news_main[3].description}}
+					<div id="news_main3_desc" class="box box--responsive kr">
+						&nbsp;
 					</div>
 				</div>
 			</div>
@@ -280,8 +285,8 @@ app.controller("newsController", function($scope, $http) {
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-title"><a href="#gamedb" data-toggle="modal">Game DB</a></h2>
-					<h3 class="section-subheading text-title kr"><a href="#gamedb" data-toggle="modal">DB 검색</a></h3>
+					<h2 class="section-heading text-title"><a href="">Game DB</a></h2>
+					<h3 class="section-subheading text-title kr"><a href="">DB 검색</a></h3>
 				</div>
 			</div>
 			<div class="row">
@@ -832,12 +837,7 @@ app.controller("newsController", function($scope, $http) {
 					<h3 class="section-subheading text-muted kr">자유 거래</h3>
 				</div>
 			</div>
-			<div class="row width80">
-				<div class="col-md-3"><a href="#mar_game" data-toggle="modal">게임 장터</a></div>
-				<div class="col-md-3"><a href="#mar_elec" data-toggle="modal">전자제품 장터</a></div>
-				<div class="col-md-3"><a href="#mar_hobby" data-toggle="modal">취미제품 장터</a></div>
-				<div class="col-md-3"><a href="#mar_etc" data-toggle="modal">기타제품 장터</a></div>
-			</div>
+			<div class="row"></div>
 		</div>
 	</section>
 	
@@ -847,13 +847,9 @@ app.controller("newsController", function($scope, $http) {
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-title kr">커뮤니티</h2>
-					<h3 class="section-subheading text-title kr">소모임</h3>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-6"><a href="#wow" data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%;"></a></div>
-				<div class="col-md-6"><a href="#lol" data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%;"></a></div>
-			</div>
+			<div class="row"></div>
 		</div>
 	</section>
 
@@ -880,7 +876,7 @@ app.controller("newsController", function($scope, $http) {
 				</div>
 				<div class="col-md-3">
 					<ul class="list-inline">
-						<li><a href="#notice" data-toggle="modal">공지사항</a></li>
+						<li><a href="#">공지사항</a></li>
 						<li><a href="mailto:name@email.com">관리자 문의</a></li>
 
 					</ul>
@@ -1035,7 +1031,7 @@ app.controller("newsController", function($scope, $http) {
 	</div>
 
 
-	<!-- 개인정보 Modal -->
+	<!-- Modal -->
 	<div class="modal2 fade" id="myModal" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">
 
@@ -1054,140 +1050,9 @@ app.controller("newsController", function($scope, $http) {
 		</div>
 	</div>
 	
-	<!-- game db modal -->
-	<div class="portfolio-modal modal fade" id="gamedb"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				db 게시판
-
-			</div>
-		</div>
-	</div>
-	
-	<!-- market game modal -->
-	<div class="portfolio-modal modal fade" id="mar_game"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				게임장터
-
-			</div>
-		</div>
-	</div>
-	
-	<!-- market elec modal -->
-	<div class="portfolio-modal modal fade" id="mar_elec"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				전자제품장터
-
-			</div>
-		</div>
-	</div>
-	
-	<!-- market hobby modal -->
-	<div class="portfolio-modal modal fade" id="mar_hobby"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				취미장터
-
-			</div>
-		</div>
-	</div>
-	
-	<!-- market etc modal -->
-	<div class="portfolio-modal modal fade" id="mar_etc"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				그 외 아무거나 장터
-
-			</div>
-		</div>
-	</div>
-	
-	<!-- comm wow modal -->
-	<div class="portfolio-modal modal fade" id="wow"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				와게
-
-			</div>
-		</div>
-	</div>
-	
-	<!-- comm lol modal -->
-	<div class="portfolio-modal modal fade" id="lol"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				롤게
-
-			</div>
-		</div>
-	</div>
-	
-	<!-- notice modal -->
-	<div class="portfolio-modal modal fade" id="notice"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				공지게시판
-
-			</div>
-		</div>
-	</div>
-	
 	<!-- Plugin JavaScript -->
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script src="js/classie.js"></script>
-<script src="js/cbpAnimatedHeader.js"></script>
-
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="js/classie.js"></script>
+	<script src="js/cbpAnimatedHeader.js"></script>
 </body>
-
 </html>

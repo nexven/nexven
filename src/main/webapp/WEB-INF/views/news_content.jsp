@@ -42,7 +42,7 @@
 	네이버(인벤) HTML파서 내용
 </h1> -->
 	<div class="portfolio-modal">
-		<div class="close-modal" onclick="history.back();">
+		<div class="close-modal" onclick="javascript:nload('news');">
 			<div class="lr">
 				<div class="rl"></div>
 			</div>
