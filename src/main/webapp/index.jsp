@@ -280,8 +280,8 @@ app.controller("newsController", function($scope, $http) {
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-title"><a href="">Game DB</a></h2>
-					<h3 class="section-subheading text-title kr"><a href="">DB 검색</a></h3>
+					<h2 class="section-heading text-title"><a href="#gamedb" data-toggle="modal">Game DB</a></h2>
+					<h3 class="section-subheading text-title kr"><a href="#gamedb" data-toggle="modal">DB 검색</a></h3>
 				</div>
 			</div>
 			<div class="row">
@@ -832,7 +832,12 @@ app.controller("newsController", function($scope, $http) {
 					<h3 class="section-subheading text-muted kr">자유 거래</h3>
 				</div>
 			</div>
-			<div class="row"></div>
+			<div class="row width80">
+				<div class="col-md-3"><a href="#mar_game" data-toggle="modal">게임 장터</a></div>
+				<div class="col-md-3"><a href="#mar_elec" data-toggle="modal">전자제품 장터</a></div>
+				<div class="col-md-3"><a href="#mar_hobby" data-toggle="modal">취미제품 장터</a></div>
+				<div class="col-md-3"><a href="#mar_etc" data-toggle="modal">기타제품 장터</a></div>
+			</div>
 		</div>
 	</section>
 	
@@ -842,9 +847,13 @@ app.controller("newsController", function($scope, $http) {
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-title kr">커뮤니티</h2>
+					<h3 class="section-subheading text-title kr">소모임</h3>
 				</div>
 			</div>
-			<div class="row"></div>
+			<div class="row">
+				<div class="col-md-6"><a href="#wow" data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%;"></a></div>
+				<div class="col-md-6"><a href="#lol" data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%;"></a></div>
+			</div>
 		</div>
 	</section>
 
@@ -1026,7 +1035,7 @@ app.controller("newsController", function($scope, $http) {
 	</div>
 
 
-	<!-- Modal -->
+	<!-- 개인정보 Modal -->
 	<div class="modal2 fade" id="myModal" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">
 
@@ -1040,6 +1049,118 @@ app.controller("newsController", function($scope, $http) {
 					<button type="button" class="btn btn-primary kr" data-target="#portfolioModal3" data-toggle="modal">정보 수정</button>
 					<button type="button" class="btn btn-primary" data-dismiss="modal">LOGOUT</button>
 				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- game db modal -->
+	<div class="portfolio-modal modal fade" id="gamedb"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				db 게시판
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- market game modal -->
+	<div class="portfolio-modal modal fade" id="mar_game"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				게임장터
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- market elec modal -->
+	<div class="portfolio-modal modal fade" id="mar_elec"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				전자제품장터
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- market hobby modal -->
+	<div class="portfolio-modal modal fade" id="mar_hobby"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				취미장터
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- market etc modal -->
+	<div class="portfolio-modal modal fade" id="mar_etc"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				그 외 아무거나 장터
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- comm wow modal -->
+	<div class="portfolio-modal modal fade" id="wow"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				와게
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- comm lol modal -->
+	<div class="portfolio-modal modal fade" id="lol"
+		tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl"></div>
+				</div>
+			</div>
+			<div class="container">
+				롤게
 
 			</div>
 		</div>
