@@ -44,22 +44,23 @@ public class NewsController {
 	 */
 	
 	@RequestMapping(value = "/news", method = RequestMethod.GET)
-	public String news(@RequestParam(value="keyword", required =false, defaultValue="") String keyword,@RequestParam(value="page", required =false, defaultValue="") String page, Locale locale, Model model, HttpServletResponse res) throws IOException {
+	public String news(@RequestParam(value="sel", required =false, defaultValue="t") String sel, @RequestParam(value="sw", required =false, defaultValue="") String sw, Locale locale, Model model, HttpServletResponse res) throws IOException {
 	
-		logger.info("검색 키워드 : "+keyword);
-		logger.info("검색 페이지 : "+page);
+		logger.info("검색 선택 : " + sel);
+		logger.info("검색 키워드 : " + sw);
 		
      	List<HashMap<String,Object>> nlist = new LinkedList<HashMap<String,Object>>();
      	HashMap<String,Object> mlist;
         String mtitle = "";
-     	String mcontent = "";		
+     	String mcontent = "";
+    	boolean addsw=true;
 	    try {
 	        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 	        Document xml = null;
 	        
         	xml = documentBuilder.parse("http://feeds.feedburner.com/inven");
-	        
+        	
 //	        if(keyword.equals("")&&page.equals("")){
 //	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr");
 //	        }else if(page.equals("")){
@@ -78,8 +79,8 @@ public class NewsController {
 	        	 mlist = new HashMap<String,Object>();	          	
 	             NodeList list2 = list.item(i).getChildNodes();
 	             for(int j=0;j<list2.getLength();j++) {
-	                    mtitle = list2.item(j).getNodeName();
-	                 	mcontent = list2.item(j).getTextContent();	                 	
+	            	 	mtitle = list2.item(j).getNodeName();
+	                 	mcontent = list2.item(j).getTextContent();
 	                    if(mtitle.equals("link")){
 	                    	mcontent = mcontent.replace("http://www.inven.co.kr/webzine/news/?news=", "news_content?link=");
 	                    }	                 	
@@ -98,9 +99,39 @@ public class NewsController {
 	                    	Long wdate = wDate.getTime();
 	                    	//System.out.println(sf.format(wdate));
 	                    	mcontent=sf.format(wdate);
-		                }	                    
-	                 	mlist.put(mtitle, mcontent);
-
+		                }
+		                
+		                if(!sw.equals("")){
+			                switch (sel) {
+							case "t":
+				                if(mtitle.equals("title")){
+				                	System.out.println("타이틀:"+mcontent.contains(sw));
+				                	System.out.println(mcontent);
+				                	if(mcontent.contains(sw)){
+				                		addsw=true;
+				                	}else{
+				                		addsw=false;
+				                	}
+				                }
+							break;
+							case "c":
+					                if(mtitle.equals("category")){
+					                	System.out.println("카테고리:"+mcontent.contains(sw));
+					                	if(mcontent.contains(sw)){
+					                		addsw=true;
+					                	}else{
+					                		addsw=false;
+					                	}
+					                }
+								break;
+							default:
+								break;
+							}
+		                }
+		                
+		                if(addsw){
+		                	mlist.put(mtitle, mcontent);
+		                }
 	                 	
 	                 	/* 네이버
 							if(mtitle.equals("media:thumbnail")){
@@ -136,8 +167,11 @@ public class NewsController {
 //		                 }
 		                 
 	             }
-	             nlist.add(mlist);
-	         }	         
+	                if(addsw){
+	                	nlist.add(mlist);
+	                }
+
+	         }
 	      }
 	 } catch (Exception e) {
 	     e.getMessage();
