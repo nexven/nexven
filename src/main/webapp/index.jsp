@@ -168,7 +168,7 @@
 					<!-- 로그인 전 로그인 버튼 -->
 					<!-- <li><a class="btn btn-primary" href="#portfolioModal1" data-toggle="modal">LOGIN</a></li> -->
 					<!-- 로그인 후 아이디 -->
-					<li><a class="page-scroll kr" href="#myModal"
+					<li><a id="nexven_nick" class="page-scroll kr" href="#myModal"
 						data-toggle="modal">admin 님</a></li>
 
 				</ul>

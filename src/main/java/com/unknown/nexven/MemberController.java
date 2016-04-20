@@ -8,14 +8,17 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.ResponseWrapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.unknown.model.Member;
@@ -159,14 +162,17 @@ public class MemberController {
 	
 	/*로그인 인증  */
 	@RequestMapping(value="/member_login_ok",method=RequestMethod.POST)
-	public ModelAndView member_login_ok(HttpServletRequest request,
-			HttpServletResponse response,HttpSession session)
+	@ResponseBody
+	public String member_login_ok(HttpServletRequest request,
+			HttpServletResponse response,HttpSession session, Model model)
 					throws Exception{
 		
 		System.out.println("로그인");
 		//HttpSession 클래스는 세션객체를 생성해서 로그인 인증 처리를 하기 위해서 이다.
+		//PrintWriter out=response.getWriter();//출력스트림 객체 생성
+		
 		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out=response.getWriter();//출력스트림 객체 생성
+		
 		session=request.getSession();//세션 객체 생성
 		
 		String id=request.getParameter("id").trim();
@@ -184,10 +190,10 @@ public class MemberController {
 		System.out.println(map);
 		
 		if(map==null){//등록되지 않은 회원일때
-			out.println("<script>");
-			out.println("alert('등록되지 않은 회원입니다!')");
-			out.println("history.back()");
-			out.println("</script>");
+//			out.println("<script>");
+//			out.println("alert('등록되지 않은 회원입니다!')");
+//			out.println("history.back()");
+//			out.println("</script>");
 		}else{//등록된 회원일때
 			if(map.get("M_PASS").equals(pwd)){//비번이 같을때
 				session.setAttribute("id",id);
@@ -196,17 +202,17 @@ public class MemberController {
 				
 				session.setAttribute("mName",mName);
 				
-				ModelAndView loginM=new ModelAndView("/index");
+				
 				//jsp폴더의 index.jsp로 이동
-				return loginM;
+
 			}else{//비번이 다를때
-				out.println("<script>");
-				out.println("alert('비번이 다릅니다!')");
-				out.println("history.go(-1)");
-				out.println("</script>");
+//				out.println("<script>");
+//				out.println("alert('비번이 다릅니다!')");
+//				out.println("history.go(-1)");
+//				out.println("</script>");
 			}
 		}
-		return null;
+		return "문자열 넘김";
 	}
 
 	
