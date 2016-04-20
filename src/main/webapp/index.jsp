@@ -158,9 +158,6 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-				
-					<li><%=session.getAttribute("id") %></li>
-					<li><%=session.getAttribute("mName") %></li>
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a class="page-scroll kr" href="#news">뉴스</a></li>
 					<li><a class="page-scroll kr" href="#db">게임 DB</a></li>
@@ -171,7 +168,7 @@
 					<!-- 로그인 전 로그인 버튼 -->
 					<!-- <li><a class="btn btn-primary" href="#portfolioModal1" data-toggle="modal">LOGIN</a></li> -->
 					<!-- 로그인 후 아이디 -->
-					<li><a id="nexven_nick" class="page-scroll kr" href="#myModal"
+					<li><a class="page-scroll kr" href="#myModal"
 						data-toggle="modal">admin 님</a></li>
 
 				</ul>
@@ -193,7 +190,7 @@
 				<!-- 로그인 후에 버튼 숨김 -->
 				<a href="javascript:nload('login2.jsp');" class="page-scroll btn btn-xl"
 					data-toggle="modal">LOGIN</a>
-
+				
 			</div>
 		</div>
 	</header>
@@ -841,10 +838,10 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-3"><a href="#mar_game" data-toggle="modal">게임 장터</a></div>
-				<div class="col-md-3"><a href="#mar_elec" data-toggle="modal">전자제품 장터</a></div> 
-				<div class="col-md-3"><a href="#mar_hobby" data-toggle="modal">취미제품 장터</a></div> 
-				<div class="col-md-3"><a href="#mar_etc" data-toggle="modal">기타제품 장터</a></div>  
+				<div class="col-md-3 text-center"><a href="#mar_game" data-toggle="modal"><img src="img/market/game.png" alt="game" style="width:auto; max-width:100%"></a></div>
+				<div class="col-md-3 text-center"><a href="#mar_elec" data-toggle="modal"><img src="img/market/elec.png" alt="elec" style="width:auto; max-width:100%"></a></div> 
+				<div class="col-md-3 text-center"><a href="#mar_hobby" data-toggle="modal"><img src="img/market/hobby.png" alt="hobby" style="width:auto; max-width:100%"></a></div> 
+				<div class="col-md-3 text-center"><a href="#mar_etc" data-toggle="modal"><img src="img/market/etc.png" alt="etc" style="width:auto; max-width:100%"></a></div>  
 			</div>
 		</div>
 	</section>
@@ -859,8 +856,8 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6"><a href="#wow" data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%;"></a></div>
-				<div class="col-md-6"><a href="#lol" data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%;"></a></div>  
+				<div class="col-md-6 text-center"><a href="#wow" data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%;"></a></div>
+				<div class="col-md-6 text-center"><a href="#lol" data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%;"></a></div>  
 			</div>
 		</div>
 	</section>
