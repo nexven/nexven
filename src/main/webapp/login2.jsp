@@ -1,27 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <!-- <html> -->
 <!-- <head> -->
-<meta charset="UTF-8">
+<!-- <meta charset="UTF-8"> -->
 <!-- <script src="js/jquery.js"></script> -->
 <script type="text/javascript">
-	alert("login2.jsp");
 	$(document).ready(function(){
-	    $("#login").click(function(){
-	    	alert("asd");
-	    });
-	    $("form").submit(function(){
-	        alert("Submitted");
-	    });
+		$("#nexven_submit").click(function()
+		{
+			var formData = $("#nexven_form").serialize();
+			alert(formData);
+ 
+			$.ajax({
+	 					type : "POST",
+	 					url : "member_login_ok",
+	 					data : formData,
+	 					cache : false,
+	 					async : true,
+	 					success: function(nchk) {
+	 						alert(nchk);
+	 				    	$("nexven_nick").html("<%=session.getAttribute("mName")%>");
+	 				    	alert("sibal");
+	 					},
+	 				    error: function(nchk){
+	 				    	//nchk=JSON.stringify(nchk);
+							alert(nchk);
+	 				    }
+
+			});
+		});	    
+	    
 	});
 </script>
 <!-- </head> -->
-<body>
-<form method="post" action="member_login_ok">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2">
-			<div class="modal-body">
+<!-- <body> -->
+<form id="nexven_form" method="post">
 				<!-- Project Details Go Here -->
 				<h2>LOGIN</h2>
 				<p>
@@ -32,12 +46,9 @@
 					<label style="display: inline-block; width: 35px;">PW</label><input
 						id="pwd" name="pwd" type="password" style="width: 180px;" />
 				</p>
-				<button type="submit" class="btn btn-primary" data-dismiss="modal">LOGIN</button>
+				<button id="nexven_submit" type="submit" class="btn btn-primary" data-dismiss="modal">LOGIN</button>
 				<button type="button" class="btn btn-primary"
 					data-target="#portfolioModal2" data-toggle="modal">SIGN IN</button>
-			</div>
-		</div>
-	</div>
 </form>
-</body>
+<!-- </body> -->
 <!-- </html> -->

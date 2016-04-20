@@ -158,6 +158,9 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+				
+					<li><%=session.getAttribute("id") %></li>
+					<li><%=session.getAttribute("mName") %></li>
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a class="page-scroll kr" href="#news">뉴스</a></li>
 					<li><a class="page-scroll kr" href="#db">게임 DB</a></li>
@@ -168,7 +171,7 @@
 					<!-- 로그인 전 로그인 버튼 -->
 					<!-- <li><a class="btn btn-primary" href="#portfolioModal1" data-toggle="modal">LOGIN</a></li> -->
 					<!-- 로그인 후 아이디 -->
-					<li><a class="page-scroll kr" href="#myModal"
+					<li><a id="nexven_nick" class="page-scroll kr" href="#myModal"
 						data-toggle="modal">admin 님</a></li>
 
 				</ul>
