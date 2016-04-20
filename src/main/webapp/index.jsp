@@ -50,7 +50,7 @@
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 	
-	
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 
@@ -188,7 +188,7 @@
 				<div class="intro-heading">NEXVEN</div>
 
 				<!-- 로그인 후에 버튼 숨김 -->
-				<a href="javascript:nload('login.jsp');" class="page-scroll btn btn-xl"
+				<a href="javascript:nload('login2.jsp');" class="page-scroll btn btn-xl"
 					data-toggle="modal">LOGIN</a>
 
 			</div>

@@ -196,7 +196,7 @@ public class MemberController {
 				
 				session.setAttribute("mName",mName);
 				
-				ModelAndView loginM=new ModelAndView("index");
+				ModelAndView loginM=new ModelAndView("/index");
 				//jsp폴더의 index.jsp로 이동
 				return loginM;
 			}else{//비번이 다를때
