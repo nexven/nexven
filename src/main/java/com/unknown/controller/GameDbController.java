@@ -26,7 +26,7 @@ public class GameDbController {
 	@Autowired
 	GameDbService gameDbService;
 	
-	@RequestMapping(value="/nexven/gamedb/list")
+	@RequestMapping(value="/gamedb/list")
 	@ResponseBody
 	public List<GameDb> getList() {
 		return gameDbService.getList();
