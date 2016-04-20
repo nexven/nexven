@@ -11,8 +11,8 @@
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="NEXVEN"/>
-		<property name="password" value="NEXVEN123"/>		
+		<property name="username" value="nexven"/>
+		<property name="password" value="nexven123"/>		
 	</bean>
 	
 <!-- TransactionManager -->

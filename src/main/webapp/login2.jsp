@@ -21,7 +21,7 @@
 	 					success: function(nchk) {
 	 						alert(nchk);
 	 				    	$("nexven_nick").html("<%=session.getAttribute("mName")%>");
-	 				    	alert(<%=session.getAttribute("mName")%>);
+	 				    	alert("sibal");
 	 					},
 	 				    error: function(nchk){
 	 				    	//nchk=JSON.stringify(nchk);

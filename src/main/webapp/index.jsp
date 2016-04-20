@@ -158,6 +158,9 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+				
+					<li><%=session.getAttribute("id") %></li>
+					<li><%=session.getAttribute("mName") %></li>
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a class="page-scroll kr" href="#news">뉴스</a></li>
 					<li><a class="page-scroll kr" href="#db">게임 DB</a></li>

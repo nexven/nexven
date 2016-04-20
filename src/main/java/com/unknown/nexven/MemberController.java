@@ -162,7 +162,6 @@ public class MemberController {
 	
 	/*로그인 인증  */
 	@RequestMapping(value="/member_login_ok",method=RequestMethod.POST)
-	@ResponseBody
 	public String member_login_ok(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session, Model model)
 					throws Exception{
@@ -212,7 +211,7 @@ public class MemberController {
 //				out.println("</script>");
 			}
 		}
-		return "문자열 넘김";
+		return "login_ok";
 	}
 
 	
