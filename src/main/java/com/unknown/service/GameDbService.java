@@ -1,17 +1,22 @@
 package com.unknown.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.unknown.mapper.GameDbMapper;
-import com.unknown.model.Dept;
 import com.unknown.model.GameDb;
 
 @Service
 public class GameDbService {
+	Log log = LogFactory.getLog(GameDbService.class);
+	
 	//필드주입
 	@Autowired
 	GameDbMapper gameDbMapper;
@@ -20,7 +25,6 @@ public class GameDbService {
 	public List<GameDb> getList(){
 		
 		List<GameDb> games = gameDbMapper.selectAll();
-		
 		return games;
 	}
 	
@@ -29,6 +33,25 @@ public class GameDbService {
 	@Transactional
 	public GameDb getGameDb(Integer gNum){
 		return gameDbMapper.selectBygNum(gNum);
+	}
+	
+	@Transactional
+	public int getCount() {
+		
+		return gameDbMapper.selectCount();
+	}
+	
+	@Transactional
+	public List<GameDb> getPage(int pageNo) {
+		Map<String, Integer> paging = new HashMap<>();
+		int itemPerPage = 10;
+		int firstItem = pageNo * itemPerPage - (itemPerPage - 1);
+		int lastItem = firstItem + (itemPerPage - 1);
+		paging.put("firstItem", firstItem);
+		paging.put("lastItem", lastItem);
+		List<GameDb> games = gameDbMapper.selectPage(paging);
+		
+		return games;
 	}
 	
 	@Transactional

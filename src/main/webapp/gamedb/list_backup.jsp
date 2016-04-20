@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- <!DOCTYPE html> -->
-<!-- <html> -->
-<!-- <script src="//code.jquery.com/jquery-1.12.0.min.js"></script> -->
-<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
-<!-- <script src="/nexven/js/jquery.twbsPagination.min.js"></script> -->
-<!-- <script -->
-<!-- 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
-<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
-<!-- <head> -->
-<!-- <meta charset="UTF-8"> -->
-<!-- <title>list.jsp</title> -->
-
+<!DOCTYPE html>
+<html>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="/nexven/js/jquery.twbsPagination.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<head>
+<meta charset="UTF-8">
+<title>list.jsp</title>
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -61,7 +60,7 @@ $(document).ready(function() {
 	        	    	var html = "";
 	        	    	$.each(arrData, function(idx) {
 	        	    	    html += '<tr>' 
-	        	    	    + '<td class="active">' + '<a href=\"/nexven/gamedb?gNum='+arrData[idx].gnum+'\">'+ arrData[idx].gname + '</a></td>'  
+	        	    	    + '<td class="active">' + arrData[idx].gname + '</td>'  
 	        	    	    + '<td class="active">' + arrData[idx].gmaker + '</td>'
 	        	    	    + '<td class="active">' + arrData[idx].ggenre + '</td>' 
 	        	    	    + '<td class="active">' + arrData[idx].grating + '</td>' 
@@ -83,26 +82,26 @@ $(document).ready(function() {
 });
 
 </script>
-<!-- </head> -->
+</head>
 
-<!-- <body> -->
+<body>
 
 <h1>게임 DB</h1>
 <table class="table table-bordered table-hover">
 		<thead>
 			<tr>
-				<th>게임 이름</th>
-				<th>개발사</th>
-				<th>장르</th>
-				<th>평점</th>
+				<th>gName</th>
+				<th>gMaker</th>
+				<th>gGenre</th>
+				<th>gRating</th>
 			</tr>
 		</thead>
 		<tbody class="gamedb">	
 		
 		</tbody>
 	</table>
-	<div aling="center">
+	<div align="center">
 	<ul id="pagination-demo" class="pagination-sm"></ul>
 	</div>
-<!-- </body> -->
-<!-- </html> -->
+</body>
+</html>
