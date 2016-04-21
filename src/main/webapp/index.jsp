@@ -200,7 +200,7 @@
 
 	<!-- Modal -->
 	  <div class="modal fade" id="nexven_view" role="dialog">
-	    <div class="modal-dialog modal-lg">
+	    <div id="nexven_view_class" class="modal-dialog modal-nexven-lg">
 	    
 	      <!-- Modal content-->
 	      <div class="modal-content">
@@ -896,17 +896,11 @@
 					<div class="rl"></div>
 				</div>
 			</div>
-			<div class="container" data-ng-controller="loginController">
-				<button id="test">로그인 비동기</button>				
-				<div class="testc">				 
+			<div class="container">
+		 
 				</div>
+			</div>
 
-			</div>
-			<div data-ng-controller="listController">
-			<button id="test2">Emp리스트 비동기</button>
-				<div class="testc2">
-				</div>
-			</div>
 		</div>
 	</div>
 
