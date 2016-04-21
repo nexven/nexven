@@ -5,47 +5,47 @@
 	<select id="idcheck" resultType="Integer"
 	    parameterType="string">
 	    select * from member
-	   	 where M_ID = #{memid} 
+	   	 where MID = #{memid} 
 	</select>
 	
 	<select id="nickcheck" resultType="Integer"
 	    parameterType="string">
 	    select * from member
-	   	 where M_NICK = #{memnick} 
+	   	 where MNICK = #{memnick} 
 	</select>
 	
 	<select id="selectBymid" resultType="com.unknown.model.Member"
 	    parameterType="string">
-	    select * from member where M_ID = #{mId} 
+	    select * from member where MID = #{mId} 
 	</select>
 	<select id="selectBymid2" resultType="Map"
 	    parameterType="string">
-	    select * from member where M_ID = #{mId} 
+	    select * from member where MID = #{mId} 
 	</select>
     
     <insert id="insert" parameterType="com.unknown.model.Member">
         insert into Member
 	    (
-	    	M_NUM,
-			M_ID,
-			M_PASS,
-			M_NAME,
-			M_NICK,
-			M_EMAIL,
-			M_AUTH_LEVEL,
-			M_GENDER,
-			M_BIRTH,
-			M_TEL,
-			M_ZIPCODE,
-			M_ADDR1,
-			M_ADDR2,
-			M_LEVEL,
-			M_EXP,
-			M_RECENT_LOGIN_DATE,
-			M_IP,
-			M_OUT,
-			M_IS_OUT,
-			M_JOIN_DATE
+	    	MNUM,
+			MID,
+			MPASS,
+			MNAME,
+			MNICK,
+			MEMAIL,
+			MAUTHLEVEL,
+			MGENDER,
+			MBIRTH,
+			MTEL,
+			MZIPCODE,
+			MADDR1,
+			MADDR2,
+			MLEVEL,
+			MEXP,
+			MRECENTLOGINDATE,
+			MIP,
+			MOUT,
+			MISOUT,
+			MJOINDATE
 	    )
 	    values
 	    (

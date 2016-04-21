@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html data-ng-app="nexven">
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script
-	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<head>
-<meta charset="UTF-8">
-<title>list.jsp</title>
+<!-- <!DOCTYPE html> -->
+<!-- <html data-ng-app="nexven"> -->
+<!-- <script src="//code.jquery.com/jquery-1.12.0.min.js"></script> -->
+<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+<!-- <script -->
+<!-- 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script> -->
+<!-- <script -->
+<!-- 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+<!-- <link rel="stylesheet" -->
+<!-- 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+<!-- <head> -->
+<!-- <meta charset="UTF-8"> -->
+<!-- <title>list.jsp</title> -->
 <script type="text/javascript">
 	var app = angular.module("nexven", []);
 	app.controller("listController", function($scope, $http) {
@@ -53,9 +53,9 @@
 			$scope.depts = response.data;
 		});
 	});
-</script>
-</head>
-<body data-ng-controller="listController">
+<!-- </script> -->
+<!-- </head> -->
+<!-- <body data-ng-controller="listController"> -->
 	<!-- class="container-fluid" // width 전체 -->
 	<div class="row">
 		<div class="col-md-4">
@@ -121,5 +121,5 @@
 			</tr>
 		</tbody>
 	</table>
-</body>
-</html>
+<!-- </body> -->
+<!-- </html> -->

@@ -129,7 +129,7 @@ public class NewsController {
 							}
 		                }
 		                
-		                if(addsw){
+		                if(addsw&&!mtitle.equals("#text")){
 		                	mlist.put(mtitle, mcontent);
 		                }
 	                 	

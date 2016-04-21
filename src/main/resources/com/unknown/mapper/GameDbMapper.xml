@@ -19,11 +19,30 @@
 	<select id="selectAll" resultType="com.unknown.model.GameDb">
 		<include refid="FromGameDb"/>
 	</select>
+	
+	<select id="selectCount" resultType="int">
+        select count(*) from GameDb
+    </select>
+    
+    <select id="selectPage" resultType="com.unknown.model.GameDb" parameterType="hashmap">
+        select outer.*
+		  from ( select rownum r, inner.*
+		  		   from ( select *
+		  		   			from GameDb 
+		  		   		   order by gNum asc
+		  		        ) inner
+		  	   ) outer
+		 where outer.r &gt;= #{firstItem}
+		   and outer.r &lt;= #{lastItem}        
+    </select>
+	
 	<select id="selectBygNum" resultType="com.unknown.model.GameDb"
 	    parameterType="int">
 	    <include refid="FromGameDb"/>
 	   	 where gNum = #{gNum} 
 	</select>
+	
+	
 	
 	<insert id="insert" parameterType="com.unknown.model.GameDb">
 	    insert into GameDb

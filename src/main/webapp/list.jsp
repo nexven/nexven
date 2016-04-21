@@ -28,7 +28,7 @@ $(document).ready(function() {
 	alert("as");
 	$.get("/nexven/emp/list", function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
-        var json = JSON.stringify(data.data);
+        var json = JSON.stringify(status);
         alert(json);
         var json2 = JSON.parse(json);
         alert(json2);

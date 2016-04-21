@@ -14,7 +14,7 @@ body {
 .news > a > img {
 	margin-right: auto;
 	margin-left: auto;
-	max-height: 100px;
+	max-height: 200px;
 }
 .iblock {
 	display:inline-block;
@@ -39,7 +39,6 @@ body {
 	width:0.7em;
 	height:0.7em;
 }
-
 .titlelink a {
 	color: #333333;
 }
@@ -355,6 +354,13 @@ header .intro-text .intro-heading {
 		font-size: 75px;
 		line-height: 75px;
 		margin-bottom: 50px
+	}
+}
+
+@media (min-width: 1601px) {
+	header .intro-text {
+		padding-top: 300px;
+		padding-bottom: 380px
 	}
 }
 section {
@@ -815,4 +821,12 @@ body {
 }
 #nexven_news_content{
 	text-align:center
+}
+.modal-nexven-sm {
+    width: 50%;
+    margin: 50px auto;
+}
+.modal-nexven-lg {
+    width: 90%;
+    margin: 50px auto;
 }

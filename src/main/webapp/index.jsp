@@ -49,6 +49,8 @@
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
+<script src="js/jquery.twbsPagination.min.js"></script>
+
 	
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!-- Bootstrap Core JavaScript -->
@@ -198,7 +200,7 @@
 
 	<!-- Modal -->
 	  <div class="modal fade" id="nexven_view" role="dialog">
-	    <div class="modal-dialog modal-lg">
+	    <div id="nexven_view_class" class="modal-dialog modal-nexven-lg">
 	    
 	      <!-- Modal content-->
 	      <div class="modal-content">
@@ -283,9 +285,16 @@
 	<!-- game db Section -->
 	<section id="db" class="bg-darkest-gray">
 		<div class="container">
+
 			<div class="row text-center">
 				<div class="col-lg-12">
 					<h2 class="section-heading text-title"><a href="#gamedb" data-toggle="modal">Game DB</a></h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-title"><a id="nexven_gamedb" data-toggle="modal" href="javascript:nload('/nexven/gamedb/list.jsp');" >Game DB</a></h2>
+
 					<h3 class="section-subheading text-title kr"><a href="#gamedb" data-toggle="modal">DB 검색</a></h3>
 				</div>
 			</div>
@@ -892,17 +901,11 @@
 					<div class="rl"></div>
 				</div>
 			</div>
-			<div class="container" data-ng-controller="loginController">
-				<button id="test">로그인 비동기</button>				
-				<div class="testc">				 
+			<div class="container">
+		 
 				</div>
+			</div>
 
-			</div>
-			<div data-ng-controller="listController">
-			<button id="test2">Emp리스트 비동기</button>
-				<div class="testc2">
-				</div>
-			</div>
 		</div>
 	</div>
 
@@ -1048,20 +1051,20 @@
 	</div>
 	
 	<!-- game db modal -->
-	<div class="portfolio-modal modal fade" id="gamedb"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				db 게시판
+<!-- 	<div class="portfolio-modal modal fade" id="gamedb" -->
+<!-- 		tabindex="-1" role="dialog" aria-hidden="true"> -->
+<!-- 		<div class="modal-content"> -->
+<!-- 			<div class="close-modal" data-dismiss="modal"> -->
+<!-- 				<div class="lr"> -->
+<!-- 					<div class="rl"></div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="container"> -->
+<!-- 				db 게시판 -->
 
-			</div>
-		</div>
-	</div>
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	
 	<!-- market game modal -->
 	<div class="portfolio-modal modal fade" id="mar_game"
