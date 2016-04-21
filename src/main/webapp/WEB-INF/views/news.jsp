@@ -40,18 +40,18 @@
 	<h2 class="section-heading">NEWS</h2>
 
 	<div class="width90">
-		<div class="row hiddentitle">
-			<div class="col-md-3">Image</div>
-			<div class="col-md-5">Title</div>
-			<div class="col-md-2">Category</div>
-			<div class="col-md-2">pubDate</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xs-4">Image</div>
+			<div class="col-md-5 col-sm-5 col-xs-8">Title</div>
+			<div class="col-md-2 col-sm-2 col-xs-0">Category</div>
+			<div class="col-md-2 col-sm-2 col-xs-0">pubDate</div>
 		</div>
 		<div class="row bg-darkest-gray"
 			style="height: 2px; margin: 5px 0px 5px 0px;"></div>
 
 		<c:forEach var="v" items="${nexven_news}">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-3 col-sm-3 col-xs-4">
 					<c:if test="${!empty v['enclosure']}">
 						<img src="${v['enclosure']}" width="100%" height="100%" style="max-width:200px;" />
 					</c:if>
@@ -60,11 +60,11 @@
 					</c:if>
 
 				</div>
-				<div class="col-md-5 titlelink" style="text-align:left !important;">
+				<div class="col-md-5 col-sm-5 col-xs-8 titlelink kr" style="text-align:left !important;">
 					<a href="javascript:nload('${v['link']}');">${v['title']}</a>
 				</div>
-				<div class="col-md-2">${v['category']}</div>
-				<div class="col-md-2">${v['pubDate']}</div>
+				<div class="col-md-2 col-sm-2 col-xs-0 kr">${v['category']}</div>
+				<div class="col-md-2 col-sm-2 col-xs-0 kr">${v['pubDate']}</div>
 			</div>
 			<div class="row bg-darkest-gray"
 				style="height: 1px; margin: 5px 0px 5px 0px;"></div>

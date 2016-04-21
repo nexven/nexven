@@ -52,6 +52,10 @@ body {
 		width: 90%;
 		margin: auto;
 	}
+	.width90 {
+		width: 95%;
+		margin: auto;
+	}
 	.hiddentitle {
 		display:none;
 	}
@@ -62,6 +66,10 @@ body {
 		
 	}
 	.width80 {
+		width: 95%;
+		margin: auto;
+	}
+	.width90 {
 		width: 90%;
 		margin: auto;
 	}
@@ -77,6 +85,10 @@ body {
 	}
 	.width80 {
 		width: 80%;
+		margin: auto;
+	}
+	.width90 {
+		width: 90%;
 		margin: auto;
 	}
 	.hiddentitle {
