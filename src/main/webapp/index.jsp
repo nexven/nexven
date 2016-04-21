@@ -288,7 +288,6 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-title"><a id="nexven_gamedb" data-toggle="modal" href="javascript:nload('/nexven/gamedb/list.jsp');" >Game DB</a></h2>
-					<a id="nexven_news" data-toggle="modal" href="javascript:nload('news');">NEWS</a></h2>
 				
 					<h3 class="section-subheading text-title kr"><a href="#gamedb" data-toggle="modal">DB 검색</a></h3>
 				</div>
