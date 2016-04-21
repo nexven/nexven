@@ -1,6 +1,5 @@
 package com.unknown.nexven;
 
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -8,7 +7,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.ResponseWrapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.unknown.model.Member;
 import com.unknown.service.MemberService;
@@ -34,7 +30,7 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	/*회원 가입 저장 */
-	@RequestMapping(value="/member_join_ok", method=RequestMethod.POST)
+	@RequestMapping(value="/member_join_ok", method=RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String member_join_ok(HttpServletRequest request,
 			HttpServletResponse response){
@@ -173,7 +169,7 @@ public class MemberController {
 	}
 	
 	/*로그인 인증  */
-	@RequestMapping(value="/member_login_ok",method=RequestMethod.POST)
+	@RequestMapping(value="/member_login_ok",method=RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String member_login_ok(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session, Model model)
@@ -183,7 +179,7 @@ public class MemberController {
 		//HttpSession 클래스는 세션객체를 생성해서 로그인 인증 처리를 하기 위해서 이다.
 		//PrintWriter out=response.getWriter();//출력스트림 객체 생성
 		
-		response.setContentType("text/html;charset=UTF-8");
+		//response.setContentType("application/json;charset=UTF-8");
 		
 		session=request.getSession();//세션 객체 생성
 		
