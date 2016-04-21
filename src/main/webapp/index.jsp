@@ -108,6 +108,21 @@
 		});
 	}
 	
+	function logout() {
+		$.ajax({
+				type : "get",
+				url : "logout.jsp",
+				success: function() {
+					location.href = "./";
+				},
+			    error: function(){
+			    	location.href = "./";
+			    }
+
+});
+		  
+		}
+	
 	$(function(){	
 		
 		$.ajax({
@@ -170,8 +185,16 @@
 					<!-- 로그인 전 로그인 버튼 -->
 					<!-- <li><a class="btn btn-primary" href="#portfolioModal1" data-toggle="modal">LOGIN</a></li> -->
 					<!-- 로그인 후 아이디 -->
-					<li><a class="page-scroll kr" href="#myModal"
-						data-toggle="modal">admin 님</a></li>
+					<li><a class="page-scroll kr" id="nexven_nick" href="#myModal"
+						data-toggle="modal">
+							
+							<c:set var="mNick" value="${mNick}" />
+							
+							<c:if test="${empty mNick}"></c:if>
+							<c:if test="${!empty mNick}">${sessionScope.mNick }님</c:if>
+							
+						</a>
+					</li>
 
 				</ul>
 			</div>
@@ -1043,7 +1066,7 @@
 					<p>admin 님</p>
 					<p>최종 로그인 시간 :</p>
 					<button type="button" class="btn btn-primary kr" data-target="#portfolioModal3" data-toggle="modal">정보 수정</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">LOGOUT</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript:logout();">LOGOUT</button>
 				</div>
 
 			</div>

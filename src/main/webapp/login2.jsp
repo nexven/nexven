@@ -20,7 +20,12 @@
 	 					async : true,
 	 					success: function(nchk) {
 	 						alert(nchk);
-	 				    	$("nexven_nick").html("<%=session.getAttribute("mName")%>");
+	 						if(nchk=="success"){
+	 							location.href = "./"	
+	 						}else{
+	 							nload("login2.jsp");
+	 						}
+	 				    	
 	 				    	alert("sibal");
 	 					},
 	 				    error: function(nchk){
@@ -29,8 +34,8 @@
 	 				    }
 
 			});
-		});	    
-	    
+		});
+		
 	});
 </script>
 <!-- </head> -->
@@ -47,8 +52,7 @@
 						id="pwd" name="pwd" type="password" style="width: 180px;" />
 				</p>
 				<button id="nexven_submit" type="submit" class="btn btn-primary" data-dismiss="modal">LOGIN</button>
-				<button type="button" class="btn btn-primary"
-					data-target="#portfolioModal2" data-toggle="modal">SIGN IN</button>
+				<button id="nexven_signin" type="button" class="btn btn-primary" data-toggle="modal" onclick="javascript:nload('member_join.jsp');">SIGN IN</button>
 </form>
 <!-- </body> -->
 <!-- </html> -->

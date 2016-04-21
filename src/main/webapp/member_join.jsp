@@ -10,7 +10,39 @@
 <!-- <link rel="stylesheet" type="text/css" href="./css/member.css" /> -->
 <!-- <script src="./js/jquery.js"></script> -->
 <script src="./js/member.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#nexven_join").click(function()
+		{
+			var formData = $("#nexven_join").serialize();
+			alert(formData);
+ 
+			$.ajax({
+	 					type : "POST",
+	 					url : "member_join_ok",
+	 					data : formData,
+	 					cache : false,
+	 					async : true,
+	 					success: function(nchk) {
+	 						alert(nchk);
+	 						if(nchk=="success"){
+	 							location.href = "./"	
+	 						}else{
+	 							nload("member_join.jsp");
+	 						}
+	 				    	
+	 				    	alert("sibal");
+	 					},
+	 				    error: function(nchk){
+	 				    	//nchk=JSON.stringify(nchk);
+							alert(nchk);
+	 				    }
 
+			});
+		});
+		
+	});
+</script>
 <script>
 	function openDaumPostcode() {
 		new daum.Postcode({
@@ -28,7 +60,7 @@
 <body>
  <div id="join_wrap">
   <h2 class="join_title">회원가입</h2>
-  <form name="f" method="post" action="member_join_ok.nhn"
+  <form id="" name="f" method="post""
   onsubmit="return check()">
    <!-- 이진파일을 업로드 할려면 enctype 속성을 지정 -->
    <table id="join_t">
@@ -166,7 +198,7 @@
    
    
    <div id="join_menu">
-    <input type="submit" value="회원가입" class="input_button" />
+    <input id="nexven_join" type="submit" value="회원가입" class="input_button"/>
     <input type="reset" value="가입취소" class="input_button" 
     onclick="$('#mId').focus();" />
    </div>
