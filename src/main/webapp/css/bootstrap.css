@@ -1658,6 +1658,9 @@ pre code {
 .col-xs-1 {
   width: 8.33333333%;
 }
+.col-xs-0 {
+  display:none;
+}
 .col-xs-pull-12 {
   right: 100%;
 }
@@ -1777,7 +1780,8 @@ pre code {
 }
 @media (min-width: 768px) {
   .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
-    float: left;
+    float: left;    
+    display:inline-block;
   }
   .col-sm-12 {
     width: 100%;
@@ -1936,6 +1940,7 @@ pre code {
 @media (min-width: 992px) {
   .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
+    display:inline-block;
   }
   .col-md-12 {
     width: 100%;
@@ -5928,6 +5933,7 @@ button.close {
   outline: 0;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
           box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+  padding: 15px;
 }
 .modal-backdrop {
   position: fixed;
@@ -5959,7 +5965,8 @@ button.close {
 }
 .modal-body {
   position: relative;
-  padding: 15px;
+  padding: 0px;
+  overflow: hidden;
 }
 .modal-footer {
   padding: 15px;

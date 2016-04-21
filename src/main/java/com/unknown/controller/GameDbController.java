@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.unknown.model.Emp;
 import com.unknown.model.GameDb;
 import com.unknown.service.GameDbService;
 
@@ -27,34 +26,20 @@ public class GameDbController {
 	@Autowired
 	GameDbService gameDbService;
 	
-	@RequestMapping(value="/gamedb/list")
+	@RequestMapping(value="/nexven/gamedb/list")
 	@ResponseBody
 	public List<GameDb> getList() {
-		System.out.println(gameDbService.getList());
 		return gameDbService.getList();
 	}
 	
-	@RequestMapping(value="/gamedb", method=RequestMethod.GET)
+	@RequestMapping(value="/nexven/gamedb", method=RequestMethod.GET)
 	@ResponseBody
 	public GameDb getGameDb(Integer gNum){
 		log.info("getGameDb"+gNum);
 		return gameDbService.getGameDb(gNum);
 	}
 	
-	@RequestMapping(value="/gamedb/page")
-	@ResponseBody
-	public Map<String, Object> getPage(Integer pageNo) {
-		Map<String, Object> response = new HashMap<>();
-		int count = gameDbService.getCount();
-		List<GameDb> games = gameDbService.getPage(pageNo);
-		
-		response.put("pageNo", pageNo);
-		response.put("totalCount", count);
-		response.put("games", games);
-		return response;
-	}
-	
-	@RequestMapping(value="/gamedb", method=RequestMethod.PUT)
+	@RequestMapping(value="/nexven/gamedb", method=RequestMethod.PUT)
 	@ResponseBody
 	public Map<String, Object> putGameDb(@RequestBody GameDb gameDb){
 		log.info("gNum = " + gameDb.getGNum());
@@ -85,7 +70,7 @@ public class GameDbController {
 		return response;
 	}
 	
-	@RequestMapping(value="/gamedb", method=RequestMethod.POST)
+	@RequestMapping(value="/nexven/gamedb", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> postGameDb(@RequestBody GameDb gameDb){
 		log.info("gName = " + gameDb.getGName());
@@ -116,7 +101,7 @@ public class GameDbController {
 		return response;
 	}
 	
-	@RequestMapping(value="/gamedb", method=RequestMethod.DELETE)
+	@RequestMapping(value="/nexven/gamedb", method=RequestMethod.DELETE)
 	@ResponseBody
 	public Map<String, Object> deleteGameDb(Integer gNum){		
 		log.info("gNum="+gNum);

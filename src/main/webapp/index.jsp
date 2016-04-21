@@ -109,6 +109,21 @@
 		});
 	}
 	
+	function logout() {
+		$.ajax({
+				type : "get",
+				url : "logout.jsp",
+				success: function() {
+					location.href = "./";
+				},
+			    error: function(){
+			    	location.href = "./";
+			    }
+
+});
+		  
+		}
+	
 	$(function(){	
 		
 		$.ajax({
@@ -171,8 +186,16 @@
 					<!-- 로그인 전 로그인 버튼 -->
 					<!-- <li><a class="btn btn-primary" href="#portfolioModal1" data-toggle="modal">LOGIN</a></li> -->
 					<!-- 로그인 후 아이디 -->
-					<li><a class="page-scroll kr" href="#myModal"
-						data-toggle="modal">admin 님</a></li>
+					<li><a class="page-scroll kr" id="nexven_nick" href="#myModal"
+						data-toggle="modal">
+							
+							<c:set var="mNick" value="${mNick}" />
+							
+							<c:if test="${empty mNick}"></c:if>
+							<c:if test="${!empty mNick}">${sessionScope.mNick }님</c:if>
+							
+						</a>
+					</li>
 
 				</ul>
 			</div>
@@ -225,8 +248,8 @@
 	<!-- news Section -->
 	<section id="news">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
+			<div class="row text-center">
+				<div class="col-lg-12">
 					<h2 class="section-heading titlelink">
 					<a id="nexven_news" data-toggle="modal" href="javascript:nload('news');">NEWS</a></h2>
 				
@@ -286,31 +309,37 @@
 	<!-- game db Section -->
 	<section id="db" class="bg-darkest-gray">
 		<div class="container">
+
+			<div class="row text-center">
+				<div class="col-lg-12">
+					<h2 class="section-heading text-title"><a href="#gamedb" data-toggle="modal">Game DB</a></h2>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-title"><a id="nexven_gamedb" data-toggle="modal" href="javascript:nload('/nexven/gamedb/list.jsp');" >Game DB</a></h2>
-				
+
 					<h3 class="section-subheading text-title kr"><a href="#gamedb" data-toggle="modal">DB 검색</a></h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="width80">
-					<div class="col-md-3 col-sm-3">
+					<div class="col-md-3 col-sm-12 col-xs-12">
 						<div class="">
 							<h3 class="section-subheading text-muted kr">유저 평점 Best 3</h3>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-3">
+					<div class="col-md-3 col-sm-4 col-xs-12">
 						<div class="thumbnail">
 							<a href=""><img src="img/icon/game_l_73737.png"></a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-3">
+					<div class="col-md-3 col-sm-4 col-xs-12">
 						<div class="thumbnail">
 							<a href=""><img src="img/icon/game_l_73739.png"></a>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-3">
+					<div class="col-md-3 col-sm-4 col-xs-12">
 						<div class="thumbnail">
 							<a href=""><img src="img/icon/game_l_73985.png"></a>
 						</div>
@@ -323,8 +352,8 @@
 	<!-- game schedule Section -->
 	<section id="schedule">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
+			<div class="row text-center">
+				<div class="col-lg-12">
 					<h2 class="section-heading kr">게임 일정</h2>
 					<h3 class="section-subheading text-muted kr">클베, 오베, 발매 소식</h3>
 				</div>
@@ -340,8 +369,8 @@
 	<!-- gamer Zone Section -->
 	<section id="zone" class="bg-darkest-gray">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
+			<div class="row text-center">
+				<div class="col-lg-12">
 					<h2 class="section-heading text-title kr">게이머존</h2>
 				</div>
 			</div>
@@ -835,17 +864,17 @@
 	<!-- market Section -->
 	<section id="market">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
+			<div class="row text-center">
+				<div class="col-lg-12">
 					<h2 class="section-heading kr">중고장터</h2>
 					<h3 class="section-subheading text-muted kr">자유 거래</h3>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-3 text-center"><a href="#mar_game" data-toggle="modal"><img src="img/market/game.png" alt="game" style="width:auto; max-width:100%"></a></div>
-				<div class="col-md-3 text-center"><a href="#mar_elec" data-toggle="modal"><img src="img/market/elec.png" alt="elec" style="width:auto; max-width:100%"></a></div> 
-				<div class="col-md-3 text-center"><a href="#mar_hobby" data-toggle="modal"><img src="img/market/hobby.png" alt="hobby" style="width:auto; max-width:100%"></a></div> 
-				<div class="col-md-3 text-center"><a href="#mar_etc" data-toggle="modal"><img src="img/market/etc.png" alt="etc" style="width:auto; max-width:100%"></a></div>  
+				<div class="col-md-3 col-sm-3 col-xs-6 text-center"><a href="#mar_game" data-toggle="modal"><img src="img/market/game.png" alt="game" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>
+				<div class="col-md-3 col-sm-3 col-xs-6 text-center"><a href="#mar_elec" data-toggle="modal"><img src="img/market/elec.png" alt="elec" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div> 
+				<div class="col-md-3 col-sm-3 col-xs-6 text-center"><a href="#mar_hobby" data-toggle="modal"><img src="img/market/hobby.png" alt="hobby" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div> 
+				<div class="col-md-3 col-sm-3 col-xs-6 text-center"><a href="#mar_etc" data-toggle="modal"><img src="img/market/etc.png" alt="etc" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>  
 			</div>
 		</div>
 	</section>
@@ -853,15 +882,15 @@
 	<!-- community Section -->
 	<section id="community" class="bg-darkest-gray">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
+			<div class="row text-center">
+				<div class="col-lg-12">
 					<h2 class="section-heading text-title kr">커뮤니티</h2>
 					<h3 class="section-subheading text-title kr">소모임</h3>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6 text-center"><a href="#wow" data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%;"></a></div>
-				<div class="col-md-6 text-center"><a href="#lol" data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%;"></a></div>  
+				<div class="col-sm-6 col-xs-12 text-center"><a href="#wow" data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>
+				<div class="col-sm-6 col-xs-12 text-center"><a href="#lol" data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>  
 			</div>
 		</div>
 	</section>
@@ -1038,7 +1067,7 @@
 					<p>admin 님</p>
 					<p>최종 로그인 시간 :</p>
 					<button type="button" class="btn btn-primary kr" data-target="#portfolioModal3" data-toggle="modal">정보 수정</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">LOGOUT</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript:logout();">LOGOUT</button>
 				</div>
 
 			</div>
