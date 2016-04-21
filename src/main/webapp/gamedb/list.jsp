@@ -27,7 +27,7 @@ $(document).ready(function() {
 	    	var html = "";
 	    	$.each(arrData, function(idx) {
 	    	    html += '<tr>' 
-	    	    + '<td class="active">' + arrData[idx].gname + '</td>'  
+	    	    + '<td class="active">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\');">'+ arrData[idx].gname + '</a></td>'  
 	    	    + '<td class="active">' + arrData[idx].gmaker + '</td>'
 	    	    + '<td class="active">' + arrData[idx].ggenre + '</td>' 
 	    	    + '<td class="active">' + arrData[idx].grating + '</td>' 
@@ -61,7 +61,7 @@ $(document).ready(function() {
 	        	    	var html = "";
 	        	    	$.each(arrData, function(idx) {
 	        	    	    html += '<tr>' 
-	        	    	    + '<td class="active">' + '<a href=\"/nexven/gamedb?gNum='+arrData[idx].gnum+'\">'+ arrData[idx].gname + '</a></td>'  
+	        	    	    + '<td class="active">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\');">'+ arrData[idx].gname + '</a></td>'  
 	        	    	    + '<td class="active">' + arrData[idx].gmaker + '</td>'
 	        	    	    + '<td class="active">' + arrData[idx].ggenre + '</td>' 
 	        	    	    + '<td class="active">' + arrData[idx].grating + '</td>' 

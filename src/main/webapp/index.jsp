@@ -56,7 +56,8 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 
-
+<!-- Date Format JavaScript -->
+<script src="js/date.format.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="js/agency.js"></script>
