@@ -2,6 +2,8 @@ package com.unknown.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 //  회원
 public class Member {
 
@@ -133,6 +135,7 @@ public class Member {
         return mBirth;
     }
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd a hh:mm:ss")
     public void setMBirth(Date mBirth) {
         this.mBirth = mBirth;
     }
@@ -189,6 +192,7 @@ public class Member {
         return mRecentLoginDate;
     }
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd a hh:mm:ss")
     public void setMRecentLoginDate(Date mRecentLoginDate) {
         this.mRecentLoginDate = mRecentLoginDate;
     }
@@ -205,6 +209,7 @@ public class Member {
         return mOut;
     }
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd a hh:mm:ss")
     public void setMOut(Date mOut) {
         this.mOut = mOut;
     }
@@ -221,6 +226,7 @@ public class Member {
         return mJoinDate;
     }
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd a hh:mm:ss")
     public void setMJoinDate(Date mJoinDate) {
         this.mJoinDate = mJoinDate;
     }

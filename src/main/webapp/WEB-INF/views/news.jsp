@@ -37,7 +37,7 @@
 	<!-- <h1>
 	네이버(인벤) RSS파서 내용
 </h1> -->
-	<h2 class="section-heading" style="text-algin:center;">NEWS</h2>
+	<h2 class="text-center">GAME NEWS</h2>
 
 	<div class="width90">
 		<div class="row">

@@ -2,6 +2,8 @@ package com.unknown.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 //글
 public class Board {
 
@@ -90,7 +92,7 @@ public void setMId(String mId) {
 public Date getBDate() {
     return bDate;
 }
-
+@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yy-MM-dd hh:mm")
 public void setBDate(Date bDate) {
     this.bDate = bDate;
 }

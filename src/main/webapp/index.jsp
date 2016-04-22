@@ -226,7 +226,7 @@
 	      <div class="modal-content">
 	        <div class="modal-header">
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 id="nexven_view_title" class="modal-title" style="text-align:center">Nexven View</h4>
+	          <h4 id="nexven_view_title" class="modal-title text-center">Nexven View</h4>
 	        </div>
 	        <div id="nexven_view_content" class="modal-body">
 	          <p>	</p>

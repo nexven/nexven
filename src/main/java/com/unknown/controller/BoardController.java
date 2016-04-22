@@ -35,6 +35,7 @@ public class BoardController {
 	@ResponseBody
 	public List<Board> getBoard(String bName){
 		System.out.println("getBoard:"+bName);
+		boardService.getBoard(bName);
 		return boardService.getBoard(bName);
 	}
 	

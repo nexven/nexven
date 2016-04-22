@@ -29,10 +29,10 @@
 	    	var html = "";
 	    	$.each(arrData, function(idx) {
 	    	    html += '<div class="row">' 
-	    	    + '<div class="col-sm-6 col-xs-10">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\',\'게임DB\',\'\');">'+ arrData[idx].gname + '</a></div>'  
-	    	    + '<div class="col-sm-2 col-xs-0">' + arrData[idx].gmaker + '</div>'
-	    	    + '<div class="col-sm-2 col-xs-0">' + arrData[idx].ggenre + '</div>' 
-	    	    + '<div class="col-sm-2 col-xs-2">' + arrData[idx].grating + '</div>' 
+	    	    + '<div class="col-sm-4 col-xs-8">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\',\'게임DB\',\'\');">'+ arrData[idx].gname + '</a></div>'  
+	    	    + '<div class="col-sm-3 col-xs-0">' + arrData[idx].gmaker + '</div>'
+	    	    + '<div class="col-sm-3 col-xs-0">' + arrData[idx].ggenre + '</div>' 
+	    	    + '<div class="col-sm-2 col-xs-4">' + arrData[idx].grating + '</div>' 
 	    	    + '</div>' ;
 	    	});
 	    	
@@ -95,10 +95,10 @@
 
 <h1>게임 DB</h1>
 <div class="row">
-	<div class="col-sm-6 col-xs-10">게임 이름</div>
-	<div class="col-sm-2 col-xs-0">개발사</div>
-	<div class="col-sm-2 col-xs-0">장르</div>
-	<div class="col-sm-2 col-xs-2">평점</div>
+	<div class="col-sm-4 col-xs-8">게임 이름</div>
+	<div class="col-sm-3 col-xs-0">개발사</div>
+	<div class="col-sm-3 col-xs-0">장르</div>
+	<div class="col-sm-2 col-xs-4">평점</div>
 </div>
 <div class="gamedb">
 	

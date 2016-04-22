@@ -476,7 +476,10 @@ public class MemberController {
 				session.setAttribute("mName",mName);
 				session.setAttribute("mNick",mNick);
 				session.setAttribute("mIsOut",mIsOut);
-				session.setAttribute("mRecentLoginDate", new Date());
+				
+				SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
+				Date ndate = new Date();				
+				session.setAttribute("mRecentLoginDate", sf.format(ndate));
 				
 				
 				map.remove("MPASS");
