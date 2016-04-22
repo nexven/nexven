@@ -823,10 +823,17 @@ body {
 	text-align:center
 }
 .modal-nexven-sm {
+    width: 500px;
+    margin: 50px auto;
+}
+.modal-nexven-md {
     width: 50%;
     margin: 50px auto;
 }
-.modal-nexven-lg {
+.modal-nexven-bg {
     width: 90%;
     margin: 50px auto;
+}
+#nexven_view_content{
+	padding: 0 15px;
 }

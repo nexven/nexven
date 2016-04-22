@@ -26,6 +26,9 @@ grant connect,resource,unlimited tablespace to nexven identified by nexven123;
 alter user nexven default tablespace users;
 alter user nexven temporary tablespace temp;
 connect nexven/nexven123
+
+create sequence mem_seq;
+
 drop table dept;
 create table dept
        (deptno number(2) constraint pk_dept primary key,

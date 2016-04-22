@@ -27,14 +27,14 @@ public class DbReplyController {
 	@Autowired
 	DbReplyService dbReplyService;
 	
-	@RequestMapping(value="/nexven/dbreply", method=RequestMethod.GET)
+	@RequestMapping(value="/dbreply", method=RequestMethod.GET)
 	@ResponseBody
 	public List<DbReply> getList(String gName){
 		log.info("getgName"+gName);
 		return dbReplyService.getList(gName);
 	}
 	
-	@RequestMapping(value="/nexven/dbreply", method=RequestMethod.PUT)
+	@RequestMapping(value="/dbreply", method=RequestMethod.PUT)
 	@ResponseBody
 	public Map<String, Object> putDbReply(@RequestBody DbReply dbReply){
 		log.info("DbReplyNum = " + dbReply.getDbReplyNum());
@@ -61,7 +61,7 @@ public class DbReplyController {
 		return response;
 	}
 	
-	@RequestMapping(value="/nexven/dbReply", method=RequestMethod.POST)
+	@RequestMapping(value="/dbReply", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> postDbReply(@RequestBody DbReply dbReply){
 		log.info("DbReplyNum = " + dbReply.getDbReplyNum());
@@ -87,7 +87,7 @@ public class DbReplyController {
 		return response;
 	}
 	
-	@RequestMapping(value="/nexven/dbreply", method=RequestMethod.DELETE)
+	@RequestMapping(value="/dbreply", method=RequestMethod.DELETE)
 	@ResponseBody
 	public Map<String, Object> deleteDbReply(Integer dbReplyNum){		
 		log.info("dbReplyNum="+dbReplyNum);

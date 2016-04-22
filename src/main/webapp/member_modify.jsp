@@ -3,15 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
 <%
-	if(session.getAttribute("mNick") != null){
+	if(session.getAttribute("mNick") == null){
 %>
 	<script>
-		alert('이미 로그인이 되어있습니다.');
+		alert('로그인이 필요합니다.');
 		location.href = "./";
 	</script>
 <%
 	}else{
 %>
+
 
 <style type="text/css">
 	#join_wrap{
@@ -162,7 +163,7 @@
    
    
    <div id="join_menu">
-    <button type="button" class="input_button" onclick="javascript:check();">회원가입</button>
+    <button type="button" class="input_button" onclick="javascript:check();">회원수정</button>
     <button type="reset" class="input_button" onclick="$('#mId').focus();" >가입취소</button>
    </div>
   </form>

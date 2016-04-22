@@ -65,42 +65,28 @@
 <!-- Text ellipsis -->
 <script src="js/index.js"></script>
 
-<!-- angluar -->
-<!-- <script -->
-<!-- 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap.min.js"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/angular.bootstrap/1.2.2/ui-bootstrap-tpls.min.js"></script> -->
 
 <script type="text/javascript">
-<%
-	String tab = request.getParameter("tab");
-	if(tab != null){
-%>
-	$.ajax({
-	    type: "get",
-	    url: "<%=tab%>",
-	    contentType: "application/html",
-		success: function(result) {
-			$("#nexven_view_content").html(result);
-			$('#nexven_view').modal('show');
-	    },
-	    error: function(){
-	        alert('Nexven View 불러오기 실패 (index)');
-	    }
-	});
-<%
-	}
-%>
 
-
-
-	function nload(src){
+	// 메인 로드함수 Modal
+	function nload(src,title,size){
 		$.ajax({
-		    type: "get",
+		    type: "GET",
+		    async : true,
+		    cache : false,
+		    encoding: "UTF-8",
 		    url: src,
-		    contentType: "application/html",
 			success: function(result) {
+				if(size=="small"){
+					$("#nexven_view_class").attr("class","modal-dialog modal-nexven-sm");
+				}else if(size=="mid"){
+					$("#nexven_view_class").attr("class","modal-dialog modal-nexven-md");
+				}else{
+					$("#nexven_view_class").attr("class","modal-dialog modal-nexven-bg");
+				}
+
 				$("#nexven_view_content").html(result);
+				$("#nexven_view_title").html(title);
 				$('#nexven_view').modal('show');
 		    },
 		    error: function(){
@@ -108,10 +94,45 @@
 		    }
 		});
 	}
-	
+
+ 	$(function(){
+
+ 		
+ 		$.ajax({
+ 		    type: "get",
+		    async : true,
+		    cache : false,
+		    encoding: "UTF-8",
+ 		    url: "/nexven/news_main",
+ 			success: function(news_main) {
+ 		        var news_main_json = JSON.parse(JSON.stringify(news_main));
+ 		        $.each(news_main_json, function(i) {
+ 		        	//alert(news_main_json[i].title);
+
+ 					if(news_main_json[i].enclosure==null||news_main_json[i].enclosure==""){					
+ 						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20Image&w=200&h=100";
+ 					}		        	
+ 		        	$("#news_main"+i+"_img").html("<a href='javascript:nload(\" "+news_main_json[i].link+" \",\"뉴스 내용\",\" \");'>"+"<img src='"+news_main_json[i].enclosure+"' /></a>");
+ 		        	$("#news_main"+i+"_title").html("<a href='javascript:nload(\" "+news_main_json[i].link+" \",\"뉴스 내용\",\" \");'>"+news_main_json[i].title+"</a>");
+ 		        	$("#news_main"+i+"_desc").html(news_main_json[i].description);
+ 		        });		        
+ 				
+ 		    },
+ 		    error: function(){
+ 		        alert('메인뉴스 불러오기 실패');
+ 		    }
+ 		});
+
+ 	}); 	
+
+
+	// 비동기 로그아웃
 	function logout() {
 		$.ajax({
 				type : "get",
+			    async : true,
+			    cache : false,
+			    encoding: "UTF-8",
 				url : "logout.jsp",
 				success: function() {
 					location.href = "./";
@@ -120,39 +141,17 @@
 			    	location.href = "./";
 			    }
 
-});
-		  
-		}
-	
-	$(function(){	
-		
-		$.ajax({
-		    type: "get",
-		    url: "/nexven/news_main",
-		    contentType: "application/json",
-			success: function(news_main) {
-		        var news_main_json = JSON.parse(JSON.stringify(news_main));
-		        $.each(news_main_json, function(i) {
-		        	//alert(news_main_json[i].title);
-
-					if(news_main_json[i].enclosure==null||news_main_json[i].enclosure==""){					
-						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20Image&w=200&h=100";
-					}		        	
-		        	$("#news_main"+i+"_img").html("<a href='javascript:nload(\""+news_main_json[i].link+"\");'>"+"<img src='"+news_main_json[i].enclosure+"' /></a>");
-		        	$("#news_main"+i+"_title").html("<a href='javascript:nload(\""+news_main_json[i].link+"\");'>"+news_main_json[i].title+"</a>");
-		        	$("#news_main"+i+"_desc").html(news_main_json[i].description);
-		        });		        
-				
-				//$("#news_main0_img").html(result2);
-		    },
-		    error: function(){
-		        alert('메인뉴스 불러오기 실패');
-		    }
-		});
-	});
-
+		});		  
+	}
 
 </script>
+
+<!-- 초기 로딩 index 페이지 modal -->
+<c:if test="${!empty param.src }">
+	<script>
+		nload("${param.src}","${param.title}","${param.size}");
+	</script>
+</c:if>
 
 </head>
 
@@ -186,8 +185,7 @@
 					<!-- 로그인 전 로그인 버튼 -->
 					<!-- <li><a class="btn btn-primary" href="#portfolioModal1" data-toggle="modal">LOGIN</a></li> -->
 					<!-- 로그인 후 아이디 -->
-					<li><a class="page-scroll kr" id="nexven_nick" href="#myModal"
-						data-toggle="modal">
+					<li><a class="kr" id="nexven_nick" href='javascript:nload("login_info.jsp","회원정보","small");'>
 							
 							<c:set var="mNick" value="${mNick}" />
 							
@@ -214,8 +212,7 @@
 				<div class="intro-heading">NEXVEN</div>
 
 				<!-- 로그인 후에 버튼 숨김 -->
-				<a href="javascript:nload('login2.jsp');" class="page-scroll btn btn-xl"
-					data-toggle="modal">LOGIN</a>
+				<a href='javascript:nload("login.jsp","로그인","small");' class='btn-xl'>LOGIN</a>
 				
 			</div>
 		</div>
@@ -224,13 +221,13 @@
 
 	<!-- Modal -->
 	  <div class="modal fade" id="nexven_view" role="dialog">
-	    <div id="nexven_view_class" class="modal-dialog modal-nexven-lg">
+	    <div id="nexven_view_class" class="modal-dialog modal-nexven-bg">
 	    
 	      <!-- Modal content-->
 	      <div class="modal-content">
 	        <div class="modal-header">
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="modal-title" style="text-align:center">Nexven View</h4>
+	          <h4 id="nexven_view_title" class="modal-title" style="text-align:center">Nexven View</h4>
 	        </div>
 	        <div id="nexven_view_content" class="modal-body">
 	          <p>	</p>
@@ -251,7 +248,7 @@
 			<div class="row text-center">
 				<div class="col-lg-12">
 					<h2 class="section-heading titlelink">
-					<a id="nexven_news" data-toggle="modal" href="javascript:nload('news');">NEWS</a></h2>
+					<a id="nexven_news" href='javascript:nload("news","게임뉴스","");'>NEWS</a></h2>
 				
 					<h3 class="section-subheading text-muted kr">게임 업계 뉴스</h3>
 				</div>
@@ -310,14 +307,14 @@
 	<section id="db" class="bg-darkest-gray">
 		<div class="container">
 
-			<div class="row text-center">
-				<div class="col-lg-12">
-					<h2 class="section-heading text-title"><a href="#gamedb" data-toggle="modal">Game DB</a></h2>
-				</div>
-			</div>
+<!-- 			<div class="row text-center"> -->
+<!-- 				<div class="col-lg-12"> -->
+<!-- 					<h2 class="section-heading text-title"><a href="#gamedb" data-toggle="modal">Game DB</a></h2> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading text-title"><a id="nexven_gamedb" data-toggle="modal" href="javascript:nload('/nexven/gamedb/list.jsp');" >Game DB</a></h2>
+					<h2 class="section-heading text-title"><a id="nexven_gamedb" href='javascript:nload("/nexven/gamedb/list.jsp","게임DB","");'>Game DB</a></h2>
 
 					<h3 class="section-subheading text-title kr"><a href="#gamedb" data-toggle="modal">DB 검색</a></h3>
 				</div>
@@ -410,7 +407,7 @@
 				<div class="col-md-6">
 					<ul class="">
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -420,7 +417,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -430,7 +427,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -440,7 +437,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -450,7 +447,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -460,7 +457,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -507,7 +504,7 @@
 				<div class="col-md-6">
 					<ul class="">
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -517,7 +514,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -527,7 +524,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -537,7 +534,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -547,7 +544,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -557,7 +554,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -603,7 +600,7 @@
 				<div class="col-md-6">
 					<ul class="">
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -613,7 +610,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -623,7 +620,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -633,7 +630,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -643,7 +640,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -653,7 +650,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -699,7 +696,7 @@
 				<div class="col-md-6">
 					<ul class="">
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -709,7 +706,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -719,7 +716,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -729,7 +726,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -739,7 +736,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -749,7 +746,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -796,7 +793,7 @@
 				<div class="col-md-6">
 					<ul class="">
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -806,7 +803,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -816,7 +813,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -826,7 +823,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -836,7 +833,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -846,7 +843,7 @@
 							src="img/bbs/mark_hot1.gif"
 							alt="HOT" /></li>
 						<li class="text-elli kr"><img
-							src="http://static.inven.co.kr/image_2011/common/module/openissue/board2097_1_1.png"
+							src=""
 							class="" alt="" /> <a
 							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
 							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
@@ -916,164 +913,6 @@
 	</footer>
 
 
-	<!-- login Modal 1 로그인 화면-->
-	<div class="portfolio-modal modal fade" id="portfolioModal1"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-		 
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- login Modal 2 회원 가입 -->
-	<div class="portfolio-modal modal fade" id="portfolioModal2"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 col-lg-offset-2">
-						<div class="modal-body">
-							<!-- Project Details Go Here -->
-							<h2 class="kr">회원 가입</h2>
-							<p>
-								<label class="signin_label">ID</label><input type="text"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">PW</label><input type="password"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">PW 확인</label><input type="password"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">이름</label><input type="text"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">닉네임</label><input type="text"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">생년월일</label><input type="date"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">우편 번호</label><input type="text"
-									class="signin_post" readonly />
-								<button class="signin_post btn btn-primary">확인</button>
-							</p>
-							<p>
-								<label class="signin_label">주소</label><input type="text"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">상세 주소</label><input type="text"
-									class="signin_input" />
-							</p>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">가입</button>
-							<button type="button" class="btn btn-primary">취소</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- login Modal 3 회원 수정 -->
-	<div class="portfolio-modal modal fade" id="portfolioModal3"
-		tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-content">
-			<div class="close-modal" data-dismiss="modal">
-				<div class="lr">
-					<div class="rl"></div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 col-lg-offset-2">
-						<div class="modal-body">
-							<h2 class="kr">회원 정보 수정</h2>
-							<p>
-								<label class="signin_label">ID</label><input type="text"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">PW</label><input type="password"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">PW 확인</label><input type="password"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">이름</label><input type="text"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">닉네임</label><input type="text"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">생년월일</label><input type="date"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">우편 번호</label><input type="text"
-									class="signin_post" readonly />
-								<button class="signin_post btn btn-primary">확인</button>
-							</p>
-							<p>
-								<label class="signin_label">주소</label><input type="text"
-									class="signin_input" />
-							</p>
-							<p>
-								<label class="signin_label">상세 주소</label><input type="text"
-									class="signin_input" />
-							</p>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">수정</button>
-							<button type="button" class="btn btn-primary">취소</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- 개인정보 Modal -->
-	<div class="modal2 fade" id="myModal" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content">
-
-				<div class="modal-body">
-					<h2>회원 정보</h2>
-					<p>admin 님</p>
-					<p>최종 로그인 시간 :</p>
-					<button type="button" class="btn btn-primary kr" data-target="#portfolioModal3" data-toggle="modal">정보 수정</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="javascript:logout();">LOGOUT</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	
 	<!-- game db modal -->
 <!-- 	<div class="portfolio-modal modal fade" id="gamedb" -->
 <!-- 		tabindex="-1" role="dialog" aria-hidden="true"> -->

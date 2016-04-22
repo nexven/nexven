@@ -26,20 +26,20 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
-	@RequestMapping(value="/nexven/board/list")
+	@RequestMapping(value="/board/list")
 	@ResponseBody
 	public List<Board> getList() {
 		return boardService.getList();
 	}
 	
-	@RequestMapping(value="/nexven/board", method=RequestMethod.GET)
+	@RequestMapping(value="/board", method=RequestMethod.GET)
 	@ResponseBody
 	public Board getBoard(Integer bNum){
 		log.info("getBoard"+bNum);
 		return boardService.getBoard(bNum);
 	}
 	
-	@RequestMapping(value="/nexven/board", method=RequestMethod.PUT)
+	@RequestMapping(value="/board", method=RequestMethod.PUT)
 	@ResponseBody
 	public Map<String, Object> putBoard(@RequestBody Board board){
 		
@@ -60,7 +60,7 @@ public class BoardController {
 		return response;
 	}
 	
-	@RequestMapping(value="/nexven/board", method=RequestMethod.POST)
+	@RequestMapping(value="/board", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> postBoard(@RequestBody Board board){
 	
@@ -80,7 +80,7 @@ public class BoardController {
 		return response;
 	}
 	
-	@RequestMapping(value="/nexven/board", method=RequestMethod.DELETE)
+	@RequestMapping(value="/board", method=RequestMethod.DELETE)
 	@ResponseBody
 	public Map<String, Object> deleteBoard(Integer bNum){		
 		log.info("bNum="+bNum);

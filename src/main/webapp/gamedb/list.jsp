@@ -13,21 +13,23 @@
 <!-- <title>list.jsp</title> -->
 
 <script type="text/javascript">
-$(document).ready(function() {
-	
+
 	$.ajax({
-	    type: "get",
-	    url: "/nexven/gamedb/page?pageNo=1",
+	    type: "GET",
+	    async : true,
+	    cache : false,
+	    encoding: "UTF-8",
+	    url: "gamedb/list",
 	    contentType: "application/json",
 		success: function(result) {
-	        var json = JSON.stringify(result.games);
+	        var json = JSON.stringify(result);
 	        var json2 = JSON.parse(json);
 	        var arrData = json2;
 	    	
 	    	var html = "";
 	    	$.each(arrData, function(idx) {
 	    	    html += '<tr>' 
-	    	    + '<td class="active">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\');">'+ arrData[idx].gname + '</a></td>'  
+	    	    + '<td class="active">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\',\'게임DB\',\'\');">'+ arrData[idx].gname + '</a></td>'  
 	    	    + '<td class="active">' + arrData[idx].gmaker + '</td>'
 	    	    + '<td class="active">' + arrData[idx].ggenre + '</td>' 
 	    	    + '<td class="active">' + arrData[idx].grating + '</td>' 
@@ -42,45 +44,48 @@ $(document).ready(function() {
 	    }
 	});
 	
-	 $('#pagination-demo').twbsPagination({
-	        totalPages: 10,
-	        visiblePages: 5,
-	        onPageClick: function (event, page) {
-	            $('#page-content').text('Page ' + page);
+// 	 $('#pagination-demo').twbsPagination({
+// 	        totalPages: 10,
+// 	        visiblePages: 5,
+// 	        onPageClick: function (event, page) {
+// 	            $('#page-content').text('Page ' + page);
 	            
-	            $.ajax({
-	        	    type: "get",
-	        	    url: "/nexven/gamedb/page?pageNo="+page,
-	        	    contentType: "application/json",
-	        		success: function(result) {
-	        	        var json = JSON.stringify(result.games);
-	        	        curruntPage = JSON.stringify(result.pageNo);
-	        	        var json2 = JSON.parse(json);
-	        	        var arrData = json2;
+// 	            $.ajax({
+// 	        	    type: "GET",
+// 	        	    async : true,
+// 	        	    cache : false,
+// 	        	    encoding: "UTF-8",
+// 	        	    url: "/nexven/gamedb/page?pageNo="+page,
+// 	        	    contentType: "application/json",
+// 	        		success: function(result) {
+// 	        	        var json = JSON.stringify(result.games);
+// 	        	        curruntPage = JSON.stringify(result.pageNo);
+// 	        	        var json2 = JSON.parse(json);
+// 	        	        var arrData = json2;
 	        	    	
-	        	    	var html = "";
-	        	    	$.each(arrData, function(idx) {
-	        	    	    html += '<tr>' 
-	        	    	    + '<td class="active">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\');">'+ arrData[idx].gname + '</a></td>'  
-	        	    	    + '<td class="active">' + arrData[idx].gmaker + '</td>'
-	        	    	    + '<td class="active">' + arrData[idx].ggenre + '</td>' 
-	        	    	    + '<td class="active">' + arrData[idx].grating + '</td>' 
-	        	    	    + '</tr>' ;
-	        	    	});
+// 	        	    	var html = "";
+// 	        	    	$.each(arrData, function(idx) {
+// 	        	    	    html += '<tr>' 
+// 	        		        + '<td class="active">' + '<a href="javascript:nload(\"/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\",\"게임DB\",\"\");">'+ arrData[idx].gname + '</a></td>'
+// 	        	    	    + '<td class="active">' + arrData[idx].gmaker + '</td>'
+// 	        	    	    + '<td class="active">' + arrData[idx].ggenre + '</td>' 
+// 	        	    	    + '<td class="active">' + arrData[idx].grating + '</td>' 
+// 	        	    	    + '</tr>' ;
+// 	        	    	});
 	        	    	
-	        	    	$(".gamedb").html(html);
+// 	        	    	$(".gamedb").html(html);
 	        		
-	        	    },
-	        	    error: function(){
-	        	        alert('ajax 불러오기 실패');
-	        	    }
-	        	});
+// 	        	    },
+// 	        	    error: function(){
+// 	        	        alert('ajax 불러오기 실패');
+// 	        	    }
+// 	        	});
 	            
 	            
-	        }
-	    });
+// 	        }
+// 	    });
 	
-});
+
 
 </script>
 <!-- </head> -->
@@ -101,7 +106,7 @@ $(document).ready(function() {
 		
 		</tbody>
 	</table>
-	<div aling="center">
+	<div align="center">
 	<ul id="pagination-demo" class="pagination-sm"></ul>
 	</div>
 <!-- </body> -->

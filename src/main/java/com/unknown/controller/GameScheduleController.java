@@ -25,20 +25,20 @@ public class GameScheduleController {
 	@Autowired
 	GameScheduleService gameScheduleService;
 	
-	@RequestMapping(value="/nexven/gameschedule/list")
+	@RequestMapping(value="/gameschedule/list")
 	@ResponseBody
 	public List<GameSchedule> getList() {
 		return gameScheduleService.getList();
 	}
 	
-	@RequestMapping(value="/nexven/gameschedule", method=RequestMethod.GET)
+	@RequestMapping(value="/gameschedule", method=RequestMethod.GET)
 	@ResponseBody
 	public GameSchedule getGameSchedule(Integer sNum){
 		log.info("getGameSchedule"+sNum);
 		return gameScheduleService.getGameSchedule(sNum);
 	}
 	
-	@RequestMapping(value="/nexven/gameschedule", method=RequestMethod.PUT)
+	@RequestMapping(value="/gameschedule", method=RequestMethod.PUT)
 	@ResponseBody
 	public Map<String, Object> putGameSchedule(@RequestBody GameSchedule gameSchedule){
 		log.info("sNum = " + gameSchedule.getSNum());
@@ -63,7 +63,7 @@ public class GameScheduleController {
 		return response;
 	}
 	
-	@RequestMapping(value="/nexven/gameschedule", method=RequestMethod.POST)
+	@RequestMapping(value="/gameschedule", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> postGameSchedule(@RequestBody GameSchedule gameSchedule){
 		log.info("sNum = " + gameSchedule.getSNum());
@@ -88,7 +88,7 @@ public class GameScheduleController {
 		return response;
 	}
 	
-	@RequestMapping(value="/nexven/gameschedule", method=RequestMethod.DELETE)
+	@RequestMapping(value="/gameschedule", method=RequestMethod.DELETE)
 	@ResponseBody
 	public Map<String, Object> deleteGameSchedule(Integer sNum){		
 		log.info("sNum="+sNum);

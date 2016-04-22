@@ -26,20 +26,20 @@ public class GameDbController {
 	@Autowired
 	GameDbService gameDbService;
 	
-	@RequestMapping(value="/nexven/gamedb/list")
+	@RequestMapping(value="/gamedb/list")
 	@ResponseBody
 	public List<GameDb> getList() {
 		return gameDbService.getList();
 	}
 	
-	@RequestMapping(value="/nexven/gamedb", method=RequestMethod.GET)
+	@RequestMapping(value="/gamedb", method=RequestMethod.GET)
 	@ResponseBody
 	public GameDb getGameDb(Integer gNum){
 		log.info("getGameDb"+gNum);
 		return gameDbService.getGameDb(gNum);
 	}
 	
-	@RequestMapping(value="/nexven/gamedb", method=RequestMethod.PUT)
+	@RequestMapping(value="/gamedb", method=RequestMethod.PUT)
 	@ResponseBody
 	public Map<String, Object> putGameDb(@RequestBody GameDb gameDb){
 		log.info("gNum = " + gameDb.getGNum());
@@ -70,7 +70,7 @@ public class GameDbController {
 		return response;
 	}
 	
-	@RequestMapping(value="/nexven/gamedb", method=RequestMethod.POST)
+	@RequestMapping(value="/gamedb", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> postGameDb(@RequestBody GameDb gameDb){
 		log.info("gName = " + gameDb.getGName());
@@ -101,7 +101,7 @@ public class GameDbController {
 		return response;
 	}
 	
-	@RequestMapping(value="/nexven/gamedb", method=RequestMethod.DELETE)
+	@RequestMapping(value="/gamedb", method=RequestMethod.DELETE)
 	@ResponseBody
 	public Map<String, Object> deleteGameDb(Integer gNum){		
 		log.info("gNum="+gNum);

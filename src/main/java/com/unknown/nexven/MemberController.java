@@ -1,7 +1,9 @@
 package com.unknown.nexven;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,21 +26,22 @@ import com.unknown.service.MemberService;
 @Controller
 public class MemberController {
 	@Autowired
-	MemberService memberService;
-	
+	MemberService memberService;	
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	/*회원 가입 저장 */
 	@RequestMapping(value="/member_join_ok", method=RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String member_join_ok(HttpServletRequest request,
+	public Map<String, String> member_join_ok(HttpServletRequest request,
 			HttpServletResponse response){
+		
+		Map<String,String> join_chk = new HashMap<String,String>();
 		
 		try {
 			Member m = new Member();
 			
-			m.setMNum(1);
+			//m.setMNum(1);
 			
 			String mId = request.getParameter("mId");
 			m.setMId(mId);
@@ -123,10 +126,18 @@ public class MemberController {
 		    
 		    memberService.insert(m);
 		    
-		    return "success";
+		    join_chk.put("success","성공");
+		    
+		    return join_chk;
+		} catch(NullPointerException ne){
+			join_chk.put("success","빈문자열");
+			return join_chk;
+		} catch (ParseException pe){
+			join_chk.put("success","분석오류");
+			return join_chk;
 		} catch (Exception e) {
-			// TODO: handle exception
-			return "fail";
+			join_chk.put("success","오류발생");
+			return join_chk;
 		}
 	    
 		
@@ -139,9 +150,9 @@ public class MemberController {
 		
 		int ch = 0;
 		
-		System.out.println("as");
+
 		System.out.println(request.getParameter("memid"));
-		System.out.println("as"+ memberService.idcheck(request.getParameter("memid")));
+		System.out.println(memberService.idcheck(request.getParameter("memid")));
 		
 		if(memberService.idcheck(request.getParameter("memid")) != null)
 			ch = 1;
@@ -157,9 +168,8 @@ public class MemberController {
 		
 		int ch = 0;
 		
-		System.out.println("as");
 		System.out.println(request.getParameter("memnick"));
-		System.out.println("as"+ memberService.nickcheck(request.getParameter("memnick")));
+		System.out.println(memberService.nickcheck(request.getParameter("memnick")));
 		
 		if(memberService.nickcheck(request.getParameter("memnick")) != null)
 			ch = 1;
@@ -169,17 +179,20 @@ public class MemberController {
 	}
 	
 	/*로그인 인증  */
-	@RequestMapping(value="/member_login_ok",method=RequestMethod.POST, produces = "application/json; charset=utf8")
+	@RequestMapping(value="/member_login_ok",method=RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String member_login_ok(HttpServletRequest request,
+	public Map<String, String> member_login_ok(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session, Model model)
 					throws Exception{
 		
 		System.out.println("로그인");
+		
+		Map<String,String> login_chk = new HashMap<String,String>();
+		
 		//HttpSession 클래스는 세션객체를 생성해서 로그인 인증 처리를 하기 위해서 이다.
 		//PrintWriter out=response.getWriter();//출력스트림 객체 생성
 		
-		//response.setContentType("application/json;charset=UTF-8");
+		//response.setContentType("text/html;charset=UTF-8");
 		
 		session=request.getSession();//세션 객체 생성
 		
@@ -203,7 +216,8 @@ public class MemberController {
 //			out.println("alert('등록되지 않은 회원입니다!')");
 //			out.println("history.back()");
 //			out.println("</script>");
-			return "fail1";
+			login_chk.put("success","실패");
+			return login_chk;
 		}else{//등록된 회원일때
 			if(map.get("MPASS").equals(pwd)){//비번이 같을때
 				session.setAttribute("id",id);
@@ -213,18 +227,19 @@ public class MemberController {
 				
 				session.setAttribute("mName",mName);
 				session.setAttribute("mNick",mNick);
-				
+				login_chk.put("success","성공");
 				
 				//jsp폴더의 index.jsp로 이동
 				
-				return "success";
+				return login_chk;
 
 			}else{//비번이 다를때
 //				out.println("<script>");
 //				out.println("alert('비번이 다릅니다!')");
 //				out.println("history.go(-1)");
 //				out.println("</script>");\
-				return "fail2";
+				login_chk.put("success","실패");
+				return login_chk;
 			}
 		}
 		
