@@ -26,7 +26,7 @@
 	<select id="selectBybNum" resultType="com.unknown.model.Board"
 	    parameterType="int">
 	    <include refid="FromBoard"/>
-	   	 where bNum = #{bNum} 
+	   	 where bNum = #{bName}
 	</select>
 	
 	<insert id="insert" parameterType="com.unknown.model.Board">

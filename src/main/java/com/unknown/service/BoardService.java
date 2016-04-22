@@ -24,7 +24,7 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public Board getBoard(Integer bNum){
+	public Board getBoard(String bNum){
 		return boardMapper.selectBybNum(bNum);
 	}
 	
@@ -39,8 +39,8 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public Board delete(Integer bNum){
-		Board board = boardMapper.selectBybNum(bNum);
+	public Board delete(Integer bNum,String bName){
+		Board board = boardMapper.selectBybNum(bName);
 		boardMapper.deleteBybNum(bNum);
 		return board;		
 	}

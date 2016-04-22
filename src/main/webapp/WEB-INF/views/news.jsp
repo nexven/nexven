@@ -61,7 +61,7 @@
 
 				</div>
 				<div class="col-md-5 col-sm-5 col-xs-8 titlelink kr" style="text-align:left !important;">
-					<a href="javascript:nload('${v['link']}');">${v['title']}</a>
+					<a href='javascript:nload("${v["link"]}","게임내용","");'>${v["title"]}</a>
 				</div>
 				<div class="col-md-2 col-sm-2 col-xs-0 kr">${v['category']}</div>
 				<div class="col-md-2 col-sm-2 col-xs-0 kr">${v['pubDate']}</div>

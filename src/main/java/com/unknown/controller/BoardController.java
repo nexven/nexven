@@ -34,9 +34,9 @@ public class BoardController {
 	
 	@RequestMapping(value="/board", method=RequestMethod.GET)
 	@ResponseBody
-	public Board getBoard(Integer bNum){
-		log.info("getBoard"+bNum);
-		return boardService.getBoard(bNum);
+	public Board getBoard(String bName){
+		log.info("getBoard:"+bName);
+		return boardService.getBoard(bName);
 	}
 	
 	@RequestMapping(value="/board", method=RequestMethod.PUT)
@@ -82,7 +82,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/board", method=RequestMethod.DELETE)
 	@ResponseBody
-	public Map<String, Object> deleteBoard(Integer bNum){		
+	public Map<String, Object> deleteBoard(Integer bNum,String bName){		
 		log.info("bNum="+bNum);
 		Map<String, Object> response = new HashMap<>();
 		
@@ -90,7 +90,7 @@ public class BoardController {
 		response.put("message", "글이 삭제되었습니다.");
 		
 		try{
-			boardService.delete(bNum);
+			boardService.delete(bNum,bName);
 		}catch (RuntimeException ex){
 			log.info(ex.getMessage());
 			response.put("success", false);

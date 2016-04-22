@@ -58,6 +58,10 @@ body {
 	.hiddentitle {
 		display:none;
 	}
+	.modal-nexven-sm {
+    width: 90%;
+    margin: 50px auto;
+}
 }
 @media (min-width: 768px) {
 	.titlelink img {
@@ -75,6 +79,10 @@ body {
 	.hiddentitle {
 		display:none;
 	}
+	.modal-nexven-sm {
+    width: 500px;
+    margin: 50px auto;
+}
 }
 @media (min-width: 992px) {
 	.titlelink img {
@@ -821,10 +829,6 @@ body {
 }
 #nexven_news_content{
 	text-align:center
-}
-.modal-nexven-sm {
-    width: 500px;
-    margin: 50px auto;
 }
 .modal-nexven-md {
     width: 50%;
