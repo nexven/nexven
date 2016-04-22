@@ -110,7 +110,7 @@
  		        	//alert(news_main_json[i].title);
 
  					if(news_main_json[i].enclosure==null||news_main_json[i].enclosure==""){					
- 						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=50&txt=No%20Image&w=640&h=480";
+ 						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20Image&w=640&h=480";
  					}		        	
  		        	$("#news_main"+i+"_img").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+"<img src='"+news_main_json[i].enclosure+"' /></a>");
  		        	$("#news_main"+i+"_title").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+news_main_json[i].title+"</a>");
@@ -178,10 +178,10 @@
 					<li class="hidden"><a href="#page-top"></a></li>
 					<li><a class="page-scroll kr" href="#news">뉴스</a></li>
 					<li><a class="page-scroll kr" href="#db">게임 DB</a></li>
-					<li><a class="page-scroll kr" href="#schedule">게임 일정</a></li>
-					<li><a class="page-scroll kr" href="#zone">게이머존</a></li>
-					<li><a class="page-scroll kr" href="#market">중고장터</a></li>
+					<!-- <li><a class="page-scroll kr" href="#schedule">게임 일정</a></li> -->
+					<li><a class="page-scroll kr" href="#zone">게이머존</a></li>					
 					<li><a class="page-scroll kr" href="#community">커뮤니티</a></li>
+					<li><a class="page-scroll kr" href="#market">중고장터</a></li>
 					<!-- 로그인 전 로그인 버튼 -->
 					<!-- <li><a class="btn btn-primary" href="#portfolioModal1" data-toggle="modal">LOGIN</a></li> -->
 					<!-- 로그인 후 아이디 -->
@@ -347,7 +347,7 @@
 	</section>
 
 	<!-- game schedule Section -->
-	<section id="schedule">
+	<!-- <section id="schedule">
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-lg-12">
@@ -361,499 +361,35 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<!-- gamer Zone Section -->
-	<section id="zone" class="bg-darkest-gray">
+	<section id="zone">
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-lg-12">
-					<h2 class="section-heading text-title kr">게이머존</h2>
+					<h2 class="section-heading titlelink"><a>gamer zone</a></h2>
+					<h3 class="section-subheading titlelink kr">자유 게시판</h3>
 				</div>
 			</div>
-			<div class="row width80">
-				<h3 class="section-bbs text-title kr"><span class="square"></span> 자유 게시판</h3>
-
-				<div class="col-md-6">
-					<div class="col-md-6" style="text-align: center;">
-						<dt>
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&iskin=webzine&l=529966"><img
-								src="http://upload2.inven.co.kr/upload/2016/04/05/bbs/thumb/n10814551045.jpg"
-								alt=""></a>
-						</dt>
-						<dd class="text-elli kr">
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;iskin=webzine&amp;l=529966">기적의
-								공대오빠 후기 <span class="text-title">[51]</span>
-							</a>
-						</dd>
-					</div>
-					<div class="col-md-6" style="text-align: center;">
-						<dt>
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&iskin=webzine&l=530174"><img
-								src="http://upload2.inven.co.kr/upload/2016/04/06/bbs/thumb/n12711453428.jpg"
-								alt=""></a>
-						</dt>
-						<dd class="text-elli kr">
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;iskin=webzine&amp;l=530174">헐리웃
-								영화속 한국인 캐릭터 ..  <span class="text-title">[25]</span>
-							</a>
-						</dd>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<ul class="">
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-					</ul>
-				</div>
+			<div class="row">
 				
-				<h3 class="section-bbs text-title kr"><span class="square"></span> 유머</h3>
-
-				<div class="col-md-6">
-					<div class="col-md-6" style="text-align: center;">
-						<dt>
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&iskin=webzine&l=529966"><img
-								src="http://upload2.inven.co.kr/upload/2016/04/05/bbs/thumb/n10814551045.jpg"
-								alt=""></a>
-						</dt>
-						<dd class="text-elli kr">
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;iskin=webzine&amp;l=529966">기적의
-								공대오빠 후기 <span class="text-title">[51]</span>
-							</a>
-						</dd>
-					</div>
-					<div class="col-md-6" style="text-align: center;">
-						<dt>
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&iskin=webzine&l=530174"><img
-								src="http://upload2.inven.co.kr/upload/2016/04/06/bbs/thumb/n12711453428.jpg"
-								alt=""></a>
-						</dt>
-						<dd class="text-elli kr">
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;iskin=webzine&amp;l=530174">헐리웃
-								영화속 한국인 캐릭터 ..  <span class="text-title">[25]</span>
-							</a>
-						</dd>
-					</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- community Section -->
+	<section id="community" class="bg-darkest-gray">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-lg-12">
+					<h2 class="section-heading text-title kr"><a href='javascript:nload("board/list.jsp","커뮤니티","");'>커뮤니티</a></h2>
+					<h3 class="section-subheading text-title kr">소모임</h3>
 				</div>
-				<div class="col-md-6">
-					<ul class="">
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-					</ul>
-				</div>
-				<h3 class="section-bbs text-title kr"><span class="square"></span> TV/연예</h3>
-
-				<div class="col-md-6">
-					<div class="col-md-6" style="text-align: center;">
-						<dt>
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&iskin=webzine&l=529966"><img
-								src="http://upload2.inven.co.kr/upload/2016/04/05/bbs/thumb/n10814551045.jpg"
-								alt=""></a>
-						</dt>
-						<dd class="text-elli kr">
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;iskin=webzine&amp;l=529966">기적의
-								공대오빠 후기 <span class="text-title">[51]</span>
-							</a>
-						</dd>
-					</div>
-					<div class="col-md-6" style="text-align: center;">
-						<dt>
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&iskin=webzine&l=530174"><img
-								src="http://upload2.inven.co.kr/upload/2016/04/06/bbs/thumb/n12711453428.jpg"
-								alt=""></a>
-						</dt>
-						<dd class="text-elli kr">
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;iskin=webzine&amp;l=530174">헐리웃
-								영화속 한국인 캐릭터 ..  <span class="text-title">[25]</span>
-							</a>
-						</dd>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<ul class="">
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-					</ul>
-				</div>
-				<h3 class="section-bbs text-title kr"><span class="square"></span> 스포츠</h3>
-
-				<div class="col-md-6">
-					<div class="col-md-6" style="text-align: center;">
-						<dt>
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&iskin=webzine&l=529966"><img
-								src="http://upload2.inven.co.kr/upload/2016/04/05/bbs/thumb/n10814551045.jpg"
-								alt=""></a>
-						</dt>
-						<dd class="text-elli kr">
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;iskin=webzine&amp;l=529966">기적의
-								공대오빠 후기 <span class="text-title">[51]</span>
-							</a>
-						</dd>
-					</div>
-					<div class="col-md-6" style="text-align: center;">
-						<dt>
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&iskin=webzine&l=530174"><img
-								src="http://upload2.inven.co.kr/upload/2016/04/06/bbs/thumb/n12711453428.jpg"
-								alt=""></a>
-						</dt>
-						<dd class="text-elli kr">
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;iskin=webzine&amp;l=530174">헐리웃
-								영화속 한국인 캐릭터 ..  <span class="text-title">[25]</span>
-							</a>
-						</dd>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<ul class="">
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-					</ul>
-				</div>
-				
-				<h3 class="section-bbs text-title kr"><span class="square"></span> 동영상</h3>
-
-				<div class="col-md-6">
-					<div class="col-md-6" style="text-align: center;">
-						<dt>
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&iskin=webzine&l=529966"><img
-								src="http://upload2.inven.co.kr/upload/2016/04/05/bbs/thumb/n10814551045.jpg"
-								alt=""></a>
-						</dt>
-						<dd class="text-elli kr">
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;iskin=webzine&amp;l=529966">기적의
-								공대오빠 후기 <span class="text-title">[51]</span>
-							</a>
-						</dd>
-					</div>
-					<div class="col-md-6" style="text-align: center;">
-						<dt>
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&iskin=webzine&l=530174"><img
-								src="http://upload2.inven.co.kr/upload/2016/04/06/bbs/thumb/n12711453428.jpg"
-								alt=""></a>
-						</dt>
-						<dd class="text-elli kr">
-							<a
-								href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;iskin=webzine&amp;l=530174">헐리웃
-								영화속 한국인 캐릭터 ..  <span class="text-title">[25]</span>
-							</a>
-						</dd>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<ul class="">
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-						<li class="text-elli kr"><img
-							src=""
-							class="" alt="" /> <a
-							href="http://www.inven.co.kr/board/powerbbs.php?come_idx=2097&amp;l=530250&amp;iskin=webzine"
-							target="">어느 BJ의 절규</a>  <span class="text-title">[6]</span>
-							<img
-							src="img/bbs/mark_new2.gif"
-							alt="NEW" /> <img
-							src="img/bbs/mark_hot1.gif"
-							alt="HOT" /></li>
-					</ul>
-				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 col-xs-12 text-center"><a href="#wow" data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>
+				<div class="col-sm-6 col-xs-12 text-center"><a href="#lol" data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>  
 			</div>
 		</div>
 	</section>
@@ -876,21 +412,7 @@
 		</div>
 	</section>
 	
-	<!-- community Section -->
-	<section id="community" class="bg-darkest-gray">
-		<div class="container">
-			<div class="row text-center">
-				<div class="col-lg-12">
-					<h2 class="section-heading text-title kr"><a href='javascript:nload("board/list.jsp?bName=WOW","WOW 커뮤니티","");'>커뮤니티</a></h2>
-					<h3 class="section-subheading text-title kr">소모임</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-6 col-xs-12 text-center"><a href='javascript:nload("board/list.jsp?bName=WOW","WOW 커뮤니티","");' data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>
-				<div class="col-sm-6 col-xs-12 text-center"><a href='javascript:nload("board/list.jsp?bName=LOL","LOL 커뮤니티","");' data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>  
-			</div>
-		</div>
-	</section>
+	
 
 	<footer style="background-color: black;">
 		<div class="container">
