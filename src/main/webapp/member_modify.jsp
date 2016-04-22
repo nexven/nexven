@@ -60,8 +60,8 @@
 		<div class="tl">
 		<p>
 			<label class="lab kr">아이디</label> <input id="mId" name="mId"
-				type="text" class="inp" value="${map.MID }" /> <input type="button"
-				value="아이디 중복체크" class="btn-sm" onclick="javascript:id_check()" />
+				type="text" class="inp" value="${map.MID }" readonly="readonly" />
+<!-- 				<input type="button" value="아이디 중복체크" class="btn-sm" onclick="javascript:id_check()" /> -->
 		<div id="idcheck"></div>
 
 		</p>
@@ -76,7 +76,7 @@
 		</p>
 		<p>
 			<label class="lab kr">이름</label> <input id="mName" name="mName"
-				type="text" class="inp" value="${map.MNAME }" />
+				type="text" class="inp" value="${map.MNAME }" readonly="readonly" />
 		</p>
 		<p>
 			<label class="lab kr">닉네임</label> <input id="mNick" name="mNick"
@@ -145,10 +145,8 @@
 
 
 		<div id="join_menu">
-			<button type="submit" class="btn btn-primary"
+			<button type="button" class="btn btn-primary"
 				onclick="javascript:edit_check();">회원수정</button>
-			<button type="reset" class="btn btn-primary"
-				onclick="$('#mId').focus();">가입취소</button>
 			<button type="button" class="btn btn-primary"
 				onclick="javascript:delete_member();">회원탈퇴</button>
 		</div>

@@ -141,7 +141,7 @@
 
 
 		<div id="join_menu">
-			<button type="submit" class="btn btn-primary"
+			<button type="button" class="btn btn-primary"
 				onclick="javascript:check();">회원가입</button>
 			<button type="reset" class="btn btn-primary"
 				onclick="$('#mId').focus();">가입취소</button>
