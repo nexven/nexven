@@ -148,13 +148,6 @@
      </td>
     </tr>
     
-    <tr>
-     <th>ip</th>
-     <td>
-     	${map.MIP }
-     </td>
-    </tr>
-    
    </table>
 
    

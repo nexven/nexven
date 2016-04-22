@@ -262,7 +262,7 @@ public class MemberController {
 		
 	}
 	
-	/*회원 수정 */
+	/*회원 삭제 */
 	@RequestMapping(value="/member_delete_ok", method=RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
 	public Map<String, String> member_delete_ok(HttpServletRequest request,
@@ -476,7 +476,7 @@ public class MemberController {
 				session.setAttribute("mName",mName);
 				session.setAttribute("mNick",mNick);
 				session.setAttribute("mIsOut",mIsOut);
-				session.setAttribute("mRecentLoginDate",map.get("MRECENTLOGINDATE"));
+				session.setAttribute("mRecentLoginDate", new Date());
 				
 				
 				map.remove("MPASS");

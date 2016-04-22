@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@page import="java.net.InetAddress"%>
 
 <%
 	if(session.getAttribute("mNick") != null){
@@ -141,17 +142,15 @@
      </td>
     </tr>
     
-    <tr>
-     <th>ip</th>
-     <td>
-     	<%= request.getRemoteAddr() %>
-     </td>
-    </tr>
-    
    </table>
+   <% 
+    InetAddress inet = InetAddress.getLocalHost();
+	String serverAddr = inet.getHostAddress();  
+	String addr = request.getRemoteAddr();   
+    %>
 
    
-   <input type="hidden" id="mIp" name="mIp" value="<%= request.getRemoteAddr() %>">
+   <input type="hidden" id="mIp" name="mIp" value="<%= serverAddr %>">
    
    
    <div id="join_menu">
