@@ -5,15 +5,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-
+<meta name="description" content="게임,뉴스,게임뉴스,커뮤니티">
+<meta name="author" content="nexven">
 <title>NEXVEN</title>
 
 <!-- Bootstrap Core CSS -->
@@ -123,7 +120,8 @@
  		    }
  		});
 
- 	}); 	
+    });
+
 
 
 	// 비동기 로그아웃
@@ -235,9 +233,11 @@
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
 	          <h4 id="nexven_view_title" class="modal-title text-center">Nexven View</h4>
 	        </div>
-	        <div id="nexven_view_content" class="modal-body" style="max-height:500px;">
-	          <p>	</p>
-	        </div>
+	        	<div class="nexven_view_wrap">
+		        	<div id="nexven_view_content" class="modal-body">
+	
+		        	</div>
+	        	</div>
 	        <div class="modal-footer">
 	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        </div>
@@ -424,7 +424,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
-					<span class="copyright kr">Copyright &copy; 오합지졸 2016</span>
+					<span class="copyright kr">Copyright &copy; NEXVEN Team 2016</span>
 				</div>
 				<div class="col-md-6">
 					

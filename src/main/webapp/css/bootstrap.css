@@ -5872,7 +5872,7 @@ button.close {
   border: 0;
 }
 .modal-open {
-  overflow-y: scroll;
+  overflow: hidden;
 }
 .modal {
   position: fixed;
@@ -5965,8 +5965,7 @@ button.close {
 }
 .modal-body {
   position: relative;
-  padding: 0px;
-  overflow-y: auto;
+  overflow:hidden;
 }
 .modal-footer {
   padding: 15px;

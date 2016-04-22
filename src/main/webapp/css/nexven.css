@@ -97,7 +97,7 @@ body {
 		margin: 50px auto;
 	}
 	.modal-nexven-md {
-		width: 70%;
+		width: 970x;
 		margin: 50px auto;
 	}
 }
@@ -996,14 +996,14 @@ body {
 }
 
 #nexven_news_content {
-	text-align: center
+	text-align: center;
+}
+
+.nexven_view_wrap {
+	padding:20px
 }
 
 .modal-nexven-bg {
-	width: 90%;
+	width: 92%;
 	margin: 50px auto;
-}
-
-#nexven_view_content {
-	padding: 0 15px;
 }

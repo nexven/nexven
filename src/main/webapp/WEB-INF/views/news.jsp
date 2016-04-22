@@ -52,15 +52,16 @@
 			<div class="row" style="margin:20px 0">
 				<div class="col-md-3 col-sm-3 col-xs-4 text-center">
 					<c:if test="${!empty v['enclosure']}">
-						<img src="${v['enclosure']}" width="100%" height="100%" style="max-width:200px;" />
+						<img src="${v['enclosure']}" width="100%" height="100%" style="max-width:300px;" />
 					</c:if>
 					<c:if test="${empty v['enclosure']}">
-					<img src="https://placeholdit.imgix.net/~text?txtsize=70&txtclr=000000&txt=NO%20IMAGE&txttrack=4&w=640&h=480&bg=eeeeee" width="100%" height="100%" style="max-width:200px;" />
+					<img src="https://placeholdit.imgix.net/~text?txtsize=70&txtclr=000000&txt=NO%20IMAGE&txttrack=4&w=640&h=480&bg=eeeeee" width="100%" height="100%" style="max-width:300px;" />
 					</c:if>
 
 				</div>
-				<div class="col-md-5 col-sm-5 col-xs-8 titlelink kr text-center" style="text-align:left !important;">
+				<div class="col-md-5 col-sm-5 col-xs-8 titlelink kr" style="text-align:left !important;">
 					<a href='javascript:nload("${v["link"]}","게임내용","");'>${v["title"]}</a>
+					<br/><br/><strong>${v["description"]}</strong>
 				</div>
 				<div class="col-md-2 col-sm-2 col-xs-0 kr text-center">${v['category']}</div>
 				<div class="col-md-2 col-sm-2 col-xs-0 kr text-center">${v['pubDate']}</div>
