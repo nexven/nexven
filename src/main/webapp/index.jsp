@@ -212,7 +212,9 @@
 				<div class="intro-heading">NEXVEN</div>
 
 				<!-- 로그인 후에 버튼 숨김 -->
-				<a href='javascript:nload("login.jsp","로그인","small");' class='btn-xl'>LOGIN</a>
+				<c:if test="${empty mNick}">
+					<a href='javascript:nload("login.jsp","로그인","small");' class='btn-xl'>LOGIN</a>
+				</c:if>
 			</div>
 		</div>
 	</header>

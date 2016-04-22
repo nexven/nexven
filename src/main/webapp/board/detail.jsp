@@ -43,7 +43,7 @@
 <!-- <body class="container"> -->
 
 <div class="portfolio-modal">
-		<div class="close-modal" onclick="javascript:nload('/nexven/gamedb/list.jsp');">
+		<div class="close-modal" onclick='javascript:nload("board/list.jsp?bName=WOW","WOW 커뮤니티","");'>
 			<div class="lr">
 				<div class="rl"></div>
 			</div>
