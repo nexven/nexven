@@ -1,5 +1,7 @@
 package com.unknown.nexven;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -361,7 +363,7 @@ public class MemberController {
 		    
 		    Map<String,String> map = memberService.selectBymid2(mId);
 		    
-		    session.setAttribute("map", map);
+		    session.invalidate();
 		    
 		    delete_chk.put("success","성공");
 		    
@@ -464,11 +466,18 @@ public class MemberController {
 				String mName=map.get("MNAME");
 				String mNick=map.get("MNICK");
 				String mIsOut= String.valueOf(map.get("MISOUT"));
+				
+
+				
+
+				
 				System.out.println(mIsOut);
 				
 				session.setAttribute("mName",mName);
 				session.setAttribute("mNick",mNick);
 				session.setAttribute("mIsOut",mIsOut);
+				session.setAttribute("mRecentLoginDate",map.get("MRECENTLOGINDATE"));
+				
 				
 				map.remove("MPASS");
 				
