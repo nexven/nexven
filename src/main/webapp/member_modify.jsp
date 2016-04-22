@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix= "fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
 	if(session.getAttribute("mNick") == null){
@@ -30,13 +31,14 @@
 </style>
 
  <div id="join_wrap">
+ <c:set var="map" value="${map}" />
   <form id="nexven_member_form" name="f" style="width:600px">
    <!-- 이진파일을 업로드 할려면 enctype 속성을 지정 -->
    <table id="join_t">
     <tr>
      <th>회원아이디</th>
      <td>
-      <input name="mId" id="mId" size="14" class="input_box" />
+      <input name="mId" id="mId" size="14" class="input_box" value="${map.MID }" />
       <input type="button" value="아이디 중복체크" class="input_button"
       onclick="id_check()" />
       <div id="idcheck"></div>
@@ -62,14 +64,14 @@
     <tr>
      <th>회원이름</th>
      <td>
-      <input name="mName" id="mName" size="14" class="input_box" />
+      <input name="mName" id="mName" size="14" class="input_box" value="${map.MNAME }"/>
      </td>
     </tr>
     
     <tr>
      <th>닉네임</th>
      <td>
-      <input name="mNick" id="mNick" size="14" class="input_box" />
+      <input name="mNick" id="mNick" size="14" class="input_box" value="${map.MNICK}"/>
       <input type="button" value="닉네임 중복체크" class="input_button"
       onclick="nick_check()" />
       <div id="nickcheck"></div>
@@ -78,7 +80,7 @@
     
     <tr>
      <th>성별</th>
-     <td>
+     <td>     
       <input name="mGender" id="mGender" type="radio" value="남" checked="checked"/>남
       <input name="mGender" id="mGender" type="radio" value="여" />여
      </td>
@@ -87,14 +89,16 @@
     <tr>
      <th>생년월일</th>
      <td>
-      <input name="mBirth" id="mBirth" type="text" size="14" class="input_box" />
+     <c:set var="birth" value="${map.MBIRTH}" />
+     <c:set var="check_birth" value="${fn:split(birth,' ')}"/>
+      <input name="mBirth" id="mBirth" type="text" size="14" class="input_box" value="${check_birth[0] }"/>
      </td>
     </tr>
     
     <tr>
      <th>우편번호</th>
      <td>
-      <input name="mZipcode" id="mZipcode" size="3" class="input_box"
+      <input name="mZipcode" id="mZipcode" size="3" class="input_box" value="${map.MZIPCODE }"
       readonly onclick="openDaumPostcode()" />
       <input type="button" value="도로명 주소" class="input_button"
       onclick="openDaumPostcode()">
@@ -104,7 +108,7 @@
     <tr>
      <th>주소</th>
      <td>
-      <input name="mAddr1" id="mAddr1" size="48" class="input_box"
+      <input name="mAddr1" id="mAddr1" size="48" class="input_box" value="${map.MADDR1 }"
       readonly onclick="openDaumPostcode()" />
      </td>
     </tr>
@@ -112,30 +116,25 @@
     <tr>
      <th>나머지 주소</th>
      <td>
-      <input name="mAddr2" id="mAddr2" size="37" class="input_box" />
+      <input name="mAddr2" id="mAddr2" size="37" class="input_box" value="${map.MADDR2 }"/>
      </td>
     </tr>
     
     <tr>
      <th>휴대전화번호</th>
      <td>
-     <%@ include file="../../include/phone_number.jsp" %>
-     <select name="mTel0">
-      <c:forEach var="p" items="${phone}" begin="0" end="5">
-       <option value="${p}">${p}</option>
-      </c:forEach>
-     </select>-<input name="mTel" id="mTel" size="4"
-     maxlength="4" class="input_box" />-<input name="mTel2"
-     id="mTel2" size="4" maxlength="4" class="input_box" />
+     <input name="mTel" id="mTel" size="15" maxlength="15" class="input_box" value="${map.MTEL }"/>
      </td>
     </tr>
     
     <tr>
      <th>전자우편</th>
      <td>
-      <input name="mEmail" id="mEmail" size="10" 
+     <c:set var="posting_date" value="${map.MEMAIL}" />
+     <c:set var="check_email" value="${fn:split(posting_date,'@')}"/>
+      <input name="mEmail" id="mEmail" size="10" value="${check_email[0] }"
       class="input_box" />@<input name="join_maildomain" 
-      id="join_maildomain" size="20" class="input_box" readonly />
+      id="join_maildomain" size="20" class="input_box" value="${check_email[1] }" readonly />
       <!--readonly는 단지 쓰기,수정이 불가능하고 읽기만 가능하다 //-->
       <select name="mail_list" onchange="domain_list()">
       <option value="">=이메일선택=</option>
@@ -152,7 +151,7 @@
     <tr>
      <th>ip</th>
      <td>
-     	<%= request.getRemoteAddr() %>
+     	${map.MIP }
      </td>
     </tr>
     
@@ -163,8 +162,9 @@
    
    
    <div id="join_menu">
-    <button type="button" class="input_button" onclick="javascript:check();">회원수정</button>
+    <button type="button" class="input_button" onclick="javascript:edit_check();">회원수정</button>
     <button type="reset" class="input_button" onclick="$('#mId').focus();" >가입취소</button>
+    <button type="button" class="input_button" onclick="javascript:delete_member();" >회원탈퇴</button>
    </div>
   </form>
 

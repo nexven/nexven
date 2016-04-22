@@ -27,6 +27,16 @@ public class MemberService {
 	}
 	
 	@Transactional
+	public void modify(Member member) {
+		memberMapper.modify(member);
+	}
+	
+	@Transactional
+	public void delete(Member member) {
+		memberMapper.delete(member);
+	}
+	
+	@Transactional
 	public Integer idcheck(String mId) {
 		return memberMapper.idcheck(mId);
 	}

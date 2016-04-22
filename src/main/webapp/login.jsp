@@ -45,7 +45,12 @@
 						
 						if(nchk.success=="성공"){
 							location.href = "./";	
-						}else{
+						}
+						else if(nchk.success=="탈퇴"){
+							alert("탈퇴된 계정입니다.");
+							nload("login.jsp","로그인","small");	
+						}						
+						else{
 							alert("아이디 또는 패스워드가 틀렸습니다.");
 							nload("login.jsp","로그인","small");
 						}

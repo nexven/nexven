@@ -58,11 +58,6 @@
 		 $("#join_phone2").val("").focus();
 		 return false;
 	 }
-	 if($.trim($("#mTel2").val())==""){
-		 alert("휴대전화번호를 입력하세요!");
-		 $("#join_phone3").val("").focus();
-		 return false;
-	 }
 	 if($.trim($("#mEmail").val())==""){
 		 alert("메일 아이디를 입력하세요!");
 		 $("#join_mailid").val("").focus();
@@ -264,6 +259,40 @@ function domain_list() {
 	 }
  }
 
+function delete_member() {
+	if(confirm("정말 탈퇴하시겠습니까?")){
+		alert("회원탈퇴 성공");
+		var formData = $("#nexven_member_form").serialize();
+		 
+		 $.ajax({
+				type : "POST",
+			    async : true,
+			    cache : false,
+			    encoding: "UTF-8",
+				data : formData,
+			    url : "member_delete_ok",
+				success: function(nchk) {
+					var nchk = JSON.parse(JSON.stringify(nchk));
+					
+					if(nchk.success=="성공"){
+						$("#nexven_view").modal('hide');
+						alert("회원 탈퇴 성공.");
+						location.href = "./";
+					}else{
+						alert("회원 탈퇴에 실패하였습니다. 오류이유("+nchk.success+")");
+						nload("member_join.jsp");
+					}
+
+				},
+			    error: function(nchk2){
+			    	alert("회원 정보 불러오기 실패");
+			    }
+
+			});
+		
+	}
+}
+
  
  /* 회원정보 수정 경고창 */
 function edit_check(){
@@ -305,11 +334,6 @@ function edit_check(){
 		 $("#mZipcode").val("").focus();
 		 return false;
 	 }
-	 if($.trim($("#join_zip2").val())==""){
-		 alert("우편번호를 입력하세요!");
-		 $("#join_zip2").val("").focus();
-		 return false;
-	 }
 	 if($.trim($("#mAddr1").val())==""){
 		 alert("주소를 입력하세요!");
 		 $("#mAddr1").val("").focus();
@@ -325,11 +349,6 @@ function edit_check(){
 		 $("#join_phone2").val("").focus();
 		 return false;
 	 }
-	 if($.trim($("#mTel2").val())==""){
-		 alert("휴대전화번호를 입력하세요!");
-		 $("#join_phone3").val("").focus();
-		 return false;
-	 }
 	 if($.trim($("#mEmail").val())==""){
 		 alert("메일 아이디를 입력하세요!");
 		 $("#join_mailid").val("").focus();
@@ -339,7 +358,36 @@ function edit_check(){
 		 alert("메일 주소를 입력하세요!");
 		 $("#join_maildomain").val("").focus();
 		 return false;
-	 }	 	 
+	 }	
+	 
+	 var formData = $("#nexven_member_form").serialize();
+	 
+	 $.ajax({
+			type : "POST",
+		    async : true,
+		    cache : false,
+		    encoding: "UTF-8",
+			data : formData,
+		    url : "member_modify_ok",
+			success: function(nchk) {
+				var nchk = JSON.parse(JSON.stringify(nchk));
+				
+				if(nchk.success=="성공"){
+					$("#nexven_view").modal('hide');
+					alert("회원 정보 수정 성공.");
+					location.href = "./";
+				}else{
+					alert("회원 정보 수정에 실패하였습니다. 오류이유("+nchk.success+")");
+					nload("member_join.jsp");
+				}
+
+			},
+		    error: function(nchk2){
+		    	alert("회원 정보 불러오기 실패");
+		    }
+
+		});
+	 
 }
  
  

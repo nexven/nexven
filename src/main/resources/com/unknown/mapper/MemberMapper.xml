@@ -73,6 +73,54 @@
 	    ) 
     </insert>
     
+    <update id="modify" parameterType="com.unknown.model.Member">
+        update Member
+	    set
+			MID = #{mId},
+			MPASS = #{mPass},
+			MNAME = #{mName},
+			MNICK = #{mNick},
+			MEMAIL = #{mEmail},
+			MGENDER = #{mGender},
+			MBIRTH = #{mBirth, jdbcType=TIMESTAMP},
+			MTEL = #{mTel},
+			MZIPCODE = #{mZipcode},
+			MADDR1 = #{mAddr1},
+			MADDR2 = #{mAddr2},
+			MLEVEL = #{mLevel, jdbcType=NUMERIC},
+			MEXP = #{mExp, jdbcType=NUMERIC},
+			MRECENTLOGINDATE = #{mRecentLoginDate, jdbcType=TIMESTAMP},
+			MIP = #{mIp},
+			MOUT = #{mOut, jdbcType=TIMESTAMP},
+			MISOUT = #{mIsOut, jdbcType=NUMERIC},
+			MJOINDATE = #{mJoinDate, jdbcType=TIMESTAMP}
+	   where MID = #{mId}
+    </update>
+    
+    <update id="delete" parameterType="com.unknown.model.Member">
+        update Member
+	    set
+			MID = #{mId},
+			MPASS = #{mPass},
+			MNAME = #{mName},
+			MNICK = #{mNick},
+			MEMAIL = #{mEmail},
+			MGENDER = #{mGender},
+			MBIRTH = #{mBirth, jdbcType=TIMESTAMP},
+			MTEL = #{mTel},
+			MZIPCODE = #{mZipcode},
+			MADDR1 = #{mAddr1},
+			MADDR2 = #{mAddr2},
+			MLEVEL = #{mLevel, jdbcType=NUMERIC},
+			MEXP = #{mExp, jdbcType=NUMERIC},
+			MRECENTLOGINDATE = #{mRecentLoginDate, jdbcType=TIMESTAMP},
+			MIP = #{mIp},
+			MOUT = #{mOut, jdbcType=TIMESTAMP},
+			MISOUT = #{mIsOut, jdbcType=NUMERIC},
+			MJOINDATE = #{mJoinDate, jdbcType=TIMESTAMP}
+	   where MID = #{mId}
+    </update>
+    
     
 
 </mapper>

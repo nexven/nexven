@@ -59,7 +59,7 @@ public class MemberController {
 		    System.out.println(mNick);
 		    m.setMNick(mNick);
 		    //  이메일
-		    String mEmail = request.getParameter("mEmail");
+		    String mEmail = request.getParameter("mEmail") + "@" + request.getParameter("join_maildomain");
 		    System.out.println(mEmail);
 		    m.setMEmail(mEmail);
 		    //  회원권한레벨
@@ -82,7 +82,7 @@ public class MemberController {
 		    
 		    
 		    //  연락처
-		    String mTel = request.getParameter("mTel0") + "-" + request.getParameter("mTel") + "-" + request.getParameter("mTel2") ;
+		    String mTel = request.getParameter("mTel");
 		    System.out.println(mTel);
 		    m.setMTel(mTel);
 		    //  우편번호(신)
@@ -140,6 +140,242 @@ public class MemberController {
 			return join_chk;
 		}
 	    
+		
+	}
+	/*회원 수정 */
+	@RequestMapping(value="/member_modify_ok", method=RequestMethod.POST, produces = "application/json; charset=utf8")
+	@ResponseBody
+	public Map<String, String> member_modify_ok(HttpServletRequest request,
+			HttpServletResponse response, HttpSession session){
+		
+		Map<String,String> modify_chk = new HashMap<String,String>();
+		
+		System.out.println("modify");
+		
+		try {
+			Member m = new Member();
+			
+			//m.setMNum(1);
+			
+			String mId = request.getParameter("mId");
+			m.setMId(mId);
+			System.out.println(mId);
+		    //  패스워드
+		    String mPass = request.getParameter("mPass");
+		    System.out.println(mPass);
+		    m.setMPass(mPass);
+		    //  이름
+		    String mName = request.getParameter("mName");
+		    System.out.println(mName);
+		    m.setMName(mName);
+		    //  닉네임
+		    String mNick = request.getParameter("mNick");
+		    System.out.println(mNick);
+		    m.setMNick(mNick);
+		    //  이메일
+		    String mEmail = request.getParameter("mEmail") + "@" + request.getParameter("join_maildomain");
+		    System.out.println(mEmail);
+		    m.setMEmail(mEmail);
+		    //  회원권한레벨
+		    Integer mAuthLevel;
+
+		    //  성별
+		    String mGender = request.getParameter("mGender");
+		    System.out.println(mGender);
+		    m.setMGender(mGender);
+		    
+		    //  생년월일
+		    Date mBirth = new Date();
+		    String birth = request.getParameter("mBirth");
+
+		    System.out.println(birth + " " + mBirth);
+		    SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd");
+		    m.setMBirth(sm.parse(birth));
+		    
+		    System.out.println("as"+sm.parse(birth));
+		    
+		    
+		    //  연락처
+		    String mTel = request.getParameter("mTel");
+		    System.out.println(mTel);
+		    m.setMTel(mTel);
+		    //  우편번호(신)
+		    String mZipcode = request.getParameter("mZipcode");
+		    System.out.println(mZipcode);
+		    m.setMZipcode(mZipcode);
+		    //  도로명주소
+		    String mAddr1 = request.getParameter("mAddr1");
+		    System.out.println(mAddr1);
+		    m.setMAddr1(mAddr1);
+		    //  나머지주소
+		    String mAddr2 = request.getParameter("mAddr2");
+		    System.out.println(mAddr2);
+		    m.setMAddr2(mAddr2);
+		    //  회원레벨
+		    Integer mLevel;
+		    m.setMLevel(1);
+
+		    //  회원EXP
+		    Integer mExp;
+		    m.setMExp(0);
+
+		    //  최종접속시간
+		    Date mRecentLoginDate = new Date();
+		    m.setMRecentLoginDate(mRecentLoginDate);
+
+		    //  아이피
+		    String mIp = request.getParameter("mIp");
+		    System.out.println(mIp);
+		    m.setMIp(mIp);
+		    //  탈퇴일시
+		    Date mOut;
+
+		    //  탈퇴여부
+		    Integer mIsOut;
+		    m.setMIsOut(0);
+
+		    //  회원가입일
+		    Date mJoinDate = new Date();
+		    System.out.println(mJoinDate);
+		    
+		    memberService.modify(m);
+		    
+		    Map<String,String> map = memberService.selectBymid2(mId);
+		    
+		    session.setAttribute("map", map);
+		    
+		    modify_chk.put("success","성공");
+		    
+		    return modify_chk;
+		} catch(NullPointerException ne){
+			modify_chk.put("success","빈문자열");
+			return modify_chk;
+		} catch (ParseException pe){
+			modify_chk.put("success","분석오류");
+			return modify_chk;
+		} catch (Exception e) {
+			modify_chk.put("success","오류발생");
+			return modify_chk;
+		}	    
+		
+	}
+	
+	/*회원 수정 */
+	@RequestMapping(value="/member_delete_ok", method=RequestMethod.POST, produces = "application/json; charset=utf8")
+	@ResponseBody
+	public Map<String, String> member_delete_ok(HttpServletRequest request,
+			HttpServletResponse response, HttpSession session){
+
+		Map<String,String> delete_chk = new HashMap<String,String>();
+		
+		System.out.println("modify");
+		
+		try {
+			Member m = new Member();
+			
+			//m.setMNum(1);
+			
+			String mId = request.getParameter("mId");
+			m.setMId(mId);
+			System.out.println(mId);
+		    //  패스워드
+		    String mPass = request.getParameter("mPass");
+		    System.out.println(mPass);
+		    m.setMPass(mPass);
+		    //  이름
+		    String mName = request.getParameter("mName");
+		    System.out.println(mName);
+		    m.setMName(mName);
+		    //  닉네임
+		    String mNick = request.getParameter("mNick");
+		    System.out.println(mNick);
+		    m.setMNick(mNick);
+		    //  이메일
+		    String mEmail = request.getParameter("mEmail") + "@" + request.getParameter("join_maildomain");
+		    System.out.println(mEmail);
+		    m.setMEmail(mEmail);
+		    //  회원권한레벨
+		    Integer mAuthLevel;
+
+		    //  성별
+		    String mGender = request.getParameter("mGender");
+		    System.out.println(mGender);
+		    m.setMGender(mGender);
+		    
+		    //  생년월일
+		    Date mBirth = new Date();
+		    String birth = request.getParameter("mBirth");
+
+		    System.out.println(birth + " " + mBirth);
+		    SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd");
+		    m.setMBirth(sm.parse(birth));
+		    
+		    System.out.println("as"+sm.parse(birth));
+		    
+		    
+		    //  연락처
+		    String mTel = request.getParameter("mTel");
+		    System.out.println(mTel);
+		    m.setMTel(mTel);
+		    //  우편번호(신)
+		    String mZipcode = request.getParameter("mZipcode");
+		    System.out.println(mZipcode);
+		    m.setMZipcode(mZipcode);
+		    //  도로명주소
+		    String mAddr1 = request.getParameter("mAddr1");
+		    System.out.println(mAddr1);
+		    m.setMAddr1(mAddr1);
+		    //  나머지주소
+		    String mAddr2 = request.getParameter("mAddr2");
+		    System.out.println(mAddr2);
+		    m.setMAddr2(mAddr2);
+		    //  회원레벨
+		    Integer mLevel;
+		    m.setMLevel(1);
+
+		    //  회원EXP
+		    Integer mExp;
+		    m.setMExp(0);
+
+		    //  최종접속시간
+		    Date mRecentLoginDate = new Date();
+		    m.setMRecentLoginDate(mRecentLoginDate);
+
+		    //  아이피
+		    String mIp = request.getParameter("mIp");
+		    System.out.println(mIp);
+		    m.setMIp(mIp);
+		    //  탈퇴일시
+		    Date mOut = new Date();
+		    m.setMOut(mOut);
+
+		    //  탈퇴여부
+		    Integer mIsOut;
+		    m.setMIsOut(1);
+
+		    //  회원가입일
+		    Date mJoinDate = new Date();
+		    System.out.println(mJoinDate);
+		    
+		    memberService.modify(m);
+		    
+		    Map<String,String> map = memberService.selectBymid2(mId);
+		    
+		    session.setAttribute("map", map);
+		    
+		    delete_chk.put("success","성공");
+		    
+		    return delete_chk;
+		} catch(NullPointerException ne){
+			delete_chk.put("success","빈문자열");
+			return delete_chk;
+		} catch (ParseException pe){
+			delete_chk.put("success","분석오류");
+			return delete_chk;
+		} catch (Exception e) {
+			delete_chk.put("success","오류발생");
+			return delete_chk;
+		}    
 		
 	}
 	
@@ -209,8 +445,7 @@ public class MemberController {
 		System.out.println((m==null));
 		
 		System.out.println(map);
-		
-		
+
 		if(map==null){//등록되지 않은 회원일때
 //			out.println("<script>");
 //			out.println("alert('등록되지 않은 회원입니다!')");
@@ -218,15 +453,28 @@ public class MemberController {
 //			out.println("</script>");
 			login_chk.put("success","실패");
 			return login_chk;
-		}else{//등록된 회원일때
+		}else if(String.valueOf(map.get("MISOUT")).equals("1")){
+			login_chk.put("success","탈퇴");
+			return login_chk;
+		}
+		else{//등록된 회원일때
 			if(map.get("MPASS").equals(pwd)){//비번이 같을때
 				session.setAttribute("id",id);
 				
 				String mName=map.get("MNAME");
 				String mNick=map.get("MNICK");
+				String mIsOut= String.valueOf(map.get("MISOUT"));
+				System.out.println(mIsOut);
 				
 				session.setAttribute("mName",mName);
 				session.setAttribute("mNick",mNick);
+				session.setAttribute("mIsOut",mIsOut);
+				
+				map.remove("MPASS");
+				
+				session.setAttribute("map", map);
+				
+				
 				login_chk.put("success","성공");
 				
 				//jsp폴더의 index.jsp로 이동

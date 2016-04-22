@@ -118,14 +118,7 @@
     <tr>
      <th>휴대전화번호</th>
      <td>
-     <%@ include file="../../include/phone_number.jsp" %>
-     <select name="mTel0">
-      <c:forEach var="p" items="${phone}" begin="0" end="5">
-       <option value="${p}">${p}</option>
-      </c:forEach>
-     </select>-<input name="mTel" id="mTel" size="4"
-     maxlength="4" class="input_box" />-<input name="mTel2"
-     id="mTel2" size="4" maxlength="4" class="input_box" />
+     <input name="mTel" id="mTel" size="15" maxlength="15" class="input_box" />
      </td>
     </tr>
     

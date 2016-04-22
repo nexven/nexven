@@ -13,6 +13,8 @@ public interface MemberMapper {
 	Member selectBymid(String mId);
 	Map<String,String> selectBymid2(String mId);
 	int insert(Member member);
+	int modify(Member member);
+	int delete(Member member);
 		
 	
 
