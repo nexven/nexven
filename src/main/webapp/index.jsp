@@ -110,7 +110,7 @@
  		        	//alert(news_main_json[i].title);
 
  					if(news_main_json[i].enclosure==null||news_main_json[i].enclosure==""){					
- 						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=33&txt=No%20Image&w=640&h=480";
+ 						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=50&txt=No%20Image&w=640&h=480";
  					}		        	
  		        	$("#news_main"+i+"_img").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+"<img src='"+news_main_json[i].enclosure+"' /></a>");
  		        	$("#news_main"+i+"_title").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+news_main_json[i].title+"</a>");
@@ -383,13 +383,14 @@
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-lg-12">
-					<h2 class="section-heading text-title kr"><a href='javascript:nload("board/list.jsp","커뮤니티","");'>커뮤니티</a></h2>
+					<h2 class="section-heading text-title kr"><a href='javascript:nload("board/list.jsp?bName=WOW","WOW 커뮤니티","");'>커뮤니티</a></h2> 
 					<h3 class="section-subheading text-title kr">소모임</h3>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-6 col-xs-12 text-center"><a href="#wow" data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>
-				<div class="col-sm-6 col-xs-12 text-center"><a href="#lol" data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>  
+				<div class="col-sm-6 col-xs-12 text-center"><a href='javascript:nload("board/list.jsp?bName=WOW","WOW 커뮤니티","");' data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>  
+ 				<div class="col-sm-6 col-xs-12 text-center"><a href='javascript:nload("board/list.jsp?bName=LOL","LOL 커뮤니티","");' data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>   
+  
 			</div>
 		</div>
 	</section>
