@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
 
-	var bName = ${param.bName};
+	var bName = "${param.bName}";
 
 	$.ajax({
 	    type: "GET",
@@ -23,7 +23,7 @@
 	    	    html += '<tr>'
 	    	    + '<td class="active">' + arrData[idx].bnum + '</td>'	    	    
 	    	    + '<td class="active">' + arrData[idx].bname + '</td>'
-	    	    + '<td class="active">' + '<a href="javascript:nload(\'board/detail.jsp?bNum='+arrData[idx].bnum+'\',\'커뮤니티 내용\',\'\');">'+ arrData[idx].btitle + '</a></td>' 
+	    	    + '<td class="active">' + '<a href="javascript:nload(\'board/detail.jsp?bNum='+arrData[idx].bnum+'\',\' '+bName+' 커뮤니티 내용\',\'\');">'+ arrData[idx].btitle + '</a></td>' 
 	    	    + '<td class="active">' + arrData[idx].bcategory + '</td>' 
 	    	    + '<td class="active">' + arrData[idx].mid + '</td>' 
 	    	    + '</tr>' ;
@@ -42,7 +42,6 @@
 
 </script>
 
-<h1>커뮤니티</h1>
 <table class="table table-bordered table-hover">
 		<thead>
 			<tr>
