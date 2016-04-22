@@ -24,8 +24,14 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public Board getBoard(String bNum){
+	public Board getBoardnum(Integer bNum){
 		return boardMapper.selectBybNum(bNum);
+	}
+	
+	@Transactional
+	public List<Board> getBoard(String bName){
+		List<Board> nboard = boardMapper.selectBybName(bName);
+		return nboard;
 	}
 	
 	@Transactional
@@ -39,8 +45,8 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public Board delete(Integer bNum,String bName){
-		Board board = boardMapper.selectBybNum(bName);
+	public Board delete(Integer bNum){
+		Board board = boardMapper.selectBybNum(bNum);
 		boardMapper.deleteBybNum(bNum);
 		return board;		
 	}

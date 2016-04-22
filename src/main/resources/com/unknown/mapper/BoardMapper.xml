@@ -22,11 +22,17 @@
 	<select id="selectAll" resultType="com.unknown.model.Board">
 		<include refid="FromBoard"/>
 	</select>
+
+	<select id="selectBybName" resultType="com.unknown.model.Board"
+	    parameterType="String">
+	    <include refid="FromBoard"/>
+	   	 where bName = #{bName}
+	</select>
 	
 	<select id="selectBybNum" resultType="com.unknown.model.Board"
 	    parameterType="int">
 	    <include refid="FromBoard"/>
-	   	 where bNum = #{bName}
+	   	 where bNum = #{bNum}
 	</select>
 	
 	<insert id="insert" parameterType="com.unknown.model.Board">

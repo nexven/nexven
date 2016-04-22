@@ -881,7 +881,7 @@
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-lg-12">
-					<h2 class="section-heading text-title kr">커뮤니티</h2>
+					<h2 class="section-heading text-title kr"><a href='javascript:nload("board/list.jsp","커뮤니티","");'>커뮤니티</a></h2>
 					<h3 class="section-subheading text-title kr">소모임</h3>
 				</div>
 			</div>

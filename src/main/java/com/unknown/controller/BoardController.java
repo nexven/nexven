@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.unknown.model.Board;
-import com.unknown.model.GameSchedule;
 import com.unknown.service.BoardService;
 
 
@@ -34,9 +33,16 @@ public class BoardController {
 	
 	@RequestMapping(value="/board", method=RequestMethod.GET)
 	@ResponseBody
-	public Board getBoard(String bName){
-		log.info("getBoard:"+bName);
+	public List<Board> getBoard(String bName){
+		System.out.println("getBoard:"+bName);
 		return boardService.getBoard(bName);
+	}
+	
+	@RequestMapping(value="/boardnum", method=RequestMethod.GET)
+	@ResponseBody
+	public Board getBoardnum(Integer bNum){
+		log.info("getBoardnum"+bNum);
+		return boardService.getBoardnum(bNum);
 	}
 	
 	@RequestMapping(value="/board", method=RequestMethod.PUT)
@@ -82,7 +88,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/board", method=RequestMethod.DELETE)
 	@ResponseBody
-	public Map<String, Object> deleteBoard(Integer bNum,String bName){		
+	public Map<String, Object> deleteBoard(Integer bNum){		
 		log.info("bNum="+bNum);
 		Map<String, Object> response = new HashMap<>();
 		
@@ -90,7 +96,7 @@ public class BoardController {
 		response.put("message", "글이 삭제되었습니다.");
 		
 		try{
-			boardService.delete(bNum,bName);
+			boardService.delete(bNum);
 		}catch (RuntimeException ex){
 			log.info(ex.getMessage());
 			response.put("success", false);
