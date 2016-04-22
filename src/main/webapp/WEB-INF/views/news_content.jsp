@@ -41,13 +41,6 @@
 	<!-- <h1>
 	네이버(인벤) HTML파서 내용
 </h1> -->
-	<div class="portfolio-modal">
-		<div class='close-modal' onclick='javascript:nload("news","게임뉴스","");'>
-			<div class="lr">
-				<div class="rl"></div>
-			</div>
-		</div>
-	</div>
 
 	<div class="width80">
 		<div class="row">
@@ -56,6 +49,10 @@
 		<div class="row titlelink">
 			${nexven_news_content['news_content']}
 		</div>
+		<div class="row text-center" style="margin:30px 0px 15px 0px;">
+			<button onclick='javascript:nload("news","게임뉴스","");' class="btn btn-default">목록으로</button>
+		</div>
+		
 	</div>
 
 

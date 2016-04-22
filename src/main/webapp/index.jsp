@@ -213,7 +213,6 @@
 
 				<!-- 로그인 후에 버튼 숨김 -->
 				<a href='javascript:nload("login.jsp","로그인","small");' class='btn-xl'>LOGIN</a>
-				
 			</div>
 		</div>
 	</header>
@@ -316,15 +315,14 @@
 				<div class="col-lg-12 text-center">
 					<h2 class="section-heading text-title"><a id="nexven_gamedb" href='javascript:nload("/nexven/gamedb/list.jsp","게임DB","");'>Game DB</a></h2>
 
-					<h3 class="section-subheading text-title kr"><a href="#gamedb" data-toggle="modal">DB 검색</a></h3>
+					<h3 class="section-subheading text-title kr">DB 검색</h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="width80">
 					<div class="col-md-3 col-sm-12 col-xs-12">
-						<div class="">
-							<h3 class="section-subheading text-muted kr">유저 평점 Best 3</h3>
-						</div>
+						
+							<img src="img/best.png" style="width:100%; margin:15px 0px 15px 0px;">
 					</div>
 					<div class="col-md-3 col-sm-4 col-xs-12">
 						<div class="thumbnail">
