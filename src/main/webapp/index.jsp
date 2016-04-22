@@ -110,7 +110,7 @@
  		        	//alert(news_main_json[i].title);
 
  					if(news_main_json[i].enclosure==null||news_main_json[i].enclosure==""){					
- 						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=50&txt=No%20Image&w=640&h=480";
+ 						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=70&txtclr=000000&txt=NO%20IMAGE&txttrack=4&w=640&h=480&bg=eeeeee";
  					}		        	
  		        	$("#news_main"+i+"_img").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+"<img src='"+news_main_json[i].enclosure+"' /></a>");
  		        	$("#news_main"+i+"_title").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+news_main_json[i].title+"</a>");

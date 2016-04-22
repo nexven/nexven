@@ -64,8 +64,6 @@
 <!-- 				<input type="button" value="아이디 중복체크" class="btn-sm" onclick="javascript:id_check()" /> -->
 		<div id="idcheck"></div>
 
-		</p>
-
 		<p>
 			<label class="lab kr">비밀번호</label> <input id="mPass" name="mPass"
 				type="password" class="inp" />

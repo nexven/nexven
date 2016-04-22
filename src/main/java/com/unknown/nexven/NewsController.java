@@ -93,7 +93,7 @@ public class NewsController {
 		                if(mtitle.equals("pubDate")){
 	                    	mcontent = list2.item(j).getTextContent();
 	                    	//SimpleDateFormat sf = new SimpleDateFormat("YYYY-MM-dd a HH:mm:ss");
-	                    	SimpleDateFormat sf = new SimpleDateFormat("YY/MM/dd");
+	                    	SimpleDateFormat sf = new SimpleDateFormat("yy/MM/dd hh:mm");
 	                    	@SuppressWarnings("deprecation")
 							Date wDate = new Date(mcontent);
 	                    	Long wdate = wDate.getTime();
