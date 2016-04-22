@@ -135,9 +135,11 @@
 			    encoding: "UTF-8",
 				url : "logout.jsp",
 				success: function() {
+					//alert("로그아웃 완료");
 					location.href = "./";
 				},
 			    error: function(){
+			    	alert("로그아웃 오류");
 			    	location.href = "./";
 			    }
 
@@ -211,9 +213,12 @@
 				</div>
 				<div class="intro-heading">NEXVEN</div>
 
-				<!-- 로그인 후에 버튼 숨김 -->
+				<!-- 로그인 후에 로그아웃 버튼 활성화 -->
 				<c:if test="${empty mNick}">
 					<a href='javascript:nload("login.jsp","로그인","small");' class='btn-xl'>LOGIN</a>
+				</c:if>
+				<c:if test="${!empty mNick}">
+					<a href='javascript:logout();' class='btn-xl'>LOGOUT</a>
 				</c:if>
 			</div>
 		</div>

@@ -23,7 +23,7 @@
 					<label style="display: inline-block; width: 35px;">PW</label><input
 						id="pwd" name="pwd" type="password" style="width: 180px;" />
 				</p>
-				<button id="nexven_login_submit" type="button" class="btn btn-primary" data-dismiss="modal">로그인</button>
+				<button id="nexven_login_submit" type="submit" class="btn btn-primary" data-dismiss="modal">로그인</button>
 				<button id="nexven_signin" type="button" class="btn btn-primary" onclick='javascript:nload("member_join.jsp","회원가입","mid");'>회원가입</button>
 </form>
 
@@ -57,7 +57,7 @@
 
 					},
 				    error: function(nchk2){
-				    	alert("로그인 정보 불러오기 실패");
+				    	alert("로그인 오류");
 				    }
 			});
 		});
