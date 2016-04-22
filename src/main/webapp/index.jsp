@@ -386,8 +386,8 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-6 col-xs-12 text-center"><a href='javascript:nload("board/list.jsp?bName=WOW","WOW 커뮤니티","");' data-toggle="modal"><img src="img/community/wow.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>  
- 				<div class="col-sm-6 col-xs-12 text-center"><a href='javascript:nload("board/list.jsp?bName=LOL","LOL 커뮤니티","");' data-toggle="modal"><img src="img/community/lol.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>   
+				<div class="col-sm-6 col-xs-12 text-center"><a href='javascript:nload("board/list.jsp?bName=WOW","WOW 커뮤니티","");'><img src="img/community/wow.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>  
+ 				<div class="col-sm-6 col-xs-12 text-center"><a href='javascript:nload("board/list.jsp?bName=LOL","LOL 커뮤니티","");'><img src="img/community/lol.jpg" style="width:auto; max-width:100%; margin-bottom:15px;"></a></div>   
   
 			</div>
 		</div>
