@@ -276,8 +276,7 @@ function delete_member() {
 					
 					if(nchk.success=="성공"){
 						$("#nexven_view").modal('hide');
-						alert("회원 탈퇴 성공.");
-						location.href = "./";
+						location.href = "./";						
 					}else{
 						alert("회원 탈퇴에 실패하였습니다. 오류이유("+nchk.success+")");
 						nload("member_join.jsp");
@@ -292,7 +291,6 @@ function delete_member() {
 		
 	}
 }
-
  
  /* 회원정보 수정 경고창 */
 function edit_check(){
