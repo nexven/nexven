@@ -1,21 +1,15 @@
-<%@page import="javax.imageio.ImageReader"%>
-<%@page import="java.io.BufferedInputStream"%>
-<%@page import="java.io.InputStream"%>
-<%@page import="java.net.URL"%>
-<%@page import="java.net.URLConnection"%>
-<%@page
-	import="org.springframework.web.servlet.mvc.condition.HeadersRequestCondition"%>
+<%@ page import="org.springframework.web.servlet.mvc.condition.HeadersRequestCondition"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 
 
 <%
 	response.setHeader("Referer", "http://www.inven.co.kr/webzine/news/");
 %>
 
-<!-- <!DOCTYPE html>
+<%--
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
@@ -32,12 +26,10 @@
 	</style>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
-<body> -->
+<body>
+--%>
 
-	<!-- <h1>
-	네이버(인벤) RSS파서 내용
-</h1> -->
-	<h2 class="text-center" style="margin-top:30px">GAME NEWS</h2>
+<!-- 	<h2 class="text-center" style="margin-top:30px">GAME NEWS</h2> -->
 
 	<div class="width90" style="margin:40px auto">
 
@@ -52,16 +44,24 @@
 			<div class="row" style="margin:20px 0">
 				<div class="col-md-3 col-sm-3 col-xs-4 text-center">
 					<c:if test="${!empty v['enclosure']}">
-						<img src="${v['enclosure']}" width="100%" height="100%" style="max-width:300px;" />
+						<a href='javascript:nload("${v["link"]}","게임뉴스 내용","");'>
+							<img src="${v['enclosure']}" width="100%" height="100%" style="max-width:300px;max-height:200px;" />
+						</a>
 					</c:if>
 					<c:if test="${empty v['enclosure']}">
-					<img src="https://placeholdit.imgix.net/~text?txtsize=70&txtclr=000000&txt=NO%20IMAGE&txttrack=4&w=640&h=480&bg=eeeeee" width="100%" height="100%" style="max-width:300px;" />
+						<a href='javascript:nload("${v["link"]}","게임뉴스 내용","");'>
+							<img src="https://placeholdit.imgix.net/~text?txtsize=70&txtclr=000000&txt=NO%20IMAGE&txttrack=4&w=640&h=480&bg=eeeeee" width="100%" height="100%" style="max-width:300px;max-height:200px;" />
+						</a>
 					</c:if>
 
 				</div>
-				<div class="col-md-5 col-sm-5 col-xs-8 titlelink kr" style="text-align:left !important;">
-					<a href='javascript:nload("${v["link"]}","게임내용","");'>${v["title"]}</a>
-					<br/><br/><strong>${v["description"]}</strong>
+				<div class="col-md-5 col-sm-5 col-xs-8 titlelink kr" style="text-align:left !important;font-size:16px">
+					<div style="margin-bottom:10px;">
+						<strong><a href='javascript:nload("${v["link"]}","게임뉴스 내용","");'>${v["title"]}</a></strong>
+					</div>
+					<div >
+						<i>${v["description"]}...</i>
+					</div>
 				</div>
 				<div class="col-md-2 col-sm-2 col-xs-0 kr text-center">${v['category']}</div>
 				<div class="col-md-2 col-sm-2 col-xs-0 kr text-center">${v['pubDate']}</div>
@@ -75,7 +75,7 @@
 
 
 
-	<%-- 
+<%-- 
 <P>
 <c:forEach var="v" items="${nexven_news}">
 
@@ -144,7 +144,4 @@
 </c:forEach>
 
 </P>
-	 --%>
-
-<!-- </body>
-</html> -->
+--%>

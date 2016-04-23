@@ -10,7 +10,7 @@
 	    async : true,
 	    cache : false,
 	    encoding: "UTF-8",
-	    url: "board?bName="+bName,
+	    url: "/nexven/board?bName="+bName,
 	    contentType: "application/json",
 		success: function(result) {
 	        var json = JSON.stringify(result);
@@ -31,7 +31,7 @@
 	    	    + '</div>' ;
 	    	});
 	    	
-	    	$(".community").html(html);
+	    	$("#community").html(html);
 		
 	    },
 	    error: function(){
@@ -54,7 +54,7 @@
 		<div class="col-md-1 col-sm-1 col-xs-0">추천</div>
 		<div class="col-md-0 col-sm-0 col-xs-0">게시판이름</div>
 	</div>
-	<div class="community">	
+	<div id="community">	
 			
 	</div>
 </div>

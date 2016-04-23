@@ -112,7 +112,7 @@
  		        	$("#news_main"+i+"_img").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+"<img src='"+news_main_json[i].enclosure+"' /></a>");
  		        	$("#news_main"+i+"_title").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+news_main_json[i].title+"</a>");
  		        	$("#news_main"+i+"_desc").html(news_main_json[i].description);
- 		        });		        
+ 		        });		         
  				
  		    },
  		    error: function(){
@@ -231,7 +231,7 @@
 	      <div class="modal-content">
 	        <div class="modal-header">
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 id="nexven_view_title" class="modal-title text-center">Nexven View</h4>
+	          <h3 id="nexven_view_title" class="modal-title text-center kr">Nexven View</h3>
 	        </div>
 	        	<div class="nexven_view_wrap">
 		        	<div id="nexven_view_content" class="modal-body">
@@ -239,7 +239,7 @@
 		        	</div>
 	        	</div>
 	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 	        </div>
 	      </div>
 	      
@@ -441,21 +441,6 @@
 	</footer>
 
 
-	<!-- game db modal -->
-<!-- 	<div class="portfolio-modal modal fade" id="gamedb" -->
-<!-- 		tabindex="-1" role="dialog" aria-hidden="true"> -->
-<!-- 		<div class="modal-content"> -->
-<!-- 			<div class="close-modal" data-dismiss="modal"> -->
-<!-- 				<div class="lr"> -->
-<!-- 					<div class="rl"></div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<div class="container"> -->
-<!-- 				db 게시판 -->
-
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
 	
 	<!-- market game modal -->
 	<div class="portfolio-modal modal fade" id="mar_game"

@@ -1,20 +1,14 @@
-<%@page import="javax.imageio.ImageReader"%>
-<%@page import="java.io.BufferedInputStream"%>
-<%@page import="java.io.InputStream"%>
-<%@page import="java.net.URL"%>
-<%@page import="java.net.URLConnection"%>
-<%@page
-	import="org.springframework.web.servlet.mvc.condition.HeadersRequestCondition"%>
+<%@page	import="org.springframework.web.servlet.mvc.condition.HeadersRequestCondition"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 
 
 <%
 	response.setHeader("Referer", "http://www.inven.co.kr/webzine/news/");
 %>
 
+<%--
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,27 +31,27 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 </head>
 <body>
+ --%>
 
-	<!-- <h1>
-	네이버(인벤) HTML파서 내용
-</h1> -->
-
-	<div class="width80">
-		<div class="row">
+	<div>
+		<div style="padding-bottom:20px;margin-bottom:10px;border-bottom:1px solid #ccc">
+			<button onclick='javascript:nload("news","게임뉴스","");' class="btn btn-default"><i class="glyphicon glyphicon-list"> 목록으로</i></button>
+		</div>
+		<div>
 			<h3>${nexven_news_content['news_title']}</h3>
 		</div>
-		<div class="row titlelink">
+		<div>
 			${nexven_news_content['news_content']}
 		</div>
-		<div class="row text-center" style="margin:30px 0px 15px 0px;">
-			<button onclick='javascript:nload("news","게임뉴스","");' class="btn btn-default">목록으로</button>
+		<div style="padding-top:20px;margin-top:10px;border-top:1px solid #ccc">
+			<button onclick='javascript:nload("news","게임뉴스","");' class="btn btn-default"><i class="glyphicon glyphicon-list">목록으로</i></button>
 		</div>
 		
 	</div>
 
 
 
-	<%--
+<%--
 <P>
 
 <div id="start">
@@ -102,6 +96,4 @@
 </div>
 
 </P>
- --%>
-</body>
-</html>
+--%>
