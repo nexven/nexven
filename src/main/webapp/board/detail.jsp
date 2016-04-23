@@ -116,7 +116,7 @@
 		 </table>
 	</div>
 
-	<div id="bcontent" class="" style="margin:20px 0;padding:20px;">
+	<div id="bcontent" style="margin:20px 0;padding:20px;">
 
 	</div>
 

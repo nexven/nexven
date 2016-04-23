@@ -37,14 +37,15 @@
 		<div style="padding-bottom:20px;margin-bottom:10px;border-bottom:1px solid #ccc">
 			<button onclick='javascript:nload("news","게임뉴스","");' class="btn btn-default"><i class="glyphicon glyphicon-list"> 목록으로</i></button>
 		</div>
-		<div>
+		<div class="text-center" style="padding-bottom:10px;border-bottom:1px solid #ccc;margin-bottom:20px">
 			<h3>${nexven_news_content['news_title']}</h3>
 		</div>
-		<div>
+
+		<div style="margin:20px 0;padding:20px;">
 			${nexven_news_content['news_content']}
 		</div>
 		<div style="padding-top:20px;margin-top:10px;border-top:1px solid #ccc">
-			<button onclick='javascript:nload("news","게임뉴스","");' class="btn btn-default"><i class="glyphicon glyphicon-list">목록으로</i></button>
+			<button onclick='javascript:nload("news","게임뉴스","");' class="btn btn-default"><i class="glyphicon glyphicon-list"> 목록으로</i></button>
 		</div>
 		
 	</div>

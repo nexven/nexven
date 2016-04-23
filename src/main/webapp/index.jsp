@@ -12,7 +12,6 @@
 <meta name="description" content="게임,뉴스,게임뉴스,커뮤니티">
 <meta name="author" content="nexven">
 <title>NEXVEN</title>
-
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.css" rel="stylesheet">
 
@@ -48,8 +47,9 @@
 <script src="js/jquery.js"></script>
 <script src="js/jquery.twbsPagination.min.js"></script>
 
-	
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<!-- Daum API -->	
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 
@@ -65,7 +65,8 @@
 
 <script type="text/javascript">
 
-	// 메인 로드함수 Modal
+	// 메인로더 (Modal)
+	var naction = false;
 	function nload(src,title,size){
 		$.ajax({
 		    type: "GET",
@@ -74,20 +75,33 @@
 		    encoding: "UTF-8",
 		    url: src,
 			success: function(result) {
-				if(size=="small"){
-					$("#nexven_view_class").attr("class","modal-dialog modal-nexven-sm");
-				}else if(size=="mid"){
-					$("#nexven_view_class").attr("class","modal-dialog modal-nexven-md");
-				}else{
-					$("#nexven_view_class").attr("class","modal-dialog modal-nexven-bg");
+				
+ 				if(naction===false){
+					naction=true;
+
+					if($("#nexven_view").attr("class")==="modal fade"){
+						if(size=="small"){
+							$("#nexven_view_class").attr("class","modal-dialog modal-nexven-sm");
+						}else if(size=="mid"){
+							$("#nexven_view_class").attr("class","modal-dialog modal-nexven-md");
+						}else{
+							$("#nexven_view_class").attr("class","modal-dialog modal-nexven-bg");
+						}						
+						$('#nexven_view').modal('show');
+					}else{
+						$("#nexven_view_content").html();
+						$("#nexven_view_title").html();
+					}
+					
+					$("#nexven_view_content").html(result);
+					$("#nexven_view_title").html(title);
+					
+					naction=false;
 				}
 
-				$("#nexven_view_content").html(result);
-				$("#nexven_view_title").html(title);
-				$('#nexven_view').modal('show');
 		    },
 		    error: function(){
-		        alert('Nexven View 불러오기 실패');
+		        alert('로더 불러오기 실패');
 		    }
 		});
 	}
@@ -152,6 +166,8 @@
 		nload("${param.src}","${param.title}","${param.size}");
 	</script>
 </c:if>
+
+<base target="_self" />
 
 </head>
 
