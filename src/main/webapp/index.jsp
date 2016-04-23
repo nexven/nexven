@@ -89,8 +89,8 @@
 						}						
 						$('#nexven_view').modal('show');
 					}else{
-						$("#nexven_view_content").html();
-						$("#nexven_view_title").html();
+						//$("#nexven_view_content").html();
+						//$("#nexven_view_title").html();
 					}
 					
 					$("#nexven_view_content").html(result);
@@ -201,16 +201,15 @@
 					<!-- 로그인 전 로그인 버튼 -->
 					<!-- <li><a class="btn btn-primary" href="#portfolioModal1" data-toggle="modal">LOGIN</a></li> -->
 					<!-- 로그인 후 아이디 -->
-					<li><a class="kr" id="nexven_nick" href='javascript:nload("login_info.jsp","회원정보","small");'>
-							
-							<c:set var="mNick" value="${mNick}" />
-							
-							<c:if test="${empty mNick}"></c:if>
-							<c:if test="${!empty mNick}">${sessionScope.mNick }님</c:if>
-							
-						</a>
-					</li>
-
+					<c:set var="mNick" value="${mNick}" />
+						<c:if test="${empty mNick}"></c:if>
+						<c:if test="${!empty mNick}">					
+							<li>
+								<a class="kr" id="nexven_nick" href='javascript:nload("login_info.jsp","회원정보","small");'>
+								${sessionScope.mNick }님
+								</a>
+							</li>
+						</c:if>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -433,8 +432,6 @@
 			</div>
 		</div>
 	</section>
-	
-	
 
 	<footer style="background-color: black;">
 		<div class="container">

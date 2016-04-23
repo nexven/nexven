@@ -49,19 +49,6 @@
 	
 
 </script>
-<!-- </head> -->
-<!-- <body class="container"> -->
-
-
-<!-- <table class="table">
-<tr>
-	<td colspan="4" id="gname"></td>
-	<td colspan="2">평 점</td></tr>
-	<tr><td>출시일 : </td><td id="gstartDate"></td><td>제작사 : </td><td id="gmaker"></td><td rowspan="4" id="grating"></tr>
-	<tr><td>유통사 : </td><td id="gpublisher"></td><td>서비스 상태 : </td><td id="gserviceType"></td></tr>
-	<tr><td>플랫폼 : </td><td id="gplatform"></td><td>장르 : </td><td id="ggenre"></td></tr>
-	<tr><td>홈페이지 : </td><td id="ghomepage"></td><td></td><td></td></tr>
-</table> -->
 
 	<div style="padding-bottom:20px;margin-bottom:10px;border-bottom:1px solid #ccc;">
 		<button onclick='javascript:list();' class="btn btn-default"><i class="glyphicon glyphicon-list"> 목록으로</i></button>

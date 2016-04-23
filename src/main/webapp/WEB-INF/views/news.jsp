@@ -31,17 +31,17 @@
 
 <!-- 	<h2 class="text-center" style="margin-top:30px">GAME NEWS</h2> -->
 
-	<div class="text-center" style="margin:40px auto">
+	<div class="text-center kr" style="margin:40px auto">
 
-		<div class="row text-center" style="margin:0 auto;padding:15px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;font-size:16px">
-			<div class="col-md-3 col-sm-3 col-xs-4">Image</div>
-			<div class="col-md-5 col-sm-5 col-xs-8">Title</div>
-			<div class="col-md-2 col-sm-2 col-xs-0">Category</div>
-			<div class="col-md-2 col-sm-2 col-xs-0">pubDate</div>
+		<div class="row" style="margin:0 auto;padding:15px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;font-size:18px">
+			<div class="col-md-3 col-sm-3 col-xs-4"><strong>이미지</strong></div>
+			<div class="col-md-5 col-sm-5 col-xs-8"><strong>제목</strong></div>
+			<div class="col-md-2 col-sm-2 col-xs-0"><strong>카테고리</strong></div>
+			<div class="col-md-2 col-sm-2 col-xs-0"><strong>작성일</strong></div>
 		</div>
 
 		<c:forEach var="v" items="${nexven_news}">
-			<div class="row kr" style="margin:20px 0px;">
+			<div class="row" style="margin:20px 0px;">
 				<div class="col-md-3 col-sm-3 col-xs-4">
 					<c:if test="${!empty v['enclosure']}">
 						<a href='javascript:nload("${v["link"]}","게임뉴스 내용","");'>

@@ -1,7 +1,5 @@
 package com.unknown.nexven;
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -65,8 +63,8 @@ public class MemberController {
 		    System.out.println(mEmail);
 		    m.setMEmail(mEmail);
 		    //  회원권한레벨
-		    Integer mAuthLevel;
-
+		    Integer mAuthLevel=1;
+		    m.setMAuthLevel(mAuthLevel);
 		    //  성별
 		    String mGender = request.getParameter("mGender");
 		    System.out.println(mGender);
@@ -179,7 +177,7 @@ public class MemberController {
 		    System.out.println(mEmail);
 		    m.setMEmail(mEmail);
 		    //  회원권한레벨
-		    Integer mAuthLevel;
+		    //Integer mAuthLevel=1;
 
 		    //  성별
 		    String mGender = request.getParameter("mGender");
@@ -449,10 +447,7 @@ public class MemberController {
 		System.out.println(map);
 
 		if(map==null){//등록되지 않은 회원일때
-//			out.println("<script>");
-//			out.println("alert('등록되지 않은 회원입니다!')");
-//			out.println("history.back()");
-//			out.println("</script>");
+
 			login_chk.put("success","실패");
 			return login_chk;
 		}else if(String.valueOf(map.get("MISOUT")).equals("1")){
@@ -466,11 +461,7 @@ public class MemberController {
 				String mName=map.get("MNAME");
 				String mNick=map.get("MNICK");
 				String mIsOut= String.valueOf(map.get("MISOUT"));
-				
 
-				
-
-				
 				System.out.println(mIsOut);
 				
 				session.setAttribute("mName",mName);
@@ -494,10 +485,7 @@ public class MemberController {
 				return login_chk;
 
 			}else{//비번이 다를때
-//				out.println("<script>");
-//				out.println("alert('비번이 다릅니다!')");
-//				out.println("history.go(-1)");
-//				out.println("</script>");\
+
 				login_chk.put("success","실패");
 				return login_chk;
 			}

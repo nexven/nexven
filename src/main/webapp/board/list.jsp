@@ -19,7 +19,7 @@
 	    	//alert(arrData);
 	    	var html = "";
 	    	$.each(arrData, function(idx) {
-	    	    html += '<div class="row text-center" style="border-bottom: 1px solid #eee;">'
+	    	    html += '<div class="row" style="margin:0 auto;padding:10px 0;border-bottom: 1px solid #eee;">'
 	    	    + '<div class="col-md-1 col-sm-1 col-xs-2 active">' + arrData[idx].bnum + '</div>'	    	    
 	    	    + '<div class="col-md-2 col-sm-2 col-xs-2 active">' + arrData[idx].bcategory + '</div>'
 	    	    + '<div class="col-md-3 col-sm-3 col-xs-5 active">' + '<a href="javascript:nload(\'board/detail.jsp?bNum='+arrData[idx].bnum+'\',\' '+bName+' 커뮤니티 내용\',\'\');">'+ arrData[idx].btitle + '</a></div>'
@@ -39,12 +39,21 @@
 	    }
 	});
 	
-
+	function append(){
+		nload("board/append.jsp?bName="+bName,bName+" 글쓰기","");
+	}
 
 
 </script>
-<div style="margin:30px 20px;">
-	<div class="row text-center" style="border: 2px solid;border-radius: 25px;">
+
+
+<div class="text-center kr" style="margin:20px auto">
+
+	<div style="padding-bottom:20px;text-align: right;">
+		<button onclick='javascript:append();' class="btn btn-default"><i class="glyphicon glyphicon-edit"> 글쓰기</i></button>
+	</div>
+
+	<div class="row" style="margin:0 auto;padding:15px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;">
 		<div class="col-md-1 col-sm-1 col-xs-2">글번호</div>
 		<div class="col-md-2 col-sm-2 col-xs-2">카테고리</div>
 		<div class="col-md-3 col-sm-3 col-xs-5">제목</div>
@@ -54,8 +63,12 @@
 		<div class="col-md-1 col-sm-1 col-xs-0">추천</div>
 		<div class="col-md-0 col-sm-0 col-xs-0">게시판이름</div>
 	</div>
-	<div id="community">	
+	<div id="community" class="row" style="margin:0 auto;">	
 			
+	</div>
+
+	<div style="padding-top:20px;text-align: right;">
+		<button onclick='javascript:append();' class="btn btn-default"><i class="glyphicon glyphicon-edit"> 글쓰기</i></button>
 	</div>
 </div>
 <!-- 	<div align="center"> -->
