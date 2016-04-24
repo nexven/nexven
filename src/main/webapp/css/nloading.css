@@ -1,0 +1,259 @@
+
+.lgame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 250px;
+}
+
+.left,
+.right {
+  height: 50px;
+  width: 8px;
+  background: white;
+  border:1px solid #000;
+  display: inline-block;
+  position: absolute;
+}
+
+.left {
+  left: 0;
+  -webkit-animation: position1 2s linear infinite;
+          animation: position1 2s linear infinite;
+}
+
+.right {
+  right: 0;
+  -webkit-animation: position2 2s linear infinite;
+          animation: position2 2s linear infinite;
+}
+
+.ball,
+.ballhit {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  border:1px solid #000;
+  position: absolute;
+  -webkit-animation: bounce 2s linear infinite;
+          animation: bounce 2s linear infinite;
+}
+
+@-webkit-keyframes position1 {
+  0% {
+    top: -60px;
+  }
+  25% {
+    top: 0;
+  }
+  50% {
+    top: 60px;
+  }
+  75% {
+    top: -60px;
+  }
+  100% {
+    top: -60px;
+  }
+}
+
+@keyframes position1 {
+  0% {
+    top: -60px;
+  }
+  25% {
+    top: 0;
+  }
+  50% {
+    top: 60px;
+  }
+  75% {
+    top: -60px;
+  }
+  100% {
+    top: -60px;
+  }
+}
+
+@-webkit-keyframes position2 {
+  0% {
+    top: 60px;
+  }
+  25% {
+    top: 0;
+  }
+  50% {
+    top: -60px;
+  }
+  75% {
+    top: -60px;
+  }
+  100% {
+    top: 60px;
+  }
+}
+
+@keyframes position2 {
+  0% {
+    top: 60px;
+  }
+  25% {
+    top: 0;
+  }
+  50% {
+    top: -60px;
+  }
+  75% {
+    top: -60px;
+  }
+  100% {
+    top: 60px;
+  }
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    top: -35px;
+    left: 10px;
+  }
+  25% {
+    top: 25px;
+    left: 225px;
+  }
+  50% {
+    top: 75px;
+    left: 10px;
+  }
+  75% {
+    top: -35px;
+    left: 225px;
+  }
+  100% {
+    top: -35px;
+    left: 10px;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    top: -35px;
+    left: 10px;
+  }
+  25% {
+    top: 25px;
+    left: 225px;
+  }
+  50% {
+    top: 75px;
+    left: 10px;
+  }
+  75% {
+    top: -35px;
+    left: 225px;
+  }
+  100% {
+    top: -35px;
+    left: 10px;
+  }
+}
+
+@-webkit-keyframes bounce2 {
+  0% {
+    top: -35px;
+    left: 10px;
+    border: 2px transparent solid;
+  }
+  24% {
+    border: 2px transparent solid;
+  }
+  25% {
+    top: 25px;
+    left: 225px;
+    border: 2px #fff solid;
+  }
+  49% {
+    border: 2px transparent solid;
+  }
+  50% {
+    top: 75px;
+    left: 10px;
+    border: 2px #fff solid;
+  }
+  74% {
+    border: 2px transparent solid;
+  }
+  75% {
+    top: -35px;
+    left: 225px;
+    border: 2px #fff solid;
+  }
+  99% {
+    border: 2px transparent solid;
+  }
+  100% {
+    top: -35px;
+    left: 10px;
+    border: 2px #fff solid;
+  }
+}
+
+@keyframes bounce2 {
+  0% {
+    top: -35px;
+    left: 10px;
+    border: 2px transparent solid;
+  }
+  24% {
+    border: 2px transparent solid;
+  }
+  25% {
+    top: 25px;
+    left: 225px;
+    border: 2px #fff solid;
+  }
+  49% {
+    border: 2px transparent solid;
+  }
+  50% {
+    top: 75px;
+    left: 10px;
+    border: 2px #fff solid;
+  }
+  74% {
+    border: 2px transparent solid;
+  }
+  75% {
+    top: -35px;
+    left: 225px;
+    border: 2px #fff solid;
+  }
+  99% {
+    border: 2px transparent solid;
+  }
+  100% {
+    top: -35px;
+    left: 10px;
+    border: 2px #fff solid;
+  }
+}
+
+.credit {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin: 0 0 20px;
+  color: rgba(255, 255, 255, .5);
+  text-transform: uppercase;
+  font-size: 11px;
+  font-family: sans-serif, helvetica;
+  letter-spacing: .5px;
+}
+
+.credit a {
+  color: #fff;
+}

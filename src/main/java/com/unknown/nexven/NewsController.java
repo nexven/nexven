@@ -37,46 +37,87 @@ import org.w3c.dom.NodeList;
 @Controller
 public class NewsController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(NewsController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(NewsController.class);
 	
 	/** 네이버 뉴스 API
 	 * http://developer.naver.com/wiki/pages/News
 	 */
 	
 	@RequestMapping(value = "/news", method = RequestMethod.GET)
-	public String news(@RequestParam(value="sel", required =false, defaultValue="t") String sel, @RequestParam(value="sw", required =false, defaultValue="") String sw, Locale locale, Model model, HttpServletResponse res) throws IOException {
+	public String news(@RequestParam(value="page", required =false, defaultValue="1") String page,@RequestParam(value="tab", required =false, defaultValue="") String tab,@RequestParam(value="sel", required =false, defaultValue="") String sel, @RequestParam(value="sw", required =false, defaultValue="") String sw, Locale locale, Model model, HttpServletResponse res) throws IOException {
 	
-		logger.info("검색 선택 : " + sel);
-		logger.info("검색 키워드 : " + sw);
-		
+		//logger.info("탭 선택 : " + tab);
+		//logger.info("검색 선택 : " + sel);
+		//logger.info("검색 키워드 : " + sw);
+		//logger.info("뉴스 페이지 : " + page);
+
      	List<HashMap<String,Object>> nlist = new LinkedList<HashMap<String,Object>>();
      	HashMap<String,Object> mlist;
-        String mtitle = "";
+     	boolean addsw=true;
+     	String mtitle = "";
      	String mcontent = "";
-    	boolean addsw=true;
+    	int pbegin=0;
+    	int pend=0;
+
 	    try {
 	        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 	        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 	        Document xml = null;
 	        
-        	xml = documentBuilder.parse("http://feeds.feedburner.com/inven");
-        	
-//	        if(keyword.equals("")&&page.equals("")){
-//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr");
-//	        }else if(page.equals("")){
-//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr+"+keyword);	        	
-//	        }else if(keyword.equals("")){
-//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr"+"&field="+page);
-//	        }else{
-//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr+"+keyword+"&field="+page);
-//	        }
+	        if(tab.isEmpty()){
+	        	xml = documentBuilder.parse("http://feeds.feedburner.com/inven");	
+	        }else{
+	        	xml = documentBuilder.parse("http://feeds.feedburner.com/inven/sclass/"+tab);
+	        }
+
+	        //	        if(sw.equals("")&&page.equals("")){
+			//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr");
+			//	        }else if(page.equals("")){
+			//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr+"+sw);	        	
+			//	        }else if(sw.equals("")){
+			//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr"+"&field="+page);
+			//	        }else{
+			//	        	xml = documentBuilder.parse("http://newssearch.naver.com/search.naver?where=rss&query=inven.co.kr+"+sw+"&field="+page);
+			//	        }
 	        
 	        Element element = xml.getDocumentElement();
 	        Node channelNode = element.getElementsByTagName("channel").item(0);
 	        NodeList list = channelNode.getChildNodes();
-	        for(int i=0; i<list.getLength(); i++) {
+	        if(page.isEmpty()){
+        		pbegin=0;
+        		pend=list.getLength();
+	        }else{
+	        	switch (page) {
+				case "1":
+		        		pbegin=12;
+		        		pend=pbegin+9;
+					break;
+				case "2":
+		        		pbegin=22;
+		        		pend=pbegin+9;
+					break;
+				case "3":
+		        		pbegin=32;
+		        		pend=pbegin+9;
+					break;
+				case "4":
+		        		pbegin=42;
+		        		pend=pbegin+9;
+					break;
+				case "5":
+		        		pbegin=52;
+		        		pend=pbegin+9;
+					break;
+				default:
+					break;
+				}
+	        }
+	        for(int i=pbegin; i<pend; i++) {
+	        	//System.out.println("길이:"+i);
 	         if(list.item(i).getNodeName().equals("item")) {
-	        	 mlist = new HashMap<String,Object>();	          	
+	        	 mlist = new HashMap<String,Object>();
+	        	 int cntcate=0;
+	        	 addsw=true;	        	 
 	             NodeList list2 = list.item(i).getChildNodes();
 	             for(int j=0;j<list2.getLength();j++) {
 	            	 	mtitle = list2.item(j).getNodeName();
@@ -100,14 +141,31 @@ public class NewsController {
 	                    	//System.out.println(sf.format(wdate));
 	                    	mcontent=sf.format(wdate);
 		                }
+		                if(mtitle.equals("category")){
+		                	cntcate++;
+		                	mtitle=mtitle+cntcate;
+		                	mcontent=mcontent.trim();
+		                	//System.out.println(mtitle+":"+mcontent);
+		                }
 		                
-		                if(!sw.equals("")){
+		                if(!sw.isEmpty()){
 			                switch (sel) {
 							case "t":
 				                if(mtitle.equals("title")){
-				                	System.out.println("타이틀:"+mcontent.contains(sw));
-				                	System.out.println(mcontent);
-				                	if(mcontent.contains(sw)){
+				                	//System.out.println("타이틀:"+mcontent.contains(sw));
+				                	//System.out.println(mcontent);
+				                	if(mcontent.toLowerCase().contains(sw.toLowerCase())){
+				                		addsw=true;
+				                	}else{
+				                		addsw=false;
+				                	}
+				                }
+							break;
+							case "d":
+				                if(mtitle.equals("description")){
+				                	//System.out.println("내용:"+mcontent.contains(sw));
+				                	//System.out.println(mcontent);
+				                	if(mcontent.toLowerCase().contains(sw.toLowerCase())){
 				                		addsw=true;
 				                	}else{
 				                		addsw=false;
@@ -115,9 +173,17 @@ public class NewsController {
 				                }
 							break;
 							case "c":
-					                if(mtitle.equals("category")){
-					                	System.out.println("카테고리:"+mcontent.contains(sw));
-					                	if(mcontent.contains(sw)){
+					                if(mtitle.equals("category2")){
+					                	//System.out.println("카테고리2:"+mcontent.contains(sw));
+					                	if(mcontent.toLowerCase().contains(sw.toLowerCase())){
+					                		addsw=true;
+					                	}else{
+					                		addsw=false;
+					                	}
+					                }
+					                if(mtitle.equals("category3")){
+					                	//System.out.println("카테고리3:"+mcontent.contains(sw));
+					                	if(mcontent.toLowerCase().contains(sw.toLowerCase())){
 					                		addsw=true;
 					                	}else{
 					                		addsw=false;
@@ -128,11 +194,9 @@ public class NewsController {
 								break;
 							}
 		                }
-		                
-		                if(addsw&&!mtitle.equals("#text")){
-		                	mlist.put(mtitle, mcontent);
-		                }
-	                 	
+
+		                mlist.put(mtitle, mcontent);
+
 	                 	/* 네이버
 							if(mtitle.equals("media:thumbnail")){
 	                    		mcontent = list2.item(j).getAttributes().getNamedItem("url").getTextContent();
@@ -176,7 +240,17 @@ public class NewsController {
 	 } catch (Exception e) {
 	     e.getMessage();
 	 }
-		model.addAttribute("nexven_news", nlist );		
+		model.addAttribute("nexven_news", nlist );
+		if(!page.isEmpty()){
+			model.addAttribute("page",page);	
+		}
+		if(!tab.isEmpty()){
+			model.addAttribute("tab",tab);	
+		}
+		if(!sw.isEmpty()){
+			model.addAttribute("sel",sel);
+			model.addAttribute("sw",sw);
+		}
 		return "news";
 	}
 	

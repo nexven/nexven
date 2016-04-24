@@ -6,35 +6,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="description" content="게임,뉴스,게임뉴스,커뮤니티">
 <meta name="author" content="nexven">
 <title>NEXVEN</title>
+
+<link href="css/nloading.css" rel="stylesheet" />
+
 <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet" />
 
 <!-- Custom CSS -->
-<link href="css/nexven.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+<link href="css/nexven.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
 
 <!-- Custom Fonts -->
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
-<link
-	href='https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css'
-	rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css">
-<link href='https://fonts.googleapis.com/css?family=Kaushan+Script'
-	rel='stylesheet' type='text/css'>
-<link
-	href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic'
-	rel='stylesheet' type='text/css'>
-<link
-	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'
-	rel='stylesheet' type='text/css'>
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"	type="text/css" />
+<link href='https://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css' rel='stylesheet' type='text/css' />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"	rel="stylesheet" type="text/css" />
+<link href='https://fonts.googleapis.com/css?family=Kaushan+Script'	rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css' />
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -105,40 +99,34 @@
 		    }
 		});
 	}
+	
+	// 뉴스
+	$.ajax({
+		type: "get",
+	    async : true,
+	    cache : false,
+	    encoding: "UTF-8",
+	    url: "/nexven/news_main",
+		success: function(news_main) {
+	        var news_main_json = JSON.parse(JSON.stringify(news_main));
+	        $.each(news_main_json, function(i) {
+	        	//alert(news_main_json[i].title);
 
- 	$(function(){
+				if(news_main_json[i].enclosure==null||news_main_json[i].enclosure==""){					
+					news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=70&txtclr=000000&txt=NO%20IMAGE&txttrack=4&w=640&h=480&bg=eeeeee";
+				}		        	
+	        	$("#news_main"+i+"_img").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+"<img src='"+news_main_json[i].enclosure+"' /></a>");
+	        	$("#news_main"+i+"_title").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+news_main_json[i].title+"</a>");
+	        	$("#news_main"+i+"_desc").html(news_main_json[i].description);
+	        });
+			
+	    },
+	    error: function(){
+	        alert('메인뉴스 불러오기 실패');
+	    }
+	});
 
- 		
- 		$.ajax({
- 		    type: "get",
-		    async : true,
-		    cache : false,
-		    encoding: "UTF-8",
- 		    url: "/nexven/news_main",
- 			success: function(news_main) {
- 		        var news_main_json = JSON.parse(JSON.stringify(news_main));
- 		        $.each(news_main_json, function(i) {
- 		        	//alert(news_main_json[i].title);
-
- 					if(news_main_json[i].enclosure==null||news_main_json[i].enclosure==""){					
- 						news_main_json[i].enclosure="https://placeholdit.imgix.net/~text?txtsize=70&txtclr=000000&txt=NO%20IMAGE&txttrack=4&w=640&h=480&bg=eeeeee";
- 					}		        	
- 		        	$("#news_main"+i+"_img").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+"<img src='"+news_main_json[i].enclosure+"' /></a>");
- 		        	$("#news_main"+i+"_title").html("<a href='javascript:nload(\""+news_main_json[i].link+"\",\"뉴스 내용\",\"\");'>"+news_main_json[i].title+"</a>");
- 		        	$("#news_main"+i+"_desc").html(news_main_json[i].description);
- 		        });		         
- 				
- 		    },
- 		    error: function(){
- 		        alert('메인뉴스 불러오기 실패');
- 		    }
- 		});
-
-    });
-
-
-
-	// 비동기 로그아웃
+	// 로그아웃
 	function logout() {
 		$.ajax({
 				type : "get",
@@ -157,6 +145,13 @@
 
 		});		  
 	}
+	
+	// Ready
+ 	$(function(){
+ 		setTimeout(function() {
+ 	     	$("#nloading").fadeOut(); 			
+ 		}, 5000);
+    });
 
 </script>
 
@@ -245,7 +240,7 @@
 	      <!-- Modal content-->
 	      <div class="modal-content">
 	        <div class="modal-header">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <button type="button" class="close" data-dismiss="modal" style="font-size:2.4em">&times;</button>
 	          <h3 id="nexven_view_title" class="modal-title text-center kr">Nexven View</h3>
 	        </div>
 	        	<div class="nexven_view_wrap">
@@ -566,7 +561,18 @@
 			</div>
 		</div>
 	</div>
-	
+
+	<!-- Loading -->
+	<div id="nloading" class="lgame" style="position:absolute;left:50%;top:50%;">
+	  <div class="left">
+	  </div>
+	  <div class="right">
+	  </div>
+	  <div class="ball">
+	  </div>
+	  <div class="ballhit">
+	  </div>
+	</div>
 	
 	<!-- Plugin JavaScript -->
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

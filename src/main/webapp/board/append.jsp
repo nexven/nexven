@@ -105,13 +105,69 @@
 	<div id="bcontent" style="margin:20px 0;padding:20px;">
 
 	</div>
+
 	
-	
-	
+<%--	
 <div style="margin:20px 0;padding:20px;">
-	폼 입력
+	<form id="bappend" method="post">
+		
+		<div class="form-group">
+			<label for="ename">Ename</label>
+			<input id="ename" name="ename" class="form-control" minlength="2" maxlength="10" pattern="/^[가-힣a-zA-Z]+$/" required="required" />
+		</div>
+
+		<div class="form-group">
+			<label for="empno">Empno</label>
+			<input id="empno" type="number" name="empno" class="form-control" min="1000" max="9999" required="required" />
+		</div>
+
+		<div class="form-group">
+			<label for="job">Job</label>
+			<input id="job" name="job" class="form-control" maxlength="9" />
+		</div>
+		
+		<div class="form-group">
+			<label for="mgr">Mgr</label>
+			<div>
+				<select id="mgr" name="mgr" data-ng-model="emp.mgr">
+					<option>--선택하세요--</option>
+					<option data-ng-repeat="mgr in mgrs" value="{{mgr.empno}}">{{mgr.empno}} / {{mgr.ename}}</option>				
+				</select>
+			</div>
+		</div>
+		
+		<div class="input-group">
+			<input type="text" name="date" class="form-control" />
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default" onclick="open()"><i class="glyphicon glyphicon-calendar" style="color:lightblue;"></i></button>
+				<button type="button" class="btn btn-default" onclick="clear()"><i class="glyphicon glyphicon-remove" style="color:lightblue;"></i></button>
+			</span>
+		</div>
+		
+		<div class="form-group">
+			<label for="sal">Sal</label>
+			<input id="sal" type="number" name="sal" class="form-control" data-ng-model="emp.sal" data-ng-min="0" data-ng-max="9999999" />
+		</div>
+		
+
+		<div class="form-group">
+			<label for="comm">Comm</label>
+			<input id="comm" type="number" name="comm" class="form-control" data-ng-model="emp.comm" data-ng-min="0" data-ng-max="9999999" />
+		</div>
+		
+
+		<div class="form-group">
+			<label for="deptno">Deptno</label>
+			<select id="deptno" name="deptno" data-ng-model="emp.deptno">
+				<option value="">--선택하세요--</option>
+				<option data-ng-repeat="dept in deptnos" value="{{dept.deptno}}">{{dept.deptno}} / {{dept.dname}} / {{dept.loc}}</option>				
+			</select>
+		</div>
+			<input type="submit" class="btn btn-primary" data-ng-disabled="empForm.$invalid" value="직원추가" />&nbsp;&nbsp;<input type="reset" class="btn btn-primary" value ="초기화" />
+
+	</form>
 </div>
-	
+--%>
 
 	
 	

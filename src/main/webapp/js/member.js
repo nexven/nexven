@@ -40,12 +40,12 @@
 	 }
 	 if($.trim($("#mZipcode").val())==""){
 		 alert("우편번호를 입력하세요!");
-		 $("#mZipcode").val("").focus();
+		 $("#mZipcode").val("").click();
 		 return false;
 	 }
 	 if($.trim($("#mAddr1").val())==""){
 		 alert("주소를 입력하세요!");
-		 $("#mAddr1").val("").focus();
+		 $("#mAddr1").val("").click();
 		 return false;
 	 }
 	 if($.trim($("#mAddr2").val())==""){
@@ -55,49 +55,21 @@
 	 }
 	 if($.trim($("#mTel").val())==""){
 		 alert("휴대전화번호를 입력하세요!");
-		 $("#join_phone2").val("").focus();
+		 $("#mTel").val("").focus();
 		 return false;
 	 }
 	 if($.trim($("#mEmail").val())==""){
 		 alert("메일 아이디를 입력하세요!");
-		 $("#join_mailid").val("").focus();
+		 $("#mEmail").val("").focus();
 		 return false;
 	 }
 	 if($.trim($("#join_maildomain").val())==""){
 		 alert("메일 주소를 입력하세요!");
-		 $("#join_maildomain").val("").focus();
+		 $("#mail_list").focus();
 		 return false;
 	 }
 	 
-		var formData = $("#nexven_member_form").serialize();
-		//alert(formData);
-
-	$.ajax({
-		type : "POST",
-	    async : true,
-	    cache : false,
-	    encoding: "UTF-8",
-		data : formData,
-	    url : "member_join_ok",
-		success: function(nchk) {
-			var nchk = JSON.parse(JSON.stringify(nchk));
-			
-			if(nchk.success=="성공"){
-				$("#nexven_view").modal('hide');
-				alert("회원가입을 축하합니다.");
-				location.href = "./";
-			}else{
-				alert("회원가입에 실패하였습니다. 오류이유("+nchk.success+")");
-				nload("member_join.jsp");
-			}
-
-		},
-	    error: function(nchk2){
-	    	alert("회원가입 정보 불러오기 실패");
-	    }
-
-	});
-
+	 return true;
  }
  
 function post_search(){

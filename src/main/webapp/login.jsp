@@ -12,7 +12,7 @@
 	}else{
 %>
 
-<form id="nexven_login_form" style="text-align:center;margin:0 0 40px 0">
+<form id="nexven_login_form" action="javascript:return false;" onsubmit="javascript:return false;" style="text-align:center;margin:0 0 40px 0">
 				<!-- Project Details Go Here -->
 				<h2>LOGIN</h2>
 				<p>
@@ -23,53 +23,46 @@
 					<label style="display: inline-block; width: 35px;">PW</label><input
 						id="pwd" name="pwd" type="password" style="width: 180px;" />
 				</p>
-				<button id="nexven_login_submit" type="button" class="btn btn-primary" data-dismiss="modal">로그인</button>
-				<button id="nexven_signin" type="button" class="btn btn-primary" onclick='javascript:nload("member_join.jsp","회원가입","mid");'>회원가입</button>
+				<input type="submit" class="btn btn-primary" data-dismiss="modal" value="로그인" onclick="javascript:login_chk();" />
+				<input type="button" class="btn btn-primary" onclick='javascript:nload("member_join.jsp","회원가입","mid");' value="회원가입" />
 </form>
 
-
 <script type="text/javascript">
-		$("#nexven_login_submit").click(function()
-		{
-			var formData = $("#nexven_login_form").serialize();
- 
-			$.ajax({
-					type : "POST",
-				    async : true,
-				    cache : false,
-				    encoding: "UTF-8",
-					data : formData,
-					url : "member_login_ok",
-					success: function(nchk) {
-						var nchk = JSON.parse(JSON.stringify(nchk));
-						
-						if(nchk.success=="성공"){
-							location.href = "./";	
-						}
-						else if(nchk.success=="탈퇴"){
-							alert("탈퇴된 계정입니다.");
-							nload("login.jsp","로그인","small");	
-						}						
-						else{
-							alert("아이디 또는 패스워드가 틀렸습니다.");
-							nload("login.jsp","로그인","small");
-						}
+	function login_chk(){
+		var formData = $("#nexven_login_form").serialize();		 
+		$.ajax({
+				type : "POST",
+			    async : true,
+			    cache : false,
+			    encoding: "UTF-8",
+				data : formData,
+				url : "member_login_ok",
+				success: function(nchk) {
+					var nchk = JSON.parse(JSON.stringify(nchk));
+					
+					if(nchk.success=="성공"){
+						location.href = "./";
+					}
+					else if(nchk.success=="탈퇴"){
+						alert("탈퇴된 계정입니다.");
+						nload("login.jsp","로그인","small");
+					}						
+					else{
+						alert("아이디 또는 패스워드가 틀렸습니다.");
+						nload("login.jsp","로그인","small");
+					}
 
-					},
-				    error: function(nchk2){
-				    	alert("로그인 오류");
-				    }
-			});
+				},
+			    error: function(nchk2){
+			    	alert("로그인 오류");
+			    }
 		});
-
+		
+	}
 </script>
 
-
-
-
-
-
-<!-- <script type="text/javascript">
+<%--
+<script type="text/javascript">
 	//alert("비동기 로그인 자바스크립트 테스트");
 	
 	$(document).ready(function(){
@@ -96,7 +89,8 @@
 	        
 	});
 	
-</script> -->
+</script>
+ --%>
 
 <%
 	}

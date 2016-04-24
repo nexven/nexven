@@ -52,8 +52,7 @@
 </style>
 
 <div id="join_wrap">
-	<form id="nexven_member_form" name="f">
-		<!-- 이진파일을 업로드 할려면 enctype 속성을 지정 -->
+	<form id="nexven_member_form" name="f" action="javascript:return false;" onsubmit="javascript:member_chk();">
 
 		<div class="tl">
 			<p>
@@ -94,13 +93,13 @@
 			</p>
 			<p>
 				<label class="lab kr">우편번호</label> <input name="mZipcode"
-					id="mZipcode" size="3" class="inp" readonly
-					onclick="openDaumPostcode()" /> <input type="button"
-					value="도로명 주소" class="btn-sm" onclick="openDaumPostcode()">
+					id="mZipcode" size="3" class="inp" readonly="readonly"
+					onclick="openDaumPostcode();" /> <input type="button"
+					value="도로명 주소" class="btn-sm" onclick="openDaumPostcode();">
 			</p>
 			<p>
 				<label class="lab kr">주소</label> <input name="mAddr1" id="mAddr1"
-					class="inp2" readonly onclick="openDaumPostcode()" />
+					class="inp2" readonly="readonly" onclick="openDaumPostcode();" />
 			</p>
 			<p>
 				<label class="lab kr">나머지주소</label> <input id="mAddr2" name="mAddr2"
@@ -116,7 +115,7 @@
 					size="10" class="inp3" />@<input name="join_maildomain"
 					id="join_maildomain" size="10" class="inp3" readonly /></span>
 				<!--readonly는 단지 쓰기,수정이 불가능하고 읽기만 가능하다 //-->
-				<select name="mail_list" onchange="domain_list()">
+				<select id="mail_list" name="mail_list" onchange="domain_list();">
 					<option value="">=이메일선택=</option>
 					<option value="daum.net">daum.net</option>
 					<option value="nate.com">nate.com</option>
@@ -141,16 +140,48 @@
 
 
 		<div id="join_menu">
-			<button type="button" class="btn btn-primary"
-				onclick="javascript:check();">회원가입</button>
-			<button type="reset" class="btn btn-primary"
-				onclick="$('#mId').focus();">가입취소</button>
+			<input type="submit" class="btn btn-primary"
+				value="회원가입" />
+			<input type="reset" class="btn btn-primary"
+				onclick="$('#mId').focus();" value="가입취소" />
 		</div>
 	</form>
 
-
 	<script src="./js/member.js"></script>
-
+	<script>
+		function member_chk(){
+			if(check()){		
+				var formData = $("#nexven_member_form").serialize();
+				//alert(formData);
+				$.ajax({
+					type : "POST",
+				    async : true,
+				    cache : false,
+				    encoding: "UTF-8",
+					data : formData,
+				    url : "member_join_ok",
+					success: function(nchk) {
+						var nchk = JSON.parse(JSON.stringify(nchk));
+						
+						if(nchk.success=="성공"){
+							$("#nexven_view").modal('hide');
+							alert("회원가입을 축하합니다.");
+							location.href = "./";
+						}else{
+							alert("회원가입에 실패하였습니다. 오류이유("+nchk.success+")");
+							nload("member_join.jsp");
+						}
+				
+					},
+				    error: function(nchk2){
+				    	alert("회원가입 정보 불러오기 실패");
+				    }
+				});		
+			}else{
+				return false;
+			}
+		}
+	</script>
 	<script>
 		function openDaumPostcode() {
 			new daum.Postcode({
