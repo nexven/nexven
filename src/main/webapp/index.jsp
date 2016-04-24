@@ -73,6 +73,9 @@
  				if(naction===false){
 					naction=true;
 
+					$("#nexven_view_content").html(result);
+					$("#nexven_view_title").html(title);
+					
 					if($("#nexven_view").attr("class")==="modal fade"){
 						if(size=="small"){
 							$("#nexven_view_class").attr("class","modal-dialog modal-nexven-sm");
@@ -80,16 +83,13 @@
 							$("#nexven_view_class").attr("class","modal-dialog modal-nexven-md");
 						}else{
 							$("#nexven_view_class").attr("class","modal-dialog modal-nexven-bg");
-						}						
+						}
 						$('#nexven_view').modal('show');
 					}else{
-						//$("#nexven_view_content").html();
-						//$("#nexven_view_title").html();
+						//$("#nexven_view").scrollTop(0);
+						$('#nexven_view').animate({ scrollTop: 0 }, 'fast');
 					}
-					
-					$("#nexven_view_content").html(result);
-					$("#nexven_view_title").html(title);
-					
+
 					naction=false;
 				}
 
