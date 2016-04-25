@@ -101,6 +101,9 @@
 
 <!-- <body> -->
 
+
+<a href="javascript:nload('/nexven/gamedb/append.jsp');" class="btn btn-success">게임 추가</a>
+
 <h1>게임 DB</h1>
 <div class="row">
 	<div class="col-sm-4 col-xs-8">게임 이름</div>

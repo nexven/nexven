@@ -13,10 +13,10 @@ $('#gamedb_append').click(function(){
 		 gPublisher : $('#gPublisher').val() ,
 		 gServiceType : $('#gServiceType').val() ,
 		 gPlatform : $('#gPlatform').val() ,
-		gGenre : $('#gGenre').val() ,
-		gHomepage :$('#gHomepage').val() ,
-		gRating : $('#gRating').val()  ,
-		gIntroduce : $('#gIntroduce').val()  };
+		 gGenre : $('#gGenre').val() ,
+		 gHomepage :$('#gHomepage').val() ,
+		 gRating : $('#gRating').val()  ,
+		 gIntroduce : $('#gIntroduce').val()  };
 	
 // 	alert(game);
 // 	alert(JSON.stringify(game));
