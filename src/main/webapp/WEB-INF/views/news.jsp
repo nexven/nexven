@@ -42,8 +42,8 @@
 			[<a href="javascript:;" onclick='javascript:nload("news?tab=1","게임뉴스","");'>영상</a>]
 			
 		</div>	
-		<%-- <form id="nsForm" class="form-inline" action="javascript:return false;" onsubmit='javascript:nload("news?sel="+$("#sel").val()+"&sw="+$("#sw").val()+"&tab="+$("#tab").val(),"게임뉴스","");' style="margin:20px auto;" role="form"> --%>
-		<form id="nsForm" class="form-inline" action="javascript:return false;" onsubmit='javascript:nsSearch();' style="margin:40px auto;" role="form">
+		<%-- <form id="nsForm" class="form-inline" action="javascript:;" onsubmit='javascript:nload("news?sel="+$("#sel").val()+"&sw="+$("#sw").val()+"&tab="+$("#tab").val(),"게임뉴스","");' style="margin:20px auto;" role="form"> --%>
+		<form id="nsForm" class="form-inline" action="javascript:;" onsubmit='javascript:nsSearch();' style="margin:40px auto;" role="form">
 			<div class="search form-group">
 				<select id="sel" name="sel" class="form-control">
 					<option value="t">제목</option>
@@ -97,16 +97,17 @@
 			</div>
 			<div class="row" style="background-color:#ddd;height: 1px; margin: 5px 0px 5px 0px;"></div>
 		</c:forEach>
-		
-		<div>
-			<ul id="npage" class="pagination pagination-lg" style="margin:30px 0 0">
-			  <li><a href="javascript:;" onclick='javascript:nload("news?page=1","게임뉴스","");'>1</a></li>
-			  <li><a href="javascript:;" onclick='javascript:nload("news?page=2","게임뉴스","");'>2</a></li>
-			  <li><a href="javascript:;" onclick='javascript:nload("news?page=3","게임뉴스","");'>3</a></li>
-			  <li><a href="javascript:;" onclick='javascript:nload("news?page=4","게임뉴스","");'>4</a></li>
-			  <li><a href="javascript:;" onclick='javascript:nload("news?page=5","게임뉴스","");'>5</a></li>
-			</ul>
-		</div>
+		<c:if test='${empty sw}'>
+			<div>
+				<ul id="npage" class="pagination pagination-lg" style="margin:30px 0 0">
+				  <li><a href="javascript:;" onclick='javascript:nload("news?page=1","게임뉴스","");'>1</a></li>
+				  <li><a href="javascript:;" onclick='javascript:nload("news?page=2","게임뉴스","");'>2</a></li>
+				  <li><a href="javascript:;" onclick='javascript:nload("news?page=3","게임뉴스","");'>3</a></li>
+				  <li><a href="javascript:;" onclick='javascript:nload("news?page=4","게임뉴스","");'>4</a></li>
+				  <li><a href="javascript:;" onclick='javascript:nload("news?page=5","게임뉴스","");'>5</a></li>
+				</ul>
+			</div>
+		</c:if>
 	</div>
 
 <script>
@@ -118,28 +119,31 @@
 	if("${sel}" != ""){
 		$("#sel").val("${sel}");
 	}
-
-	switch ("${page}") {
-	case "1":
-		$("#npage > li:eq(0)").attr("class","active");
-		break;
-	case "2":
-		$("#npage > li:eq(1)").attr("class","active");
-		break;
-	case "3":
-		$("#npage > li:eq(2)").attr("class","active");
-		break;
-	case "4":
-		$("#npage > li:eq(3)").attr("class","active");
-		break;
-	case "5":
-		$("#npage > li:eq(4)").attr("class","active");
-		break;
-	default:
-		break;
-	}
 </script>
 
+<c:if test='${empty sw}'>
+<script>
+switch ("${page}") {
+case "1":
+	$("#npage > li:eq(0)").attr("class","active");
+	break;
+case "2":
+	$("#npage > li:eq(1)").attr("class","active");
+	break;
+case "3":
+	$("#npage > li:eq(2)").attr("class","active");
+	break;
+case "4":
+	$("#npage > li:eq(3)").attr("class","active");
+	break;
+case "5":
+	$("#npage > li:eq(4)").attr("class","active");
+	break;
+default:
+	break;
+}
+</script>
+</c:if>
 
 
 <%-- 
@@ -172,19 +176,19 @@
 		RSS_Link = ${v['link']}
 	</div>
 
- --%>
-	<%-- 	<c:if test="${!empty v['news_content_pic']}">	 --%>
-	<!-- 		<div style="border:1px solid #5599dd"> -->
-	<%-- 			사진=${v['news_content_pic']}<br/>		 --%>
-	<%-- 			<img src="news_img?src=${v['news_content_pic']}" /> --%>
-	<!-- 		</div> -->
-	<%-- 	</c:if> --%>
 
-	<!-- 	<div> -->
-	<%-- 		RSS_Thumbnail = ${v['media:thumbnail']}<br/> --%>
-	<%-- 		<img src="${v['media:thumbnail']}"/> --%>
-	<!-- 	</div> -->
-	<%-- 
+	 	<c:if test="${!empty v['news_content_pic']}">
+	 		<div style="border:1px solid #5599dd">
+	 			사진=${v['news_content_pic']}<br/>
+	 			<img src="news_img?src=${v['news_content_pic']}" />
+	 		</div>
+	 	</c:if>
+
+	 	<div> -->
+	 		RSS_Thumbnail = ${v['media:thumbnail']}<br/>
+	 		<img src="${v['media:thumbnail']}"/>
+	 	</div>
+	 
 </div>
 	<br/><br/><br/>
 	
