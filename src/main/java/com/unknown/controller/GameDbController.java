@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.unknown.model.Emp;
 import com.unknown.model.GameDb;
 import com.unknown.service.GameDbService;
 
@@ -29,6 +30,7 @@ public class GameDbController {
 	@RequestMapping(value="/gamedb/list")
 	@ResponseBody
 	public List<GameDb> getList() {
+		System.out.println(gameDbService.getList());
 		return gameDbService.getList();
 	}
 	
@@ -38,6 +40,26 @@ public class GameDbController {
 		log.info("getGameDb"+gNum);
 		return gameDbService.getGameDb(gNum);
 	}
+	
+	@RequestMapping(value="/gamedb/page")
+	@ResponseBody
+	public Map<String, Object> getPage(Integer pageNo) {
+		Map<String, Object> response = new HashMap<>();
+		int count = gameDbService.getCount();
+		List<GameDb> games = gameDbService.getPage(pageNo);
+		
+		response.put("pageNo", pageNo);
+		response.put("totalCount", count);
+		response.put("games", games);
+		return response;
+	}
+	
+	@RequestMapping(value="/gamedb/count")
+	@ResponseBody
+	public Integer getCount() {
+		return gameDbService.getCount();
+	}
+	
 	
 	@RequestMapping(value="/gamedb", method=RequestMethod.PUT)
 	@ResponseBody

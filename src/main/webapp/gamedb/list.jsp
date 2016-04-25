@@ -19,14 +19,18 @@
 	    async : true,
 	    cache : false,
 	    encoding: "UTF-8",
-	    url: "gamedb/list",
+	    url: "/nexven/gamedb/page?pageNo=1",
 	    contentType: "application/json",
 		success: function(result) {
-	        var json = JSON.stringify(result);
+			var total = JSON.stringify(result.totalCount);
+	        var json = JSON.stringify(result.games);
 	        var json2 = JSON.parse(json);
 	        var arrData = json2;
+
+	        totalpage = Math.ceil(total / 10);
 	    	
 	    	var html = "";
+	    	
 	    	$.each(arrData, function(idx) {
 	    	    html += '<div class="row">' 
 	    	    + '<div class="col-sm-4 col-xs-8">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\',\'게임DB\',\'\');">'+ arrData[idx].gname + '</a></div>'  
@@ -43,47 +47,51 @@
 	        alert('ajax 불러오기 실패');
 	    }
 	});
-	
-// 	 $('#pagination-demo').twbsPagination({
-// 	        totalPages: 10,
-// 	        visiblePages: 5,
-// 	        onPageClick: function (event, page) {
-// 	            $('#page-content').text('Page ' + page);
-	            
-// 	            $.ajax({
-// 	        	    type: "GET",
-// 	        	    async : true,
-// 	        	    cache : false,
-// 	        	    encoding: "UTF-8",
-// 	        	    url: "/nexven/gamedb/page?pageNo="+page,
-// 	        	    contentType: "application/json",
-// 	        		success: function(result) {
-// 	        	        var json = JSON.stringify(result.games);
-// 	        	        curruntPage = JSON.stringify(result.pageNo);
-// 	        	        var json2 = JSON.parse(json);
-// 	        	        var arrData = json2;
-	        	    	
-// 	        	    	var html = "";
-// 	        	    	$.each(arrData, function(idx) {
-// 	        	    	    html += '<tr>' 
-// 	        		        + '<td class="active">' + '<a href="javascript:nload(\"/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\",\"게임DB\",\"\");">'+ arrData[idx].gname + '</a></td>'
-// 	        	    	    + '<td class="active">' + arrData[idx].gmaker + '</td>'
-// 	        	    	    + '<td class="active">' + arrData[idx].ggenre + '</td>' 
-// 	        	    	    + '<td class="active">' + arrData[idx].grating + '</td>' 
-// 	        	    	    + '</tr>' ;
-// 	        	    	});
-	        	    	
-// 	        	    	$(".gamedb").html(html);
-	        		
-// 	        	    },
-// 	        	    error: function(){
-// 	        	        alert('ajax 불러오기 실패');
-// 	        	    }
-// 	        	});
-	            
-	            
-// 	        }
-// 	    });
+	$('#pagination-demo').twbsPagination({
+        totalPages: totalpage,
+        visiblePages: 5,
+        onPageClick: function (event, page) {
+            $('#page-content').text('Page ' + page);
+            
+            $.ajax({
+        	    type: "get",
+        	    async : true,
+        	    cache : false,
+        	    encoding: "UTF-8",
+        	    url: "/nexven/gamedb/page?pageNo="+page,
+        	    contentType: "application/json",
+        		success: function(result) {
+        			var total = JSON.stringify(result.totalCount);
+        	        var json = JSON.stringify(result.games);
+        	        curruntPage = JSON.stringify(result.pageNo);
+        	        var json2 = JSON.parse(json);
+        	        var arrData = json2;
+        	        totalpage = Math.ceil(total / 10);
+        	    	
+        	    	var html = "";
+        	    	$.each(arrData, function(idx) {
+        	    		html += '<div class="row">' 
+        		    	    + '<div class="col-sm-4 col-xs-8">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\',\'게임DB\',\'\');">'+ arrData[idx].gname + '</a></div>'  
+        		    	    + '<div class="col-sm-3 col-xs-0">' + arrData[idx].gmaker + '</div>'
+        		    	    + '<div class="col-sm-3 col-xs-0">' + arrData[idx].ggenre + '</div>' 
+        		    	    + '<div class="col-sm-2 col-xs-4">' + arrData[idx].grating + '</div>' 
+        		    	    + '</div>' ;
+        	    	});
+        	    	
+        	    	$(".gamedb").html(html);
+        		
+        	    },
+        	    error: function(){
+        	        alert('ajax 불러오기 실패');
+        	    }
+        	});
+            
+            
+        }
+    });
+
+
+
 	
 
 

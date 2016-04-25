@@ -20,7 +20,6 @@
 			success: function(result) {
 				
 		        var json = JSON.stringify(result);
-		        alert("result = "+ result + "  json = "+ json);
 		        var arr = JSON.parse(json);
 		        
 		        $("#gname").html(arr.gname);

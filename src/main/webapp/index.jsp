@@ -125,6 +125,21 @@
 	        alert('메인뉴스 불러오기 실패');
 	    }
 	});
+	
+	//gamedb count
+	var totalpage;
+	$.ajax({
+		    type: "get",
+		    url: "/nexven/gamedb/count",
+		    contentType: "application/json",
+			success: function(result) {
+				var total = JSON.stringify(result);
+		        totalpage = Math.ceil(total / 10);
+		    },
+		    error: function(){
+		        alert('ajax 불러오기 실패');
+		    }
+		});
 
 	// 로그아웃
 	function logout() {
