@@ -40,7 +40,9 @@
 		<div class="text-center" style="padding-bottom:10px;border-bottom:1px solid #ccc;margin-bottom:20px">
 			<h3>${nexven_news_content['news_title']}</h3>
 		</div>
-
+		<div style="text-align:right">
+			${nexven_news_content['news_writer']}
+		</div>
 		<div style="margin:20px 0;padding:20px;">
 			${nexven_news_content['news_content']}
 		</div>
