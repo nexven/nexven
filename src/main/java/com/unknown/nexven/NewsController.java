@@ -20,8 +20,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -83,7 +81,7 @@ public class NewsController {
 	        Element element = xml.getDocumentElement();
 	        Node channelNode = element.getElementsByTagName("channel").item(0);
 	        NodeList list = channelNode.getChildNodes();
-	        if(page.isEmpty()){
+	        if(page.isEmpty()||!sw.isEmpty()){
         		pbegin=0;
         		pend=list.getLength();
 	        }else{
