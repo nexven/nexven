@@ -52,7 +52,7 @@
 </style>
 
 <div id="join_wrap">
-	<form id="nexven_member_form" name="f" action="javascript:return false;" onsubmit="javascript:member_chk();">
+	<form id="nexven_member_form" name="f" action="javascript:;" onsubmit="javascript:member_chk();">
 
 		<div class="tl">
 			<p>
@@ -89,7 +89,7 @@
 			</p>
 			<p>
 				<label class="lab kr">생년월일</label> <input id="mBirth" name="mBirth"
-					type="text" class="inp" />
+					type="text" class="inp" readonly="readonly" />
 			</p>
 			<p>
 				<label class="lab kr">우편번호</label> <input name="mZipcode"
@@ -148,7 +148,7 @@
 	</form>
 
 	<script src="./js/member.js"></script>
-	<script>
+	<script>	
 		function member_chk(){
 			if(check()){		
 				var formData = $("#nexven_member_form").serialize();
@@ -183,7 +183,7 @@
 		}
 	</script>
 	<script>
-		function openDaumPostcode() {
+		 function openDaumPostcode() {
 			new daum.Postcode({
 				oncomplete : function(data) {
 					// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -193,7 +193,27 @@
 
 				}
 			}).open();
-		}
+		 }
+		
+		 $.datepicker.regional['ko'] = {
+				  closeText: '닫기',
+				  prevText: '이전',
+				  nextText: '다음',
+				  currentText: '오늘',
+				  monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+				  monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+				  dayNames: ['일','월','화','수','목','금','토'],
+				  dayNamesShort: ['일','월','화','수','목','금','토'],
+				  dayNamesMin: ['일','월','화','수','목','금','토'],
+				  weekHeader: 'Wk',
+				  dateFormat: 'yy-mm-dd',
+				  firstDay: 0,
+				  isRTL: false,
+				  showMonthAfterYear: true,
+				  yearSuffix: ''};
+				 $.datepicker.setDefaults($.datepicker.regional['ko']);
+
+				 $('#mBirth').datepicker();
 	</script>
 </div>
 

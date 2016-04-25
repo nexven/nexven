@@ -40,6 +40,9 @@
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 <script src="js/jquery.twbsPagination.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 <!-- Daum API -->	
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
