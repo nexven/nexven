@@ -120,7 +120,7 @@ $('#gamedb_append').click(function(){
 	<button id="gamedb_append" type="button" class="btn btn-primary" >게임추가</button>
 </form>
 
-	<div style="padding-bottom:20px;margin-bottom:10px;border-bottom:1px solid #ccc;">
+	<div style="padding-top:20px;margin-top:10px;border-top:1px solid #ccc;">
 		<button onclick="javascript:nload('/nexven/gamedb/list.jsp');" class="btn btn-default"><i class="glyphicon glyphicon-list"> 목록으로</i></button>
 	</div>
 

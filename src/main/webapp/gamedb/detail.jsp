@@ -29,7 +29,7 @@
 		       	    	
 		    },
 		    error: function(){
-		        alert('ajax 불러오기 실패');
+		        alert('게임DB 내용 불러오기 실패');
 		    }
 		});
 	    
@@ -40,19 +40,21 @@
 
 
 <div style="padding-bottom:20px;margin-bottom:10px;border-bottom:1px solid #ccc;">
-		<button onclick="javascript:nload('/nexven/gamedb/list.jsp');" class="btn btn-default"><i class="glyphicon glyphicon-list"> 목록으로</i></button>
+		<button onclick='javascript:nload("/nexven/gamedb/list.jsp","게임DB","");' class='btn btn-default'><i class="glyphicon glyphicon-list"> 목록으로</i></button>
 </div>
-<div class="table-responsive">
-<table class="table table-bordered table-hover" style="margin:0;">
-<tr><td colspan="4" id="gname"></td><td colspan="2">평 점</td></tr>
-<tr><td>출시일 : </td><td id="gstartdate"></td><td>제작사 : </td><td id="gmaker"></td><td rowspan="4" id="grating"></tr>
-<tr><td>유통사 : </td><td id="gpublisher"></td><td>서비스 상태 : </td><td id="gservicetype"></td></tr>
-<tr><td>플랫폼 : </td><td id="gplatform"></td><td>장르 : </td><td id="ggenre"></td></tr>
-<tr><td>홈페이지 : </td><td id="ghomepage"></td><td></td><td></td></tr>
-</table>
-
-<div id="gintroduce">
-
-
-</div>
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover" style="margin:20px 0;padding:20px;">
+			<tr><td colspan="4" id="gname"></td><td colspan="2">평 점</td></tr>
+			<tr><td>출시일 : </td><td id="gstartdate"></td><td>제작사 : </td><td id="gmaker"></td><td rowspan="4" id="grating"></tr>
+			<tr><td>유통사 : </td><td id="gpublisher"></td><td>서비스 상태 : </td><td id="gservicetype"></td></tr>
+			<tr><td>플랫폼 : </td><td id="gplatform"></td><td>장르 : </td><td id="ggenre"></td></tr>
+			<tr><td>홈페이지 : </td><td id="ghomepage"></td><td></td><td></td></tr>
+		</table>
+		
+		<div id="gintroduce">
+		
+		</div>
+	</div>
+<div style="padding-top:20px;margin-top:10px;border-top:1px solid #ccc;">
+		<button onclick='javascript:nload("/nexven/gamedb/list.jsp","게임DB","");' class='btn btn-default'><i class="glyphicon glyphicon-list"> 목록으로</i></button>
 </div>
