@@ -3,20 +3,32 @@
 
 <script type="text/javascript">
 
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}
 
 $('#gamedb_append').click(function(){
+	var $dbForm = $("#gameDbForm");
+	var dbData = getFormData($dbForm);
 
-	var game = { gNum : $('#gNum').val() ,
-		 gName : $('#gName').val() ,
-		 gStartDate : $('#gStartDate').val() ,
-		 gMaker : $('#gMaker').val() ,
-		 gPublisher : $('#gPublisher').val() ,
-		 gServiceType : $('#gServiceType').val() ,
-		 gPlatform : $('#gPlatform').val() ,
-		 gGenre : $('#gGenre').val() ,
-		 gHomepage :$('#gHomepage').val() ,
-		 gRating : $('#gRating').val()  ,
-		 gIntroduce : $('#gIntroduce').val()  };
+// 	var game = { gNum : $('#gNum').val() ,
+// 		 gName : $('#gName').val() ,
+// 		 gStartDate : $('#gStartDate').val() ,
+// 		 gMaker : $('#gMaker').val() ,
+// 		 gPublisher : $('#gPublisher').val() ,
+// 		 gServiceType : $('#gServiceType').val() ,
+// 		 gPlatform : $('#gPlatform').val() ,
+// 		 gGenre : $('#gGenre').val() ,
+// 		 gHomepage :$('#gHomepage').val() ,
+// 		 gRating : $('#gRating').val()  ,
+// 		 gIntroduce : $('#gIntroduce').val()  };
 	
 // 	alert(game);
 // 	alert(JSON.stringify(game));
@@ -26,7 +38,7 @@ $('#gamedb_append').click(function(){
    	    url: "/nexven/gamedb",
     contentType: "application/json",
     dataType: "json",
-    data: JSON.stringify(game),
+    data: JSON.stringify(dbData),
 	success: function(result) {
         var re = JSON.stringify(result.success);
         var me = JSON.stringify(result.message); 
