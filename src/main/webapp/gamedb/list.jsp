@@ -21,7 +21,7 @@
 	    	var html = "";
 	    	
 	    	$.each(arrData, function(idx) {
-	    	    html += '<div class="row">' 
+	    	    html += '<div class="row" style="margin:0 auto;padding:10px 0;border-bottom: 1px solid #eee;">'
 	    	    + '<div class="col-sm-4 col-xs-8 active">' + "<a href='javascript:nload(\"/nexven/gamedb/detail.jsp?gnum="+arrData[idx].gnum+"\",\"게임DB 내용\",\"\");'>"+ arrData[idx].gname + "</a></div>"  
 	    	    + '<div class="col-sm-3 col-xs-0 active">' + arrData[idx].gmaker + '</div>'
 	    	    + '<div class="col-sm-3 col-xs-0 active">' + arrData[idx].ggenre + '</div>' 
@@ -59,7 +59,7 @@
         	    	
         	    	var html = "";
         	    	$.each(arrData, function(idx) {
-        	    		html += '<div class="row" style="margin:0 auto;padding:10px 0;border-bottom: 1px solid #eee;">' 
+        	    		html += '<div class="row" style="margin:0 auto;padding:10px 0;border-bottom: 1px solid #eee;">'
         		    	    + '<div class="col-sm-4 col-xs-8">' + "<a href='javascript:nload(\"/nexven/gamedb/detail.jsp?gnum="+arrData[idx].gnum+"\",\"게임DB 내용\",\"\");'>"+ arrData[idx].gname + "</a></div>"  
         		    	    + '<div class="col-sm-3 col-xs-0">' + arrData[idx].gmaker + '</div>'
         		    	    + '<div class="col-sm-3 col-xs-0">' + arrData[idx].ggenre + '</div>' 
@@ -81,7 +81,7 @@
 
 </script>
 
-<div class=kr" style="margin:20px auto">
+<div class="text-center kr" style="margin:20px auto">
 
 	<div style="padding-bottom:20px;text-align: right;">
 		<button onclick='javascript:nload("/nexven/gamedb/append.jsp","GameDB 게임추가","");' class="btn btn-default"><i class="glyphicon glyphicon-edit"> 게임추가</i></button>

@@ -22,7 +22,7 @@
 	    	    html += '<div class="row" style="margin:0 auto;padding:10px 0;border-bottom: 1px solid #eee;">'
 	    	    + '<div class="col-md-1 col-sm-1 col-xs-2 active">' + arrData[idx].bnum + '</div>'	    	    
 	    	    + '<div class="col-md-2 col-sm-2 col-xs-2 active">' + arrData[idx].bcategory + '</div>'
-	    	    + '<div class="col-md-3 col-sm-3 col-xs-5 active">' + '<a href="javascript:nload(\'board/detail.jsp?bNum='+arrData[idx].bnum+'\',\' '+bName+' 커뮤니티 내용\',\'\');">'+ arrData[idx].btitle + '</a></div>'
+	    	    + '<div class="col-md-3 col-sm-3 col-xs-5 active">' + "<a href='javascript:nload(\"board/detail.jsp?bNum="+arrData[idx].bnum+"\",\" "+bName+" 커뮤니티 내용\",\"\");'>"+ arrData[idx].btitle + "</a></div>"
  	    	    + '<div class="col-md-1 col-sm-1 col-xs-2 active">' + arrData[idx].mid + '</div>' 
 	    	    + '<div class="col-md-2 col-sm-2 col-xs-0 active">' + arrData[idx].bdate + '</div>'
 	    	    + '<div class="col-md-1 col-sm-1 col-xs-1 active">' + arrData[idx].bhit + '</div>'
