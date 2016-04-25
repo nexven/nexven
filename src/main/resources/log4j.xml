@@ -39,6 +39,10 @@
 	<logger name="com.unknown.mapper">
 		<level value="debug" />
 	</logger>
+	
+	<logger name="com.unknown.controller">
+		<level value="info" />
+	</logger>
 
 	<!-- Root Logger -->
 	<root>

@@ -73,7 +73,7 @@ public class DeptController {
 		response.put("message", "부서 추가 성공.");
 		
 		try {
-			deptService.insert(dept);
+//			deptService.insert(dept);
 		} catch (DuplicateKeyException e) {
 			log.info(e.getMessage());
 			response.put("success", false);

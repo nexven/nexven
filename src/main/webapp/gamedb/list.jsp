@@ -1,16 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- <!DOCTYPE html> -->
-<!-- <html> -->
-<!-- <script src="//code.jquery.com/jquery-1.12.0.min.js"></script> -->
-<!-- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
-<!-- <script src="/nexven/js/jquery.twbsPagination.min.js"></script> -->
-<!-- <script -->
-<!-- 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
-<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
-<!-- <head> -->
-<!-- <meta charset="UTF-8"> -->
-<!-- <title>list.jsp</title> -->
 
 <script type="text/javascript">
 
@@ -33,10 +22,10 @@
 	    	
 	    	$.each(arrData, function(idx) {
 	    	    html += '<div class="row">' 
-	    	    + '<div class="col-sm-4 col-xs-8">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\',\'게임DB\',\'\');">'+ arrData[idx].gname + '</a></div>'  
-	    	    + '<div class="col-sm-3 col-xs-0">' + arrData[idx].gmaker + '</div>'
-	    	    + '<div class="col-sm-3 col-xs-0">' + arrData[idx].ggenre + '</div>' 
-	    	    + '<div class="col-sm-2 col-xs-4">' + arrData[idx].grating + '</div>' 
+	    	    + '<div class="col-sm-4 col-xs-8 active">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\',\'게임DB\',\'\');">'+ arrData[idx].gname + '</a></div>'  
+	    	    + '<div class="col-sm-3 col-xs-0 active">' + arrData[idx].gmaker + '</div>'
+	    	    + '<div class="col-sm-3 col-xs-0 active">' + arrData[idx].ggenre + '</div>' 
+	    	    + '<div class="col-sm-2 col-xs-4 active">' + arrData[idx].grating + '</div>' 
 	    	    + '</div>' ;
 	    	});
 	    	
@@ -70,7 +59,7 @@
         	    	
         	    	var html = "";
         	    	$.each(arrData, function(idx) {
-        	    		html += '<div class="row">' 
+        	    		html += '<div class="row" style="margin:0 auto;padding:10px 0;border-bottom: 1px solid #eee;">' 
         		    	    + '<div class="col-sm-4 col-xs-8">' + '<a href="javascript:nload(\'/nexven/gamedb/detail.jsp?gNum='+arrData[idx].gnum+'\',\'게임DB\',\'\');">'+ arrData[idx].gname + '</a></div>'  
         		    	    + '<div class="col-sm-3 col-xs-0">' + arrData[idx].gmaker + '</div>'
         		    	    + '<div class="col-sm-3 col-xs-0">' + arrData[idx].ggenre + '</div>' 
@@ -90,33 +79,22 @@
         }
     });
 
-
-
-	
-
-
 </script>
 
-<!-- </head> -->
+	<div style="padding-top:20px;text-align: right;">
+		<button onclick="javascript:nload('/nexven/gamedb/append.jsp');" class="btn btn-default"><i class="glyphicon glyphicon-edit"> 게임추가</i></button>
+	</div>
 
-<!-- <body> -->
-
-
-<a href="javascript:nload('/nexven/gamedb/append.jsp');" class="btn btn-success">게임 추가</a>
-
-<h1>게임 DB</h1>
-<div class="row">
-	<div class="col-sm-4 col-xs-8">게임 이름</div>
-	<div class="col-sm-3 col-xs-0">개발사</div>
-	<div class="col-sm-3 col-xs-0">장르</div>
-	<div class="col-sm-2 col-xs-4">평점</div>
-</div>
-<div class="gamedb">
+	<div class="row" style="margin:0 auto;padding:15px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;">
+		<div class="col-sm-4 col-xs-8">게임 이름</div>
+		<div class="col-sm-3 col-xs-0">개발사</div>
+		<div class="col-sm-3 col-xs-0">장르</div>
+		<div class="col-sm-2 col-xs-4">평점</div>
+	</div>
+<div class="gamedb" class="row" style="margin:0 auto;">
 	
 </div>
 
 	<div align="center">
 	<ul id="pagination-demo" class="pagination-sm"></ul>
 	</div>
-<!-- </body> -->
-<!-- </html> -->

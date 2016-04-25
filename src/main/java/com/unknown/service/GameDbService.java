@@ -31,13 +31,12 @@ public class GameDbService {
 	
 	
 	@Transactional
-	public GameDb getGameDb(Integer gNum){
-		return gameDbMapper.selectBygNum(gNum);
+	public GameDb getGameDb(Integer gnum){
+		return gameDbMapper.selectBygNum(gnum);
 	}
 	
 	@Transactional
 	public int getCount() {
-		
 		return gameDbMapper.selectCount();
 	}
 	
@@ -65,9 +64,9 @@ public class GameDbService {
 	}
 	
 	@Transactional
-	public GameDb delete(Integer gNum){
-		GameDb gameDb = gameDbMapper.selectBygNum(gNum);
-		gameDbMapper.deleteBygNum(gNum);
+	public GameDb delete(Integer gnum){
+		GameDb gameDb = gameDbMapper.selectBygNum(gnum);
+		gameDbMapper.deleteBygNum(gnum);
 		return gameDb;		
 	}
 	

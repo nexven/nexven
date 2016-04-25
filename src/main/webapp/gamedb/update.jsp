@@ -1,24 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html data-ng-app="nexven">
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<head>
-<meta charset="UTF-8">
-<title>append.jsp</title>
+
 <script type="text/javascript">
-	var app = angular.module("nexven",[]);
-	app.controller("updateController", function($scope, $http) {
-		//alert("ListController...");
-	    console.log("updateController");
-	    $scope.deptno = ${param.deptno};
-	    $scope.dept = {};
+	    $scope.gNum = ${param.gNum};
+	    $scope.game = {};
 	    
-	    var ajax = $http.get("/nexven/dept?deptno=" + $scope.deptno);
+	    var gNum = ${param.gNum};
+	    $.ajax({
+		    type: "get",
+		    url: "/nexven/gamedb?gNum="+gNum,
+		    contentType: "application/json",
+			success: function(result) {
+				
+		        var json = JSON.stringify(result);
+		        var arr = JSON.parse(json);
+		        
+		        $("#gname").html(arr.gname);
+		        
+		        var sdate = dateFormat(arr.gstartDate , "yyyy/MM/dd");
+		        $("#gstartDate").html(sdate);
+		        
+		        $("#gmaker").html(arr.gmaker);
+		        $("#gpublisher").html(arr.gpublisher);
+		        $("#gserviceType").html(arr.gserviceType);
+		        $("#gplatform").html(arr.gplatform);
+		        $("#ggenre").html(arr.ggenre);
+		        $("#ghomepage").html(arr.ghomepage);
+		        $("#grating").html(arr.grating);
+		        $("#gintroduce").html(arr.gintroduce);
+		       	    	
+		    },
+		    error: function(){
+		        alert('ajax 불러오기 실패');
+		    }
+		});
+	    
+	    var ajax = $http.get("/nexven/gamedb?gNum" + $scope.deptno);
 	    ajax.then(function(value) {
 	    	$scope.dept = value.data;
 	    });

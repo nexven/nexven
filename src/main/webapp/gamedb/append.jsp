@@ -18,17 +18,17 @@ $('#gamedb_append').click(function(){
 	var $dbForm = $("#gameDbForm");
 	var dbData = getFormData($dbForm);
 
-// 	var game = { gNum : $('#gNum').val() ,
-// 		 gName : $('#gName').val() ,
-// 		 gStartDate : $('#gStartDate').val() ,
-// 		 gMaker : $('#gMaker').val() ,
-// 		 gPublisher : $('#gPublisher').val() ,
-// 		 gServiceType : $('#gServiceType').val() ,
-// 		 gPlatform : $('#gPlatform').val() ,
-// 		 gGenre : $('#gGenre').val() ,
-// 		 gHomepage :$('#gHomepage').val() ,
-// 		 gRating : $('#gRating').val()  ,
-// 		 gIntroduce : $('#gIntroduce').val()  };
+// 	var game = { "gNum" : $('#gNum').val() ,
+// 		 "gName" : $('#gName').val() ,
+// 		 "gStartDate" : $('#gStartDate').val() ,
+// 		 "gMaker" : $('#gMaker').val() ,
+// 		 "gPublisher" : $('#gPublisher').val() ,
+// 		 "gServiceType" : $('#gServiceType').val() ,
+// 		 "gPlatform" : $('#gPlatform').val() ,
+// 		 "gGenre" : $('#gGenre').val() ,
+// 		 "gHomepage" :$('#gHomepage').val() ,
+// 		 "gRating" : $('#gRating').val()  ,
+// 		 "gIntroduce" : $('#gIntroduce').val()  };
 	
 // 	alert(game);
 // 	alert(JSON.stringify(game));
@@ -51,73 +51,76 @@ $('#gamedb_append').click(function(){
         nload('/nexven/gamedb/list.jsp');
     }
 	});
+	
 });
 
 </script>
 
-<div class="portfolio-modal">
-		<div class="close-modal" onclick="javascript:nload('/nexven/gamedb/list.jsp');">
-			<div class="lr">
-				<div class="rl"></div>
-			</div>
-		</div>
-</div>
+
+	<div style="padding-bottom:20px;margin-bottom:10px;border-bottom:1px solid #ccc;">
+		<button onclick="javascript:nload('/nexven/gamedb/list.jsp');" class="btn btn-default"><i class="glyphicon glyphicon-list"> 목록으로</i></button>
+	</div>
 
 <form id="gameDbForm" name="gameDbForm" >
 	<div class="form-group">
 	<label for="gNum">게임번호 : </label>
-	<input id="gNum" name="gNum" class="form-control" required="required" type="number" >
+	<input id="gNum" name="gnum" class="form-control" required="required" type="number" >
 	</div>
 	
 	<div class="form-group">
 	<label for="gName">게임이름 : </label>
-	<input id="gName" name="gName" class="form-control" required="required" type="text" >
+	<input id="gName" name="gname" class="form-control" required="required" type="text" >
 	</div>
 	
 	<div class="form-group">
 	<label for="gStartDate">게임 출시일 : </label>
-	<input id="gStartDate" name="gStartDate" class="form-control" required="required" type="date" >
+	<input id="gStartDate" name="gstartdate" class="form-control" required="required" type="date" >
 	</div>
 	
 	<div class="form-group">
 	<label for="gMaker">제작사 : </label>
-	<input id="gMaker" name="gMaker" class="form-control" required="required" type="text" >
+	<input id="gMaker" name="gmaker" class="form-control" required="required" type="text" >
 	</div>
 	
 	<div class="form-group">
 	<label for="gPublisher">유통사 : </label>
-	<input id="gPublisher" name="gPublisher" class="form-control" required="required" type="text" >
+	<input id="gPublisher" name="gpublisher" class="form-control" required="required" type="text" >
 	</div>
 	
 	<div class="form-group">
 	<label for="gServiceType">서비스 상태 : </label>
-	<input id="gServiceType" name="gServiceType" class="form-control" required="required" type="text" >
+	<input id="gServiceType" name="gservicetype" class="form-control" required="required" type="text" >
 	</div>
 	
 	<div class="form-group">
 	<label for="gPlatform">플랫폼 : </label>
-	<input id="gPlatform" name="gPlatform" class="form-control" required="required" type="text" >
+	<input id="gPlatform" name="gplatform" class="form-control" required="required" type="text" >
 	</div>
 	
 	<div class="form-group">
 	<label for="gGenre">장르 : </label>
-	<input id="gGenre" name="gGenre" class="form-control" required="required" type="text" >
+	<input id="gGenre" name="ggenre" class="form-control" required="required" type="text" >
 	</div>
 	
 	<div class="form-group">
 	<label for="gHomepage">홈페이지 : </label>
-	<input id="gHomepage" name="gHomepage" class="form-control" required="required" type="text" >
+	<input id="gHomepage" name="ghomepage" class="form-control" required="required" type="text" >
 	</div>
 	
 	<div class="form-group">
 	<label for="gRating">평점 : </label>
-	<input id="gRating" name="gRating" class="form-control" required="required" type="number" >
+	<input id="gRating" name="grating" class="form-control" required="required" type="number" >
 	</div>
 	
 	<div class="form-group">
 	<label for="gIntroduce">게임소개 : </label>
-	<input id="gIntroduce" name="gIntroduce" class="form-control" required="required" type="text" >
+	<input id="gIntroduce" name="gintroduce" class="form-control" required="required" type="text" >
 	</div>
 	
 	<button id="gamedb_append" type="button" class="btn btn-primary" >게임추가</button>
 </form>
+
+	<div style="padding-bottom:20px;margin-bottom:10px;border-bottom:1px solid #ccc;">
+		<button onclick="javascript:nload('/nexven/gamedb/list.jsp');" class="btn btn-default"><i class="glyphicon glyphicon-list"> 목록으로</i></button>
+	</div>
+

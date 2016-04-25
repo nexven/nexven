@@ -38,9 +38,9 @@ public class GameDbController {
 	
 	@RequestMapping(value="/gamedb", method=RequestMethod.GET)
 	@ResponseBody
-	public GameDb getGameDb(Integer gNum){
-		log.info("getGameDb"+gNum);
-		return gameDbService.getGameDb(gNum);
+	public GameDb getGameDb(Integer gnum){
+		log.info("getGameDb"+gnum);
+		return gameDbService.getGameDb(gnum);
 	}
 	
 	@RequestMapping(value="/gamedb/page")
@@ -66,17 +66,17 @@ public class GameDbController {
 	@RequestMapping(value="/gamedb", method=RequestMethod.PUT)
 	@ResponseBody
 	public Map<String, Object> putGameDb(@RequestBody GameDb gameDb){
-		log.info("gNum = " + gameDb.getGNum());
-		log.info("gName = " + gameDb.getGName());
-		log.info("gPublisher = " + gameDb.getGPublisher());
-		log.info("gGenre = " + gameDb.getGGenre());
-		log.info("gMaker = " + gameDb.getGMaker());
-		log.info("gPlatform = " + gameDb.getGPlatform());
-		log.info("gStartDate = " + gameDb.getGStartDate());
-		log.info("gServiceType = " + gameDb.getGServiceType());
-		log.info("gRating = " + gameDb.getGRating());
-		log.info("gHomepage = " + gameDb.getGHomepage());
-		log.info("gIntroduce = " + gameDb.getGIntroduce());
+		log.info("gNum = " + gameDb.getGnum());
+		log.info("gName = " + gameDb.getGname());
+		log.info("gPublisher = " + gameDb.getGpublisher());
+		log.info("gGenre = " + gameDb.getGgenre());
+		log.info("gMaker = " + gameDb.getGmaker());
+		log.info("gPlatform = " + gameDb.getGplatform());
+		log.info("gStartDate = " + gameDb.getGstartdate());
+		log.info("gServiceType = " + gameDb.getGservicetype());
+		log.info("gRating = " + gameDb.getGrating());
+		log.info("gHomepage = " + gameDb.getGhomepage());
+		log.info("gIntroduce = " + gameDb.getGintroduce());
 		
 		Map<String, Object> response = new HashMap<>();
 		
@@ -97,44 +97,43 @@ public class GameDbController {
 	
 	@RequestMapping(value="/gamedb", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> postGameDb(@RequestBody Map<String, String> gameDb) throws ParseException{
-		GameDb game = new GameDb();
-		
-		log.info("gName = " + gameDb.get("gName"));
-		log.info("gPublisher = " + gameDb.get("gPublisher"));
-		log.info("gGenre = " + gameDb.get("gGenre"));
-		log.info("gMaker = " + gameDb.get("GMaker"));
-		log.info("gPlatform = " + gameDb.get("gPlatform"));
-		log.info("gStartDate = " + gameDb.get("gStartDate"));
-		log.info("gServiceType = " + gameDb.get("gServiceType"));
-		log.info("gRating = " + gameDb.get("gRating"));
-		log.info("gHomepage = " + gameDb.get("gHomepage"));
-		log.info("gIntroduce = " + gameDb.get("gIntroduce"));
-		
+	public Map<String, Object> postGameDb(@RequestBody GameDb gameDb) {
+		log.info("gNum = " + gameDb.getGnum());
+		log.info("gName = " + gameDb.getGname());
+		log.info("gPublisher = " + gameDb.getGpublisher());
+		log.info("gGenre = " + gameDb.getGgenre());
+		log.info("gMaker = " + gameDb.getGmaker());
+		log.info("gPlatform = " + gameDb.getGplatform());
+		log.info("gStartDate = " + gameDb.getGstartdate());
+		log.info("gServiceType = " + gameDb.getGservicetype());
+		log.info("gRating = " + gameDb.getGrating());
+		log.info("gHomepage = " + gameDb.getGhomepage());
+		log.info("gIntroduce = " + gameDb.getGintroduce());
+
 		Map<String, Object> response = new HashMap<>();
-		
-		game.setGNum(Integer.parseInt(gameDb.get("gNum")));
-		game.setGName(gameDb.get("gName"));
-		game.setGPublisher(gameDb.get("gPublisher"));
-		game.setGGenre(gameDb.get("gGenre"));
-		game.setGMaker(gameDb.get("gMaker"));
-		game.setGPlatform(gameDb.get("gPlatform"));
-		
-		Date sd = new Date();
-		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-		sd = sf.parse(gameDb.get("gStartDate"));
-		game.setGStartDate(sd);
-		
-		game.setGServiceType(gameDb.get("gServiceType"));
-		game.setGRating(Integer.parseInt(gameDb.get("gRating")));
-		game.setGHomepage(gameDb.get("gHomepage"));
-		game.setGIntroduce(gameDb.get("gIntroduce"));
+//		
+//		game.setGNum(Integer.parseInt(gameDb.get("gNum")));
+//		game.setGName(gameDb.get("gName"));
+//		game.setGPublisher(gameDb.get("gPublisher"));
+//		game.setGGenre(gameDb.get("gGenre"));
+//		game.setGMaker(gameDb.get("gMaker"));
+//		game.setGPlatform(gameDb.get("gPlatform"));
+//		
+//		Date sd = new Date();
+//		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+//		sd = sf.parse(gameDb.get("gStartDate"));
+//		game.setGStartDate(sd);
+//		
+//		game.setGServiceType(gameDb.get("gServiceType"));
+//		game.setGRating(Integer.parseInt(gameDb.get("gRating")));
+//		game.setGHomepage(gameDb.get("gHomepage"));
+//		game.setGIntroduce(gameDb.get("gIntroduce"));
 		
 		response.put("success", true);
 		response.put("message", "게임DB 추가 성공.");
 		
 		try {
-			gameDbService.insert(game);
+			gameDbService.insert(gameDb);
 		} catch (DuplicateKeyException e) {
 			log.info(e.getMessage());
 			response.put("success", false);
@@ -146,15 +145,15 @@ public class GameDbController {
 	
 	@RequestMapping(value="/gamedb", method=RequestMethod.DELETE)
 	@ResponseBody
-	public Map<String, Object> deleteGameDb(Integer gNum){		
-		log.info("gNum="+gNum);
+	public Map<String, Object> deleteGameDb(Integer gnum){		
+		log.info("gNum="+gnum);
 		Map<String, Object> response = new HashMap<>();
 		
 		response.put("success", true);
 		response.put("message", "게임이 삭제되었습니다.");
 		
 		try{
-			gameDbService.delete(gNum);
+			gameDbService.delete(gnum);
 		}catch(DataIntegrityViolationException ex){
 			log.info("Error : "+ex);
 			response.put("success", false);

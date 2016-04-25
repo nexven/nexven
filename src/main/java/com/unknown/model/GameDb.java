@@ -2,143 +2,177 @@ package com.unknown.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 //게임DB
 public class GameDb {
 
 //  게임번호
-private Integer gNum;
+private Integer gnum;
 
 //  게임이름
-private String gName;
+private String gname;
 
 //  서비스일자
-private Date gStartDate;
+private Date gstartdate;
 
 //  개발사
-private String gMaker;
+private String gmaker;
 
 //  유통사
-private String gPublisher;
+private String gpublisher;
 
 //  서비스형태
-private String gServiceType;
+private String gservicetype;
 
 //  플랫폼
-private String gPlatform;
+private String gplatform;
 
 //  장르
-private String gGenre;
+private String ggenre;
 
 //  홈페이지
-private String gHomepage;
+private String ghomepage;
 
 //  평점
-private Integer gRating;
+private Integer grating;
 
 //  게임소개
-private String gIntroduce;
+private String gintroduce;
 
-public Integer getGNum() {
-    return gNum;
+
+
+public Integer getGnum() {
+	return gnum;
 }
 
-public void setGNum(Integer gNum) {
-    this.gNum = gNum;
+
+
+public void setGnum(Integer gnum) {
+	this.gnum = gnum;
 }
 
-public String getGName() {
-    return gName;
+
+
+public String getGname() {
+	return gname;
 }
 
-public void setGName(String gName) {
-    this.gName = gName;
+
+
+public void setGname(String gname) {
+	this.gname = gname;
 }
 
-public Date getGStartDate() {
-    return gStartDate;
+
+
+public Date getGstartdate() {
+	return gstartdate;
 }
 
-public void setGStartDate(Date gStartDate) {
-    this.gStartDate = gStartDate;
+
+
+public void setGstartdate(Date gstartdate) {
+	this.gstartdate = gstartdate;
 }
 
-public String getGMaker() {
-    return gMaker;
+
+
+public String getGmaker() {
+	return gmaker;
 }
 
-public void setGMaker(String gMaker) {
-    this.gMaker = gMaker;
+
+
+public void setGmaker(String gmaker) {
+	this.gmaker = gmaker;
 }
 
-public String getGPublisher() {
-    return gPublisher;
+
+
+public String getGpublisher() {
+	return gpublisher;
 }
 
-public void setGPublisher(String gPublisher) {
-    this.gPublisher = gPublisher;
+
+
+public void setGpublisher(String gpublisher) {
+	this.gpublisher = gpublisher;
 }
 
-public String getGServiceType() {
-    return gServiceType;
+
+
+public String getGservicetype() {
+	return gservicetype;
 }
 
-public void setGServiceType(String gServiceType) {
-    this.gServiceType = gServiceType;
+
+
+public void setGservicetype(String gservicetype) {
+	this.gservicetype = gservicetype;
 }
 
-public String getGPlatform() {
-    return gPlatform;
+
+
+public String getGplatform() {
+	return gplatform;
 }
 
-public void setGPlatform(String gPlatform) {
-    this.gPlatform = gPlatform;
+
+
+public void setGplatform(String gplatform) {
+	this.gplatform = gplatform;
 }
 
-public String getGGenre() {
-    return gGenre;
+
+
+public String getGgenre() {
+	return ggenre;
 }
 
-public void setGGenre(String gGenre) {
-    this.gGenre = gGenre;
+
+
+public void setGgenre(String ggenre) {
+	this.ggenre = ggenre;
 }
 
-public String getGHomepage() {
-    return gHomepage;
+
+
+public String getGhomepage() {
+	return ghomepage;
 }
 
-public void setGHomepage(String gHomepage) {
-    this.gHomepage = gHomepage;
+
+
+public void setGhomepage(String ghomepage) {
+	this.ghomepage = ghomepage;
 }
 
-public Integer getGRating() {
-    return gRating;
+
+
+public Integer getGrating() {
+	return grating;
 }
 
-public void setGRating(Integer gRating) {
-    this.gRating = gRating;
+
+
+public void setGrating(Integer grating) {
+	this.grating = grating;
 }
 
-public String getGIntroduce() {
-    return gIntroduce;
+
+
+public String getGintroduce() {
+	return gintroduce;
 }
 
-public void setGIntroduce(String gIntroduce) {
-    this.gIntroduce = gIntroduce;
+
+
+public void setGintroduce(String gintroduce) {
+	this.gintroduce = gintroduce;
 }
 
-// GameDb 모델 복사
-public void CopyData(GameDb param)
-{
-    this.gNum = param.getGNum();
-    this.gName = param.getGName();
-    this.gStartDate = param.getGStartDate();
-    this.gMaker = param.getGMaker();
-    this.gPublisher = param.getGPublisher();
-    this.gServiceType = param.getGServiceType();
-    this.gPlatform = param.getGPlatform();
-    this.gGenre = param.getGGenre();
-    this.gHomepage = param.getGHomepage();
-    this.gRating = param.getGRating();
-    this.gIntroduce = param.getGIntroduce();
-}
+
+
+
 }

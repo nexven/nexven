@@ -8,10 +8,10 @@ import com.unknown.model.GameDb;
 
 public interface GameDbMapper {
 	List<GameDb> selectAll();
-	GameDb selectBygNum(int gNum);
+	GameDb selectBygNum(int gnum);
 	int insert(GameDb gameDb);
 	int updateBygNum(GameDb gameDb);
-	int deleteBygNum(int gNum);
+	int deleteBygNum(int gnum);
 	int selectCount();
 	List<GameDb> selectPage(Map<String, Integer> paging);
 }
