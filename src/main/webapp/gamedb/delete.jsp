@@ -3,15 +3,10 @@
 <!DOCTYPE html>
 <html data-ng-app="nexven">
 <head>
-<meta charset="UTF-8">
-<title>delete.jsp</title>
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
 <script type="text/javascript">
-	var app = angular.module("nexven",[]);
+
 	app.controller("DeleteController", function($scope, $http) {
 	
 		$scope.deptno=${param.deptno}; // 바인딩 모델 생성
