@@ -406,11 +406,11 @@
 				</div>
 			</div>
 			<div class="row text-center">
-				<div>
-					<img src="img/board/freeboard.jpg" style="width:auto; max-width:100%;">
+				<div style="margin-bottom:50px;">
+					<img src="img/board/freeboard.jpg" style="width:auto; max-width:70%;">
 				</div>
 				<div>
-					<img src="img/board/youtube.png" style="width:auto; max-width:100%;">
+					<img src="img/board/youtube.png" style="width:auto; max-width:70%;">
 				</div>
 			</div>
 		</div>
