@@ -405,8 +405,13 @@
 					<h3 class="section-subheading titlelink kr">자유 게시판</h3>
 				</div>
 			</div>
-			<div class="row">
-				
+			<div class="row text-center">
+				<div>
+					<img src="img/board/freeboard.jpg" style="width:auto; max-width:100%;">
+				</div>
+				<div>
+					<img src="img/board/youtube.png" style="width:auto; max-width:100%;">
+				</div>
 			</div>
 		</div>
 	</section>
